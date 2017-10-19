@@ -1,0 +1,11 @@
+{
+  "name": "@freeletics/wordpress-exporter-sandbox",
+  "version": "1.0.0",
+  "main": "fetch.js",
+  "license": "MIT",
+  "dependencies": {
+    "prettyjson": "^1.2.1",
+    "wpapi": "^1.1.2",
+    "yargs": "^9.0.1"
+  }
+}
