@@ -1,0 +1,10 @@
+{
+  "name": "@freeletics/wordpress-exporter",
+  "devDependencies": {
+    "lerna": "^2.4.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "private": true
+}
