@@ -8,3 +8,6 @@ npm-debug.log
 # OS and IDE
 .DS_Store
 .idea
+
+# Lerna
+lerna-debug.log
