@@ -3,6 +3,9 @@
   "devDependencies": {
     "lerna": "^2.4.0"
   },
+  "scripts": {
+    "clean": "lerna clean --yes && rm -rf node_modules"
+  },
   "workspaces": [
     "packages/*"
   ],
