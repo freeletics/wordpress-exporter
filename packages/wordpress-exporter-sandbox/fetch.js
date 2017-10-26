@@ -2,18 +2,18 @@ const WPAPI = require('wpapi');
 const prettyjson = require('prettyjson');
 
 function wp({host, lang, site}) {
-  console.info(`Create connection with ${host}/${lang}/${site}/wp-json`)
+  console.info(`Create connection with ${host}/${lang}/${site}/wp-json`);
 
   return new WPAPI({
-    endpoint: `${host}/${lang}/${site}/wp-json`
+    endpoint: `${host}/${lang}/${site}/wp-json`,
   });
 }
 
-async function fetch_all_posts({ lang, site }, { offset=0, perPage=100 } = {}) {
-  const posts = await wp({ lang, site }).posts().perPage(perPage).offset(offset);
+async function fetchAllPosts(wp, { offset = 0, perPage = 100 } = {}) {
+  const posts = await wp.posts().perPage(perPage).offset(offset);
 
-  if (posts.length === 100) {
-    return posts.concat(await fetch_all_posts({ offset: offset + perPage }));
+  if (posts.length === perPage) {
+    return posts.concat(await fetchAllPosts(wp, { offset: offset + perPage }));
   }
 
   return posts;
@@ -40,7 +40,7 @@ const parser = require('yargs')
     desc: 'Fetch all posts',
     handler: argv => {
       const {host, lang, site} = argv;
-      fetch_all_posts({ host, lang, site }).then(posts => {
+      fetchAllPosts(wp({ host, lang, site }), { host, lang, site }).then(posts => {
         console.log(`Found ${posts.length} in site '${site}' for lang '${lang}'`);
       });
     },
