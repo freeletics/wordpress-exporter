@@ -18,6 +18,17 @@ This mono-repository is organised as follow:
 * `plugins` contains the Wordpress plugins to install in order to expend the Wordpress API.
 * `packages` contains the various packages used to perform the `export`, and `transform` steps.
 
+## Getting Started
+
+This mono-repository uses `yarn` and `lerna`, to get started simply run:
+
+```
+$ yarn install
+$ lerna bootstrap
+```
+
+**Note**: do not run `yarn install` anywhere else than in the root of the repository.
+
 [Contentful]: https://contentful.com
 [Wordpress REST API]: https://developer.wordpress.com/docs/api/
 [contentful-import]: https://github.com/contentful/contentful-import
