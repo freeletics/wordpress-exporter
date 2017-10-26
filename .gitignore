@@ -2,6 +2,9 @@
 node_modules/
 npm-debug.log
 
+# Yarn
+yarn-error.log
+
 # Linter
 .eslintcache
 
@@ -11,3 +14,9 @@ npm-debug.log
 
 # Lerna
 lerna-debug.log
+
+# Packages
+dist
+
+# Exporter
+data
