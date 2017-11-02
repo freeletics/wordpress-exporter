@@ -21,10 +21,13 @@ async function setupBaseDir({ dir, lang }) {
   const basedir = path.join(path.resolve(dir), lang);
 
   await fs.remove(basedir);
-  await fs.mkdirs(path.join(basedir, 'assets'));
+  await fs.mkdirs(path.join(basedir, 'dump'));
+  await fs.mkdirs(path.join(basedir, 'export'));
+
+  await fs.mkdirs(path.resolve(basedir, 'dump', 'assets'));
 
   ['post', 'category'].map(async (type) => {
-    await fs.mkdirs(path.join(basedir, 'entries', type));
+    await fs.mkdirs(path.resolve(basedir, 'dump', 'entries', type));
   });
 
   return basedir;
@@ -43,13 +46,13 @@ export default async ({ host, lang, site, dir }) => {
     logger.info(`Retrieved ${categories.length} categories`);
 
     posts.map(async (post) => {
-      const file = path.join(basedir, 'entries', 'post', `${post.id}.json`);
+      const file = path.join(basedir, 'dump', 'entries', 'post', `${post.id}.json`);
       logger.info(`Outputting post ${post.id} in ${path.relative(basedir, file)}`);
       await fs.writeJson(file, post);
     });
 
     categories.map(async (category) => {
-      const file = path.join(basedir, 'entries', 'category', `${category.id}.json`);
+      const file = path.join(basedir, 'dump', 'entries', 'category', `${category.id}.json`);
       logger.info(`Outputting category ${category.id} in ${path.relative(basedir, file)}`);
       await fs.writeJson(file, category);
     });
