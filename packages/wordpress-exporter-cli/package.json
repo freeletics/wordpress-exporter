@@ -1,0 +1,48 @@
+{
+  "name": "@freeletics/wordpress-exporter-cli",
+  "version": "1.0.0",
+  "description": "Wordpress Exporter CLI for Freeletics sites",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint src/**",
+    "build": "rimraf dist && babel src --out-dir dist --source-maps",
+    "build:watch": "rimraf dist && babel src --out-dir dist --watch --source-maps"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "@freeletics/eslint-config-base"
+    ],
+    "env": {
+      "node": true
+    }
+  },
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "fs-extra": "^4.0.2",
+    "wpapi": "^1.1.2",
+    "yargs": "^10.0.3"
+  },
+  "devDependencies": {
+    "@freeletics/eslint-config-base": "^0.0.1",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.10.0",
+    "eslint-plugin-import": "^2.8.0",
+    "rimraf": "^2.6.2"
+  },
+  "bin": {
+    "wordpress-exporter": "./bin/wordpress-exporter.js"
+  }
+}
