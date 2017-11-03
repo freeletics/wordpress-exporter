@@ -46,11 +46,9 @@ class Logger {
 
 // Export as singleton
 export default (() => {
-  let logger = global[INSTANCE];
-
-  if (!logger) {
-    logger = global[INSTANCE] = new Logger();
+  if (!global[INSTANCE]) {
+    global[INSTANCE] = new Logger();
   }
 
-  return logger;
+  return global[INSTANCE];
 })();

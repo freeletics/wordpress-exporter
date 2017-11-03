@@ -43,8 +43,12 @@ const options = require('yargs') // eslint-disable-line
       default: `.${path.sep}data`,
     }),
     handler: (argv) => {
-      const { host, lang, site, dir } = argv;
-      exporter({ host, lang, site, dir });
+      const {
+        host, lang, site, dir,
+      } = argv;
+      exporter({
+        host, lang, site, dir,
+      });
     },
   })
   .argv;

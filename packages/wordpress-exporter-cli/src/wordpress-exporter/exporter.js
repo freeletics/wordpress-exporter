@@ -14,7 +14,7 @@ async function fetchAllPosts(wp, { offset = 0, perPage = 100 } = {}) {
 }
 
 async function fetchAllCategories(wp) {
-  return await wp.categories();
+  return wp.categories();
 }
 
 async function setupBaseDir({ dir, lang }) {
@@ -33,7 +33,9 @@ async function setupBaseDir({ dir, lang }) {
   return basedir;
 }
 
-export default async ({ host, lang, site, dir }) => {
+export default async ({
+  host, lang, site, dir,
+}) => {
   const wp = connect({ host, lang, site });
 
   try {

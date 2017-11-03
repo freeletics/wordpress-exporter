@@ -20,6 +20,14 @@
       ]
     ]
   },
+  "eslintConfig": {
+    "extends": [
+      "@freeletics/eslint-config-base"
+    ],
+    "env": {
+      "node": true
+    }
+  },
   "dependencies": {
     "chalk": "^2.3.0",
     "fs-extra": "^4.0.2",
@@ -27,10 +35,11 @@
     "yargs": "^10.0.3"
   },
   "devDependencies": {
-    "@freeletics/web-package-base": "^0.0.2",
+    "@freeletics/eslint-config-base": "^0.0.1",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint": "^4.10.0",
+    "eslint-plugin-import": "^2.8.0",
     "rimraf": "^2.6.2"
   },
   "bin": {
