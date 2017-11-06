@@ -2,7 +2,7 @@ import path from 'path';
 import logger from './logger';
 
 const options = require('yargs') // eslint-disable-line
-  .usage('\nUsage: fetch [options] <cmd> [args]')
+  .usage('\nUsage: wordpress-exporter [options] <cmd> [args]')
   .option('host', {
     describe: 'choose a host',
     default: 'https://www.freeletics.com/',
