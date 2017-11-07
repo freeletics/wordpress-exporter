@@ -41,7 +41,7 @@ export function builder(yargs) {
     default: `.${path.sep}data`,
   });
 }
-export default async function handler({
+export async function handler({
   host, lang, site, dir,
 }) {
   const wp = connect({ host, lang, site });
@@ -56,13 +56,13 @@ export default async function handler({
     logger.info(`Retrieved ${categories.length} categories`);
 
     posts.map(async (post) => {
-      const file = path.join(basedir, 'dump', 'entries', 'post', `${post.id}.json`);
+      const file = path.join(basedir, 'dump', 'entries', 'post', `${site}-${post.id}.json`);
       logger.info(`Outputting post ${post.id} in ${path.relative(basedir, file)}`);
       await fs.writeJson(file, post);
     });
 
     categories.map(async (category) => {
-      const file = path.join(basedir, 'dump', 'entries', 'category', `${category.id}.json`);
+      const file = path.join(basedir, 'dump', 'entries', 'category', `${site}-${category.id}.json`);
       logger.info(`Outputting category ${category.id} in ${path.relative(basedir, file)}`);
       await fs.writeJson(file, category);
     });
