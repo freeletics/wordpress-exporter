@@ -1,4 +1,3 @@
-import path from 'path';
 import logger from './logger';
 
 const options = require('yargs') // eslint-disable-line
