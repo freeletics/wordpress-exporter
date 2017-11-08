@@ -1,3 +1,5 @@
+import path from 'path';
+import fs from 'fs-extra';
 import logger from './logger';
 
 const options = require('yargs') // eslint-disable-line
@@ -15,6 +17,11 @@ const options = require('yargs') // eslint-disable-line
     describe: 'choose a site',
     default: 'blog',
     choices: ['blog', 'knowledge'],
+  })
+  .option('settings', {
+    describe: 'provide settings file path',
+    default: `.${path.sep}settings.json`,
+    coerce: arg => JSON.parse(fs.readFileSync(path.join(path.resolve(arg)))),
   })
   .option('silent', {
     boolean: true,
