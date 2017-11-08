@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint src/**",
-    "build": "rimraf dist && babel src --out-dir dist --source-maps",
-    "build:watch": "rimraf dist && babel src --out-dir dist --watch --source-maps"
+    "clean": "rimraf dist",
+    "build": "yarn run clean && babel src --out-dir dist --source-maps",
+    "watch": "yarn run clean && babel src --out-dir dist --watch --source-maps"
   },
   "babel": {
     "presets": [
