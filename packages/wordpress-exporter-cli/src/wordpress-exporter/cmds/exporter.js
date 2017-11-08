@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs-extra';
-import logger from './logger';
-import { connect } from './utils';
+import logger from '../logger';
+import { connect } from '../utils';
 
 async function fetchAllPosts(wp, { offset = 0, perPage = 100 } = {}) {
   const posts = await wp.posts().perPage(perPage).offset(offset);
@@ -33,9 +33,17 @@ async function setupBaseDir({ dir, lang }) {
   return basedir;
 }
 
-export default async ({
+export const command = 'export';
+export const describe = 'Export site to json';
+export function builder(yargs) {
+  return yargs.option('dir', {
+    describe: 'select root directory to export data',
+    default: `.${path.sep}data`,
+  });
+}
+export async function handler({
   host, lang, site, dir,
-}) => {
+}) {
   const wp = connect({ host, lang, site });
 
   try {
@@ -48,17 +56,17 @@ export default async ({
     logger.info(`Retrieved ${categories.length} categories`);
 
     posts.map(async (post) => {
-      const file = path.join(basedir, 'dump', 'entries', 'post', `${post.id}.json`);
+      const file = path.join(basedir, 'dump', 'entries', 'post', `${site}-${post.id}.json`);
       logger.info(`Outputting post ${post.id} in ${path.relative(basedir, file)}`);
       await fs.writeJson(file, post);
     });
 
     categories.map(async (category) => {
-      const file = path.join(basedir, 'dump', 'entries', 'category', `${category.id}.json`);
+      const file = path.join(basedir, 'dump', 'entries', 'category', `${site}-${category.id}.json`);
       logger.info(`Outputting category ${category.id} in ${path.relative(basedir, file)}`);
       await fs.writeJson(file, category);
     });
   } catch (error) {
     logger.error(error);
   }
-};
+}

@@ -1,9 +1,7 @@
-import path from 'path';
 import logger from './logger';
-import exporter from './exporter';
 
 const options = require('yargs') // eslint-disable-line
-  .usage('\nUsage: fetch [options] <cmd> [args]')
+  .usage('\nUsage: wordpress-exporter [options] <cmd> [args]')
   .option('host', {
     describe: 'choose a host',
     default: 'https://www.freeletics.com/',
@@ -35,22 +33,8 @@ const options = require('yargs') // eslint-disable-line
     choices: ['all', 'error', 'warn', 'notice', 'info', 'none'],
     default: 'notice',
   })
-  .command({
-    command: 'export',
-    desc: 'Export site to json',
-    builder: yargs => yargs.option('dir', {
-      describe: 'select root directory to export data',
-      default: `.${path.sep}data`,
-    }),
-    handler: (argv) => {
-      const {
-        host, lang, site, dir,
-      } = argv;
-      exporter({
-        host, lang, site, dir,
-      });
-    },
-  })
+  .commandDir('cmds')
+  .demandCommand()
   .argv;
 
 if (options.silent) {
