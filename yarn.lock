@@ -2262,6 +2262,10 @@ lru-cache@^4.0.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
+macaddress@^0.2.8:
+  version "0.2.8"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/macaddress/-/macaddress-0.2.8.tgz#5904dc537c39ec6dbefeae902327135fa8511f12"
+
 make-dir@^1.0.0:
   version "1.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/make-dir/-/make-dir-1.1.0.tgz#19b4369fe48c116f53c2af95ad102c0e39e85d51"
@@ -3273,6 +3277,12 @@ uglify-to-browserify@~1.0.0:
 uid-number@^0.0.6:
   version "0.0.6"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/uid-number/-/uid-number-0.0.6.tgz#0ea10e8035e8eb5b8e4449f06da1c730663baa81"
+
+uniqid@^4.1.1:
+  version "4.1.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/uniqid/-/uniqid-4.1.1.tgz#89220ddf6b751ae52b5f72484863528596bb84c1"
+  dependencies:
+    macaddress "^0.2.8"
 
 universalify@^0.1.0:
   version "0.1.1"
