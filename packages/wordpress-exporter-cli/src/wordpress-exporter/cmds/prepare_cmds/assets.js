@@ -1,8 +1,9 @@
+import path from 'path';
 import fs from 'fs-extra';
 import glob from 'globby';
-import path from 'path';
+import uniqid from 'uniqid';
 
-import makeContentfulAssetFrom from '../../templates/asset';
+import compileToContentfulAsset from '../../templates/asset';
 
 const IMAGES_REGEX = /(src="(https?:\/\/(www.freeletics.com\/)([a-zA-Z0-9-_./]+)(\/wp-content\/uploads\/sites\/)([a-zA-Z0-9-_./]+)(\.(png|gif|jpg|jpeg))))/gi;
 
@@ -19,27 +20,11 @@ async function extractUrls(filename) {
   return urls;
 }
 
-async function listAssets(postDir) {
-  const posts = await glob('*.json', { cwd: postDir });
-  const assetsUrls = await Promise.all(posts.map(post =>
-    extractUrls(path.join(postDir, post))));
+async function listAssets(dir) {
+  const posts = await glob('*.json', { cwd: dir });
+  const urls = await Promise.all(posts.map(post => extractUrls(path.join(dir, post))));
 
-  return new Set([].concat(...assetsUrls));
-}
-
-function generateId() {
-  // TODO
-}
-
-function prepareAssets(lang, urlsSet) {
-  const urls = Array.from(urlsSet);
-
-  return urls.map(url => makeContentfulAssetFrom({
-    lang,
-    id: generateId(),
-    url,
-    filename: url.match(/([a-zA-Z0-9-_.]+)(\.(png|gif|jpg|jpeg))/gi).toString(),
-  }));
+  return new Set([].concat(...urls));
 }
 
 export const command = 'assets';
@@ -51,8 +36,14 @@ export function builder(yargs) {
   });
 }
 export async function handler({ lang, dir }) {
-  const urls = await listAssets(path.resolve(dir, lang, 'dump/entries/post'));
-  const assets = prepareAssets(lang, urls);
+  const urls = await listAssets(path.resolve(dir, lang, 'dump', 'entries', 'post'));
+  const assets = Array.from(urls).map(url => compileToContentfulAsset({
+    lang,
+    // Note: here we generate our own Contentful sys.id
+    // we prefix it with "asset-" for easier debugging.
+    id: uniqid('asset-'),
+    url,
+  }));
 
   await fs.writeJson(path.resolve(dir, lang, 'export/assets.json'), assets);
 }
