@@ -30,14 +30,18 @@
     }
   },
   "dependencies": {
+    "breakdance": "^3.0.1",
     "chalk": "^2.3.0",
     "contentful-export": "^4.7.8",
     "contentful-import": "^4.5.7",
     "contentful-management": "^4.0.3",
     "fs-extra": "^4.0.2",
     "globby": "^6.1.0",
+    "json2csv": "^3.11.5",
+    "lodash": "^4.17.4",
+    "remark": "^8.0.0",
+    "remark-stringify": "^4.0.0",
     "uniqid": "^4.1.1",
-    "to-markdown": "^3.1.0",
     "wpapi": "^1.1.2",
     "yargs": "^10.0.3"
   },
