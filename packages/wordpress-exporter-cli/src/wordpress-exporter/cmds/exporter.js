@@ -45,22 +45,28 @@ export async function handler({
   host, lang, site, dir,
 }) {
   const wp = connect({ host, lang, site });
+  logger.info('Connection to Wordpress established.');
 
   try {
+    logger.info('Setting up basedir...');
     const basedir = await setupBaseDir({ dir, lang });
 
+    logger.info('Fetching posts...');
     const posts = await fetchAllPosts(wp);
     logger.info(`Retrieved ${posts.length} posts`);
 
+    logger.info('Fetching categories...');
     const categories = await fetchAllCategories(wp);
     logger.info(`Retrieved ${categories.length} categories`);
 
+    logger.info('Exporting posts...');
     posts.map(async (post) => {
       const file = path.join(basedir, 'dump', 'entries', 'post', `${site}-${post.id}.json`);
       logger.info(`Outputting post ${post.id} in ${path.relative(basedir, file)}`);
       await fs.writeJson(file, post);
     });
 
+    logger.info('Exporting categories...');
     categories.map(async (category) => {
       const file = path.join(basedir, 'dump', 'entries', 'category', `${site}-${category.id}.json`);
       logger.info(`Outputting category ${category.id} in ${path.relative(basedir, file)}`);
