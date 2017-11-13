@@ -6,7 +6,7 @@ const options = require('yargs') // eslint-disable-line
   .usage('\nUsage: wordpress-exporter [options] <cmd> [args]')
   .option('host', {
     describe: 'choose a host',
-    default: 'https://www.freeletics.com/',
+    default: 'https://www.freeletics.com',
   })
   .option('lang', {
     describe: 'choose locale',
