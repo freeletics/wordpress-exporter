@@ -1,7 +1,9 @@
 import path from 'path';
 import fs from 'fs-extra';
-import { client } from '../contentful';
+
+import { client, importToSpace } from '../contentful';
 import logger from '../logger';
+import compileToContentfulContentTypes from '../templates/space/contentTypes';
 
 const SPACE_CONFIG_DIR = path.resolve(process.cwd(), '.wordpress-exporter', 'spaces');
 const SPACE_CONFIG_FILE = (site, lang) => `${site}-${lang}.json`;
@@ -22,6 +24,7 @@ export function builder(yargs) {
             await fs.mkdirs(SPACE_CONFIG_DIR);
 
             // Create space
+            logger.info(`Creating space for site ${site} and lang ${lang}`);
             const space = await client.createSpace({
               name: `${site}/${lang}`,
               defaultLocale: lang,
@@ -32,7 +35,12 @@ export function builder(yargs) {
               lang,
             });
 
-            logger.info(`Created space ${space.sys.id} for site ${site} and lang ${lang}`);
+            logger.info(`Creating contentTypes for space ${space.sys.id}`);
+
+            await importToSpace(
+              space.sys.id,
+              { contentTypes: compileToContentfulContentTypes(space.sys.id) },
+            );
           } else {
             logger.error(`Space already exists for site ${site} and lang ${lang}`);
           }
@@ -54,9 +62,10 @@ export function builder(yargs) {
             const config = await fs.readJson(configFile);
             const space = await client.getSpace(config.id);
 
+            logger.info(`Deleting space ${space.sys.id} for site ${site} and lang ${lang}`);
+
             await space.delete();
             fs.remove(configFile);
-            logger.info(`Deleted space ${space.id} for site ${site} and lang ${lang}`);
           }
         } catch (error) {
           logger.error(error);
