@@ -24,14 +24,14 @@ export async function handler({ site, lang, dir }) {
       const space = await fs.readJson(configFile);
       const assets = await fs.readJson(path.resolve(dir, lang, 'export', 'assets.json'));
 
-      logger.info(`Importing assets to space ${space.id}`);
+      // logger.info(`Importing assets to space ${space.id}`);
       await importToSpace(
         space.id,
         { assets },
       );
 
       logger.info(`Fetching Contentful assets URLs from space ${space.id}`);
-      await exportFromSpace(
+      const spaceExport = await exportFromSpace(
         space.id,
         path.resolve(dir, lang, 'export'),
         {
@@ -39,8 +39,11 @@ export async function handler({ site, lang, dir }) {
           skipContent: false,
           skipRoles: true,
           skipWebhooks: true,
+          saveFile: false,
         },
       );
+
+      await fs.writeJson(path.resolve(dir, lang, 'export', 'contentful-export-assets.json'), spaceExport.assets);
     }
   } catch (error) {
     logger.error(error);

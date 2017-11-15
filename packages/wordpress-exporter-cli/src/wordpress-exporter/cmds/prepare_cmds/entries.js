@@ -94,6 +94,18 @@ function remapEntryId({ settings, lang, entry }) {
   });
 }
 
+async function processHtml({
+  content, wpAssetsUrlToContentfulIdMap, contentfulIdtoContentfulAssetsUrlMap,
+}) {
+  const ASSETS_REGEX = /(\/\/(www.freeletics.com\/)([a-zA-Z0-9-_./]+)(\/wp-content\/uploads\/sites\/)([a-zA-Z0-9-_./]+)(\.(png|gif|jpg|jpeg)))/gi;
+  const markdown = await htmlToMarkdown(content);
+
+  return markdown.replace(
+    ASSETS_REGEX,
+    url => contentfulIdtoContentfulAssetsUrlMap[wpAssetsUrlToContentfulIdMap[url]],
+  );
+}
+
 export const command = 'entries';
 export const describe = 'Prepare entries for a Contentful import.';
 export function builder(yargs) {
@@ -113,10 +125,21 @@ export async function handler({
   try {
     // Load assets to be exported to contentful and generate a map mapping
     // Wordpress asset URLs to Contentful asset id
-    const assets = await fs.readJson(path.resolve(dir, lang, 'export', 'assets.json'));
-    const wpAssetsUrlToContentfulIdMap = Object.assign({}, ...assets.map(asset => ({
+    const exportedAssets = await fs.readJson(path.resolve(dir, lang, 'export', 'assets.json'));
+
+    // Load assets re-exported from Contentful to generate a mapping between
+    // Contentful asset id and Contentful asset URLs
+    const reExportedAssets = await fs.readJson(path.resolve(dir, lang, 'export', 'contentful-export-assets.json'));
+
+    const wpAssetsUrlToContentfulIdMap = Object.assign({}, ...exportedAssets.map(asset => ({
       [_.get(asset, `fields.file.${lang}.url`)]: asset.sys.id,
     })));
+    const contentfulIdtoContentfulAssetsUrlMap = Object.assign(
+      {},
+      ...reExportedAssets.map(asset => ({
+        [asset.sys.id]: _.get(asset, `fields.file.${lang}.url`),
+      })),
+    );
 
     // Prepare categories
     const categoryEntries = (await listEntries(path.resolve(dir, lang, 'dump', 'entries', 'category')))
@@ -196,7 +219,11 @@ export async function handler({
         tags: sanitizeTags(post.yoast_meta.keywords.split(',')),
         categoryId: wpCategoryIdToContentfulIdMap[post.site][post.categories[0]],
         // TODO remap assets references in content with Contentful assets url
-        body: await htmlToMarkdown(post.site === 'blog' ? post.content.rendered : post.custom_fields_content),
+        body: await processHtml({
+          content: post.site === 'blog' ? post.content.rendered : post.custom_fields_content,
+          wpAssetsUrlToContentfulIdMap,
+          contentfulIdtoContentfulAssetsUrlMap,
+        }),
       });
     }));
 

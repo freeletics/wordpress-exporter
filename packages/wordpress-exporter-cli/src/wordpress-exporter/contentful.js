@@ -15,7 +15,11 @@ export function importToSpace(spaceId, { entries = [], contentTypes = [], assets
 }
 
 export function exportFromSpace(spaceId, exportDir, {
-  skipContentModel = false, skipContent = false, skipRoles = false, skipWebhooks = false,
+  skipContentModel = false,
+  skipContent = false,
+  skipRoles = false,
+  skipWebhooks = false,
+  saveFile = false,
 } = {}) {
   return spaceExport({
     spaceId,
@@ -25,6 +29,7 @@ export function exportFromSpace(spaceId, exportDir, {
     skipContent,
     skipRoles,
     skipWebhooks,
+    saveFile,
   });
 }
 
