@@ -17,20 +17,10 @@ async function fetchAllCategories(wp) {
   return wp.categories();
 }
 
-async function setupBaseDir({ dir, lang }) {
-  const basedir = path.join(path.resolve(dir), lang);
-
-  await fs.remove(basedir);
-  await fs.mkdirs(path.join(basedir, 'dump'));
-  await fs.mkdirs(path.join(basedir, 'export'));
-
-  await fs.mkdirs(path.resolve(basedir, 'dump', 'assets'));
-
-  ['post', 'category'].map(async (type) => {
-    await fs.mkdirs(path.resolve(basedir, 'dump', 'entries', type));
-  });
-
-  return basedir;
+function validBaseDir(basedir) {
+  return fs.existsSync(path.join(basedir, 'dump', 'assets')) &&
+  fs.existsSync(path.join(basedir, 'dump', 'entries', 'post')) &&
+  fs.existsSync(path.join(basedir, 'dump', 'entries', 'category'));
 }
 
 export const command = 'export';
@@ -48,8 +38,11 @@ export async function handler({
   logger.info('Connection to Wordpress established.');
 
   try {
-    logger.info('Setting up basedir...');
-    const basedir = await setupBaseDir({ dir, lang });
+    const basedir = path.join(path.resolve(dir), lang);
+
+    if (!validBaseDir(basedir)) {
+      throw new Error(`Directory ${dir} is not setup properly, please run init first`);
+    }
 
     logger.info('Fetching posts...');
     const posts = await fetchAllPosts(wp);
@@ -74,5 +67,6 @@ export async function handler({
     });
   } catch (error) {
     logger.error(error);
+    process.exit(1);
   }
 }
