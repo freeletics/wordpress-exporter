@@ -37,6 +37,13 @@ add-stream@^1.0.0:
   version "1.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/add-stream/-/add-stream-1.0.0.tgz#6a7990437ca736d5e1288db92bd3266d5f5cb2aa"
 
+agent-base@2:
+  version "2.1.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/agent-base/-/agent-base-2.1.1.tgz#d6de10d5af6132d5bd692427d46fc538539094c7"
+  dependencies:
+    extend "~3.0.0"
+    semver "~5.0.1"
+
 ajv-keywords@^2.1.0:
   version "2.1.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/ajv-keywords/-/ajv-keywords-2.1.1.tgz#617997fc5f60576894c435f940d819e135b80762"
@@ -68,6 +75,10 @@ align-text@^0.1.1, align-text@^0.1.3:
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
+
+ansi-escapes@^1.0.0:
+  version "1.4.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"
 
 ansi-escapes@^3.0.0:
   version "3.0.0"
@@ -182,6 +193,13 @@ aws-sign2@~0.6.0:
 aws4@^1.2.1:
   version "1.6.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
+
+axios@contentful/axios#fix/https-via-http-proxy:
+  version "0.17.0"
+  resolved "https://codeload.github.com/contentful/axios/tar.gz/a41f3ca97188a3a845d386bb140c424842379a91"
+  dependencies:
+    follow-redirects "^1.2.3"
+    is-buffer "^1.1.5"
 
 "axios@https://github.com/contentful/axios/archive/fix/https-via-http-proxy.tar.gz":
   version "0.17.0"
@@ -697,6 +715,10 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
+bluebird@^3.3.3:
+  version "3.5.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
+
 boom@2.x.x:
   version "2.10.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
@@ -758,6 +780,10 @@ camelcase@^2.0.0:
   version "2.1.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/camelcase/-/camelcase-2.1.1.tgz#7c1d16d679a1bbe59ca02cacecfb011e201f5a1f"
 
+camelcase@^3.0.0:
+  version "3.0.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/camelcase/-/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
+
 camelcase@^4.1.0:
   version "4.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
@@ -777,7 +803,7 @@ center-align@^0.1.1:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
 
-chalk@^1.1.3:
+chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
   version "1.1.3"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/chalk/-/chalk-1.1.3.tgz#a8115c55e4a702fe4d150abd3872822a7e09fc98"
   dependencies:
@@ -818,11 +844,37 @@ circular-json@^0.3.1:
   version "0.3.3"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/circular-json/-/circular-json-0.3.3.tgz#815c99ea84f6809529d2f45791bdf82711352d66"
 
+cli-cursor@^1.0.2:
+  version "1.0.2"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/cli-cursor/-/cli-cursor-1.0.2.tgz#64da3f7d56a54412e59794bd62dc35295e8f2987"
+  dependencies:
+    restore-cursor "^1.0.1"
+
 cli-cursor@^2.1.0:
   version "2.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/cli-cursor/-/cli-cursor-2.1.0.tgz#b35dac376479facc3e94747d41d0d0f5238ffcb5"
   dependencies:
     restore-cursor "^2.0.0"
+
+cli-spinners@^0.1.2:
+  version "0.1.2"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/cli-spinners/-/cli-spinners-0.1.2.tgz#bb764d88e185fb9e1e6a2a1f19772318f605e31c"
+
+cli-table2@^0.2.0:
+  version "0.2.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/cli-table2/-/cli-table2-0.2.0.tgz#2d1ef7f218a0e786e214540562d4bd177fe32d97"
+  dependencies:
+    lodash "^3.10.1"
+    string-width "^1.0.1"
+  optionalDependencies:
+    colors "^1.1.2"
+
+cli-truncate@^0.2.1:
+  version "0.2.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/cli-truncate/-/cli-truncate-0.2.1.tgz#9f15cfbb0705005369216c626ac7d05ab90dd574"
+  dependencies:
+    slice-ansi "0.0.4"
+    string-width "^1.0.1"
 
 cli-width@^2.0.0:
   version "2.2.0"
@@ -929,6 +981,43 @@ contains-path@^0.1.0:
   version "0.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/contains-path/-/contains-path-0.1.0.tgz#fe8cf184ff6670b6baef01a9d4861a5cbec4120a"
 
+contentful-batch-libs@^7.0.0:
+  version "7.0.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/contentful-batch-libs/-/contentful-batch-libs-7.0.0.tgz#2eccaf5e1c0efd383a66158a7460e6141bfcb25f"
+  dependencies:
+    bluebird "^3.3.3"
+    contentful "^4.3.0"
+    contentful-management "^3.7.6"
+    listr "^0.11.0"
+    listr-verbose-renderer "^0.4.0"
+    lodash "^4.0.1"
+    npmlog "^4.0.2"
+
+contentful-import@^4.5.7:
+  version "4.5.7"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/contentful-import/-/contentful-import-4.5.7.tgz#98b7317e9303b908c2e92f2f1adb9299f8626938"
+  dependencies:
+    bluebird "^3.3.3"
+    cli-table2 "^0.2.0"
+    contentful-batch-libs "^7.0.0"
+    http-proxy-agent "^1.0.0"
+    https-proxy-agent "^1.0.0"
+    json-stringify-safe "^5.0.1"
+    lodash "^4.0.0"
+    moment "^2.18.1"
+    npmlog "^4.0.0"
+    yargs "^7.0.2"
+
+contentful-management@^3.7.6:
+  version "3.12.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/contentful-management/-/contentful-management-3.12.0.tgz#3da7972bb8dc0730cfc06f2e964f47a5f6a8d448"
+  dependencies:
+    axios contentful/axios#fix/https-via-http-proxy
+    contentful-sdk-core "^3.13.1"
+    es6-promise "^4.0.5"
+    lodash "^4.17.4"
+    platform "1.3.3"
+
 contentful-management@^4.0.3:
   version "4.0.3"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/contentful-management/-/contentful-management-4.0.3.tgz#ff7fc54e04b508b7ccaaa83958b84d236f2b74f9"
@@ -937,12 +1026,30 @@ contentful-management@^4.0.3:
     contentful-sdk-core "^5.0.0"
     lodash "^4.17.4"
 
+contentful-sdk-core@^3.13.1:
+  version "3.14.4"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/contentful-sdk-core/-/contentful-sdk-core-3.14.4.tgz#6dbb664e5f8bf7439695f4fe806dd03be70b2343"
+  dependencies:
+    es6-promise "^4.0.5"
+    lodash "^4.17.4"
+    npmlog "^4.0.2"
+    qs "^6.1.0"
+
 contentful-sdk-core@^5.0.0:
   version "5.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/contentful-sdk-core/-/contentful-sdk-core-5.0.0.tgz#135301f6b0b520e62b6d25db32af0690fbd01abd"
   dependencies:
     lodash "^4.17.4"
     qs "^6.5.1"
+
+contentful@^4.3.0:
+  version "4.6.4"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/contentful/-/contentful-4.6.4.tgz#59c4b11810ebe1e425ff5905b053007ec4820097"
+  dependencies:
+    axios contentful/axios#fix/https-via-http-proxy
+    contentful-sdk-core "^5.0.0"
+    json-stringify-safe "^5.0.1"
+    lodash "^4.17.4"
 
 conventional-changelog-angular@^1.5.1:
   version "1.5.1"
@@ -1137,6 +1244,10 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
+date-fns@^1.27.2:
+  version "1.29.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/date-fns/-/date-fns-1.29.0.tgz#12e609cdcb935127311d04d33334e2960a2a54e6"
+
 dateformat@^1.0.11, dateformat@^1.0.12:
   version "1.0.12"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/dateformat/-/dateformat-1.0.12.tgz#9f124b67594c937ff706932e4a642cca8dbbfee9"
@@ -1144,7 +1255,7 @@ dateformat@^1.0.11, dateformat@^1.0.12:
     get-stdin "^4.0.1"
     meow "^3.3.0"
 
-debug@^2.2.0, debug@^2.6.8, debug@^2.6.9:
+debug@2, debug@^2.2.0, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
@@ -1242,6 +1353,10 @@ electron-to-chromium@^1.3.24:
   version "1.3.27"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/electron-to-chromium/-/electron-to-chromium-1.3.27.tgz#78ecb8a399066187bb374eede35d9c70565a803d"
 
+elegant-spinner@^1.0.1:
+  version "1.0.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
+
 error-ex@^1.2.0, error-ex@^1.3.1:
   version "1.3.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/error-ex/-/error-ex-1.3.1.tgz#f855a86ce61adc4e8621c3cda21e7a7612c3a8dc"
@@ -1251,6 +1366,10 @@ error-ex@^1.2.0, error-ex@^1.3.1:
 es6-promise@^3.2.1:
   version "3.3.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/es6-promise/-/es6-promise-3.3.1.tgz#a08cdde84ccdbf34d027a1451bc91d4bcd28a613"
+
+es6-promise@^4.0.5:
+  version "4.1.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/es6-promise/-/es6-promise-4.1.1.tgz#8811e90915d9a0dba36274f0b242dbda78f9c92a"
 
 escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
@@ -1400,6 +1519,10 @@ execa@^0.8.0:
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
 
+exit-hook@^1.0.0:
+  version "1.1.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/exit-hook/-/exit-hook-1.1.1.tgz#f05ca233b48c05d54fff07765df8507e95c02ff8"
+
 expand-brackets@^0.1.4:
   version "0.1.5"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/expand-brackets/-/expand-brackets-0.1.5.tgz#df07284e342a807cd733ac5af72411e581d1177b"
@@ -1412,7 +1535,7 @@ expand-range@^1.8.1:
   dependencies:
     fill-range "^2.1.0"
 
-extend@^3.0.0, extend@~3.0.0:
+extend@3, extend@^3.0.0, extend@~3.0.0:
   version "3.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/extend/-/extend-3.0.1.tgz#a755ea7bc1adfcc5a31ce7e762dbaadc5e636444"
 
@@ -1445,6 +1568,13 @@ fast-json-stable-stringify@^2.0.0:
 fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
+
+figures@^1.7.0:
+  version "1.7.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/figures/-/figures-1.7.0.tgz#cbe1e3affcf1cd44b80cadfed28dc793a9701d2e"
+  dependencies:
+    escape-string-regexp "^1.0.5"
+    object-assign "^4.1.0"
 
 figures@^2.0.0:
   version "2.0.0"
@@ -1783,6 +1913,14 @@ hosted-git-info@^2.1.4, hosted-git-info@^2.5.0:
   version "2.5.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/hosted-git-info/-/hosted-git-info-2.5.0.tgz#6d60e34b3abbc8313062c3b798ef8d901a07af3c"
 
+http-proxy-agent@^1.0.0:
+  version "1.0.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/http-proxy-agent/-/http-proxy-agent-1.0.0.tgz#cc1ce38e453bf984a0f7702d2dd59c73d081284a"
+  dependencies:
+    agent-base "2"
+    debug "2"
+    extend "3"
+
 http-signature@~1.1.0:
   version "1.1.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/http-signature/-/http-signature-1.1.1.tgz#df72e267066cd0ac67fb76adf8e134a8fbcf91bf"
@@ -1790,6 +1928,14 @@ http-signature@~1.1.0:
     assert-plus "^0.2.0"
     jsprim "^1.2.2"
     sshpk "^1.7.0"
+
+https-proxy-agent@^1.0.0:
+  version "1.0.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/https-proxy-agent/-/https-proxy-agent-1.0.0.tgz#35f7da6c48ce4ddbfa264891ac593ee5ff8671e6"
+  dependencies:
+    agent-base "2"
+    debug "2"
+    extend "3"
 
 iconv-lite@^0.4.17:
   version "0.4.19"
@@ -1808,6 +1954,10 @@ indent-string@^2.1.0:
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/indent-string/-/indent-string-2.1.0.tgz#8e2d48348742121b4a8218b7a137e9a52049dc80"
   dependencies:
     repeating "^2.0.0"
+
+indent-string@^3.0.0:
+  version "3.2.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/indent-string/-/indent-string-3.2.0.tgz#4a5fd6d27cc332f37e5419a504dbb837105c9289"
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -2174,6 +2324,52 @@ li@^1.0.1:
   version "1.2.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/li/-/li-1.2.1.tgz#37bd3d8d6f4ad520fa5e3c118106591093c2fb2b"
 
+listr-silent-renderer@^1.1.1:
+  version "1.1.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/listr-silent-renderer/-/listr-silent-renderer-1.1.1.tgz#924b5a3757153770bf1a8e3fbf74b8bbf3f9242e"
+
+listr-update-renderer@^0.2.0:
+  version "0.2.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/listr-update-renderer/-/listr-update-renderer-0.2.0.tgz#ca80e1779b4e70266807e8eed1ad6abe398550f9"
+  dependencies:
+    chalk "^1.1.3"
+    cli-truncate "^0.2.1"
+    elegant-spinner "^1.0.1"
+    figures "^1.7.0"
+    indent-string "^3.0.0"
+    log-symbols "^1.0.2"
+    log-update "^1.0.2"
+    strip-ansi "^3.0.1"
+
+listr-verbose-renderer@^0.4.0:
+  version "0.4.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/listr-verbose-renderer/-/listr-verbose-renderer-0.4.1.tgz#8206f4cf6d52ddc5827e5fd14989e0e965933a35"
+  dependencies:
+    chalk "^1.1.3"
+    cli-cursor "^1.0.2"
+    date-fns "^1.27.2"
+    figures "^1.7.0"
+
+listr@^0.11.0:
+  version "0.11.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/listr/-/listr-0.11.0.tgz#5e778bc23806ac3ab984ed75564458151f39b03e"
+  dependencies:
+    chalk "^1.1.3"
+    cli-truncate "^0.2.1"
+    figures "^1.7.0"
+    indent-string "^2.1.0"
+    is-promise "^2.1.0"
+    is-stream "^1.1.0"
+    listr-silent-renderer "^1.1.1"
+    listr-update-renderer "^0.2.0"
+    listr-verbose-renderer "^0.4.0"
+    log-symbols "^1.0.2"
+    log-update "^1.0.2"
+    ora "^0.2.3"
+    rxjs "^5.0.0-beta.11"
+    stream-to-observable "^0.1.0"
+    strip-ansi "^3.0.1"
+
 load-json-file@^1.0.0:
   version "1.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/load-json-file/-/load-json-file-1.1.0.tgz#956905708d58b4bab4c2261b04f59f31c99374c0"
@@ -2234,9 +2430,26 @@ lodash.uniq@^4.3.0:
   version "4.5.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-lodash@^4.0.0, lodash@^4.1.0, lodash@^4.17.4, lodash@^4.2.1, lodash@^4.3.0:
+lodash@^3.10.1:
+  version "3.10.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
+
+lodash@^4.0.0, lodash@^4.0.1, lodash@^4.1.0, lodash@^4.17.4, lodash@^4.2.1, lodash@^4.3.0:
   version "4.17.4"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+
+log-symbols@^1.0.2:
+  version "1.0.2"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/log-symbols/-/log-symbols-1.0.2.tgz#376ff7b58ea3086a0f09facc74617eca501e1a18"
+  dependencies:
+    chalk "^1.0.0"
+
+log-update@^1.0.2:
+  version "1.0.2"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/log-update/-/log-update-1.0.2.tgz#19929f64c4093d2d2e7075a1dad8af59c296b8d1"
+  dependencies:
+    ansi-escapes "^1.0.0"
+    cli-cursor "^1.0.2"
 
 longest@^1.0.1:
   version "1.0.1"
@@ -2369,6 +2582,10 @@ modify-values@^1.0.0:
   version "1.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/modify-values/-/modify-values-1.0.0.tgz#e2b6cdeb9ce19f99317a53722f3dbf5df5eaaab2"
 
+moment@^2.18.1:
+  version "2.19.2"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/moment/-/moment-2.19.2.tgz#8a7f774c95a64550b4c7ebd496683908f9419dbe"
+
 moment@^2.6.0:
   version "2.19.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/moment/-/moment-2.19.1.tgz#56da1a2d1cbf01d38b7e1afc31c10bcfa1929167"
@@ -2438,7 +2655,7 @@ npm-run-path@^2.0.0:
   dependencies:
     path-key "^2.0.0"
 
-npmlog@^4.0.2, npmlog@^4.1.2:
+npmlog@^4.0.0, npmlog@^4.0.2, npmlog@^4.1.2:
   version "4.1.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/npmlog/-/npmlog-4.1.2.tgz#08a7f2a8bf734604779a9efa4ad5cc717abb954b"
   dependencies:
@@ -2472,6 +2689,10 @@ once@^1.3.0, once@^1.3.3:
   dependencies:
     wrappy "1"
 
+onetime@^1.0.0:
+  version "1.1.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/onetime/-/onetime-1.1.0.tgz#a1f7838f8314c516f05ecefcbc4ccfe04b4ed789"
+
 onetime@^2.0.0:
   version "2.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/onetime/-/onetime-2.0.1.tgz#067428230fd67443b2794b22bba528b6867962d4"
@@ -2496,9 +2717,24 @@ optionator@^0.8.2:
     type-check "~0.3.2"
     wordwrap "~1.0.0"
 
+ora@^0.2.3:
+  version "0.2.3"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/ora/-/ora-0.2.3.tgz#37527d220adcd53c39b73571d754156d5db657a4"
+  dependencies:
+    chalk "^1.1.1"
+    cli-cursor "^1.0.2"
+    cli-spinners "^0.1.2"
+    object-assign "^4.0.1"
+
 os-homedir@^1.0.0:
   version "1.0.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/os-homedir/-/os-homedir-1.0.2.tgz#ffbc4988336e0e833de0c168c7ef152121aa7fb3"
+
+os-locale@^1.4.0:
+  version "1.4.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/os-locale/-/os-locale-1.4.0.tgz#20f9f17ae29ed345e8bde583b13d2009803c14d9"
+  dependencies:
+    lcid "^1.0.0"
 
 os-locale@^2.0.0:
   version "2.1.0"
@@ -2644,6 +2880,10 @@ pkg-dir@^1.0.0:
   dependencies:
     find-up "^1.0.0"
 
+platform@1.3.3:
+  version "1.3.3"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/platform/-/platform-1.3.3.tgz#646c77011899870b6a0903e75e997e8e51da7461"
+
 pluralize@^7.0.0:
   version "7.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
@@ -2687,7 +2927,7 @@ q@^1.4.1:
   version "1.5.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
 
-qs@^6.2.0, qs@^6.5.1:
+qs@^6.1.0, qs@^6.2.0, qs@^6.5.1:
   version "6.5.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/qs/-/qs-6.5.1.tgz#349cdf6eef89ec45c12d7d5eb3fc0c870343a6d8"
 
@@ -2889,6 +3129,13 @@ resolve@^1.2.0:
   dependencies:
     path-parse "^1.0.5"
 
+restore-cursor@^1.0.1:
+  version "1.0.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/restore-cursor/-/restore-cursor-1.0.1.tgz#34661f46886327fed2991479152252df92daa541"
+  dependencies:
+    exit-hook "^1.0.0"
+    onetime "^1.0.0"
+
 restore-cursor@^2.0.0:
   version "2.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/restore-cursor/-/restore-cursor-2.0.0.tgz#9f7ee287f82fd326d4fd162923d62129eee0dfaf"
@@ -2928,6 +3175,12 @@ rx-lite@*, rx-lite@^4.0.8:
   version "4.0.8"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
 
+rxjs@^5.0.0-beta.11:
+  version "5.5.2"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/rxjs/-/rxjs-5.5.2.tgz#28d403f0071121967f18ad665563255d54236ac3"
+  dependencies:
+    symbol-observable "^1.0.1"
+
 safe-buffer@^5.0.1, safe-buffer@^5.1.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
@@ -2935,6 +3188,10 @@ safe-buffer@^5.0.1, safe-buffer@^5.1.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
 "semver@2 || 3 || 4 || 5", semver@^5.0.1, semver@^5.3.0, semver@^5.4.1:
   version "5.4.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/semver/-/semver-5.4.1.tgz#e059c09d8571f0540823733433505d3a2f00b18e"
+
+semver@~5.0.1:
+  version "5.0.3"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/semver/-/semver-5.0.3.tgz#77466de589cd5d3c95f138aa78bc569a3cb5d27a"
 
 set-blocking@^2.0.0, set-blocking@~2.0.0:
   version "2.0.0"
@@ -2961,6 +3218,10 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
 slash@^1.0.0:
   version "1.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
+
+slice-ansi@0.0.4:
+  version "0.0.4"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/slice-ansi/-/slice-ansi-0.0.4.tgz#edbf8903f66f7ce2f8eafd6ceed65e264c831b35"
 
 slice-ansi@1.0.0:
   version "1.0.0"
@@ -3039,6 +3300,10 @@ sshpk@^1.7.0:
     ecc-jsbn "~0.1.1"
     jsbn "~0.1.0"
     tweetnacl "~0.14.0"
+
+stream-to-observable@^0.1.0:
+  version "0.1.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/stream-to-observable/-/stream-to-observable-0.1.0.tgz#45bf1d9f2d7dc09bed81f1c307c430e68b84cffe"
 
 string-width@^1.0.1, string-width@^1.0.2:
   version "1.0.2"
@@ -3135,6 +3400,10 @@ supports-color@^4.0.0:
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/supports-color/-/supports-color-4.5.0.tgz#be7a0de484dec5c5cddf8b3d59125044912f635b"
   dependencies:
     has-flag "^2.0.0"
+
+symbol-observable@^1.0.1:
+  version "1.0.4"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/symbol-observable/-/symbol-observable-1.0.4.tgz#29bf615d4aa7121bdd898b22d4b3f9bc4e2aa03d"
 
 table@^4.0.1:
   version "4.0.2"
@@ -3331,6 +3600,10 @@ wcwidth@^1.0.0:
   dependencies:
     defaults "^1.0.3"
 
+which-module@^1.0.0:
+  version "1.0.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/which-module/-/which-module-1.0.0.tgz#bba63ca861948994ff307736089e3b96026c2a4f"
+
 which-module@^2.0.0:
   version "2.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/which-module/-/which-module-2.0.0.tgz#d9ef07dce77b9902b8a3a8fa4b31c3e3f7e6e87a"
@@ -3431,6 +3704,12 @@ yallist@^2.1.2:
   version "2.1.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
 
+yargs-parser@^5.0.0:
+  version "5.0.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/yargs-parser/-/yargs-parser-5.0.0.tgz#275ecf0d7ffe05c77e64e7c86e4cd94bf0e1228a"
+  dependencies:
+    camelcase "^3.0.0"
+
 yargs-parser@^7.0.0:
   version "7.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/yargs-parser/-/yargs-parser-7.0.0.tgz#8d0ac42f16ea55debd332caf4c4038b3e3f5dfd9"
@@ -3459,6 +3738,24 @@ yargs@^10.0.3:
     which-module "^2.0.0"
     y18n "^3.2.1"
     yargs-parser "^8.0.0"
+
+yargs@^7.0.2:
+  version "7.1.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/yargs/-/yargs-7.1.0.tgz#6ba318eb16961727f5d284f8ea003e8d6154d0c8"
+  dependencies:
+    camelcase "^3.0.0"
+    cliui "^3.2.0"
+    decamelize "^1.1.1"
+    get-caller-file "^1.0.1"
+    os-locale "^1.4.0"
+    read-pkg-up "^1.0.1"
+    require-directory "^2.1.1"
+    require-main-filename "^1.0.1"
+    set-blocking "^2.0.0"
+    string-width "^1.0.2"
+    which-module "^1.0.0"
+    y18n "^3.2.1"
+    yargs-parser "^5.0.0"
 
 yargs@^8.0.2:
   version "8.0.2"

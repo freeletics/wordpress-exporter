@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "chalk": "^2.3.0",
+    "contentful-import": "^4.5.7",
     "contentful-management": "^4.0.3",
     "fs-extra": "^4.0.2",
     "globby": "^6.1.0",
