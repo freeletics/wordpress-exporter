@@ -23,7 +23,7 @@ async function listEntries(dir) {
   }));
 }
 
-async function htmlToMarkdown(content) {
+function htmlToMarkdown(content) {
   return new Promise((resolve, reject) => {
     remark().process(breakdance(content, { unsmarty: false }), (err, file) => {
       if (err) {
@@ -37,8 +37,7 @@ async function htmlToMarkdown(content) {
 
 function sanitizeString(string) {
   return string
-    .replace(/"/g, '')
-    .replace(/ +(?= )/g, '')
+    .replace(/"| +(?= )/g, '')
     .trim();
 }
 
