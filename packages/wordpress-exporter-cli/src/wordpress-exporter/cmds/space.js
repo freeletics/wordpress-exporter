@@ -5,8 +5,7 @@ import { client, importToSpace } from '../contentful';
 import logger from '../logger';
 import compileToContentfulContentTypes from '../templates/space/contentTypes';
 
-const SPACE_CONFIG_DIR = path.resolve(process.cwd(), '.wordpress-exporter', 'spaces');
-const SPACE_CONFIG_FILE = (site, lang) => `${site}-${lang}.json`;
+import { SPACE_CONFIG_DIR, SPACE_CONFIG_FILE } from '../utils';
 
 export const command = 'space <cmd>';
 export const describe = 'Manage Contentful spaces';
@@ -57,7 +56,7 @@ export function builder(yargs) {
           const configFile = path.join(SPACE_CONFIG_DIR, SPACE_CONFIG_FILE(site, lang));
 
           if (!fs.pathExistsSync(configFile)) {
-            logger.error(`No space config found for site ${site} and lang ${lang}`);
+            throw new Error(`No space config found for site ${site} and lang ${lang}`);
           } else {
             const config = await fs.readJson(configFile);
             const space = await client.getSpace(config.id);
@@ -69,6 +68,7 @@ export function builder(yargs) {
           }
         } catch (error) {
           logger.error(error);
+          process.exit(1);
         }
       },
     });
