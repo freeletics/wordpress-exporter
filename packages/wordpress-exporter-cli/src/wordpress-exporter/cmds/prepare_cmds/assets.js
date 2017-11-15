@@ -11,13 +11,13 @@ async function extractUrls(filename) {
   const post = await fs.readJson(filename);
   const urls = (post.content.rendered.match(IMAGES_REGEX) || []).map(url =>
     // Remove 'src="' prefix from urls
-    url.replace(url.substr(0, 5), ''));
+    url.replace(/^src="/, ''));
 
   if (post.image_landscape && post.image_landscape[0]) {
     urls.push(post.image_landscape[0]);
   }
 
-  return urls;
+  return urls.map(url => url.replace(/^https?:/, ''));
 }
 
 async function listAssets(dir) {
