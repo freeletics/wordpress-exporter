@@ -103,7 +103,7 @@ async function processHtml({
   return markdown.replace(
     ASSETS_REGEX,
     url => contentfulIdtoContentfulAssetsUrlMap[wpAssetsUrlToContentfulIdMap[url]],
-  );
+  ).replace(/<\/?u>/gi, '');
 }
 
 export const command = 'entries';
