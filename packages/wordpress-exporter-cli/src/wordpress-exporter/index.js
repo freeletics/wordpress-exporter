@@ -11,7 +11,7 @@ const options = require('yargs') // eslint-disable-line
   .option('lang', {
     describe: 'choose locale',
     default: 'en',
-    choices: ['en', 'fr', 'de', 'it', 'es', 'pt'],
+    choices: ['en', 'fr', 'de', 'it', 'es', 'pt', 'tr'],
   })
   .option('site', {
     describe: 'choose a site',
