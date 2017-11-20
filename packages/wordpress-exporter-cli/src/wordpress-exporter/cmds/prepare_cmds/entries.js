@@ -215,7 +215,7 @@ export async function handler({
         postId,
         title: sanitizeString(post.title.rendered),
         description: sanitizeString(post.yoast_meta.description),
-        featuredImageId: wpAssetsUrlToContentfulIdMap[post.image_landscape[0]],
+        featuredImageId: post.image_landscape ? wpAssetsUrlToContentfulIdMap[post.image_landscape[0].replace(/^https?:/, '')] : null,
         tags: sanitizeTags(post.yoast_meta.keywords.split(',')),
         categoryId: wpCategoryIdToContentfulIdMap[post.site][post.categories[0]],
         // TODO remap assets references in content with Contentful assets url
