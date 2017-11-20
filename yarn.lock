@@ -2254,6 +2254,10 @@ hosted-git-info@^2.1.4, hosted-git-info@^2.5.0:
   version "2.5.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/hosted-git-info/-/hosted-git-info-2.5.0.tgz#6d60e34b3abbc8313062c3b798ef8d901a07af3c"
 
+html-entities@^1.2.1:
+  version "1.2.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/html-entities/-/html-entities-1.2.1.tgz#0df29351f0721163515dfb9e5543e5f6eed5162f"
+
 htmlparser2@^3.9.1:
   version "3.9.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/htmlparser2/-/htmlparser2-3.9.2.tgz#1bdf87acca0f3f9e53fa4fcceb0f4b4cbb00b338"

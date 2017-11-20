@@ -37,6 +37,7 @@
     "contentful-management": "^4.0.3",
     "fs-extra": "^4.0.2",
     "globby": "^6.1.0",
+    "html-entities": "^1.2.1",
     "json2csv": "^3.11.5",
     "lodash": "^4.17.4",
     "remark": "^8.0.0",

@@ -6,10 +6,13 @@ import remark from 'remark';
 import uniqid from 'uniqid';
 import json2csv from 'json2csv';
 import breakdance from 'breakdance';
+import { AllHtmlEntities } from 'html-entities';
 
 import logger from '../../logger';
 import compileToContentfulPost from '../../templates/entries/post';
 import compileToContentfulCategory from '../../templates/entries/category';
+
+const entities = new AllHtmlEntities();
 
 async function listEntries(dir) {
   const files = await glob('*.json', { cwd: dir });
@@ -36,7 +39,7 @@ function htmlToMarkdown(content) {
 }
 
 function sanitizeString(string) {
-  return string
+  return entities.decode(string)
     .replace(/"| +(?= )/g, '')
     .trim();
 }
