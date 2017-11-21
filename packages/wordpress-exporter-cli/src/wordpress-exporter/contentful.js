@@ -2,9 +2,7 @@ import { createClient } from 'contentful-management';
 import spaceImport from 'contentful-import';
 import spaceExport from 'contentful-export';
 
-export const client = createClient({
-  accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN,
-});
+const CONTENTFUL_CLIENT = Symbol('CONTENTFUL_CLIENT');
 
 export function importToSpace(spaceId, { entries = [], contentTypes = [], assets = [] } = {}) {
   return spaceImport({
@@ -33,4 +31,12 @@ export function exportFromSpace(spaceId, exportDir, {
   });
 }
 
-export default client;
+export default function getClient() {
+  if (!global[CONTENTFUL_CLIENT]) {
+    global[CONTENTFUL_CLIENT] = createClient({
+      accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN,
+    });
+  }
+
+  return global[CONTENTFUL_CLIENT];
+}

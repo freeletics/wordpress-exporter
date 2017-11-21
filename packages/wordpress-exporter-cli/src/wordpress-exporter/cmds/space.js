@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs-extra';
 
-import { client, importToSpace } from '../contentful';
+import getClient, { importToSpace } from '../contentful';
 import logger from '../logger';
 import compileToContentfulContentTypes from '../templates/space/contentTypes';
 
@@ -24,7 +24,7 @@ export function builder(yargs) {
 
             // Create space
             logger.info(`Creating space for site ${site} and lang ${lang}`);
-            const space = await client.createSpace({
+            const space = await getClient().createSpace({
               name: `${site}/${lang}`,
               defaultLocale: lang,
             });
@@ -59,7 +59,7 @@ export function builder(yargs) {
             throw new Error(`No space config found for site ${site} and lang ${lang}`);
           } else {
             const config = await fs.readJson(configFile);
-            const space = await client.getSpace(config.id);
+            const space = await getClient().getSpace(config.id);
 
             logger.info(`Deleting space ${space.sys.id} for site ${site} and lang ${lang}`);
 
