@@ -89,7 +89,7 @@ function remapEntryId({ settings, lang, entry }) {
   }
 
   // This post become its own source in Contentful
-  logger.warning(`Entry "${entry.type || entry.taxonomy}/${entry.id}.json" couldn't be linked to any source.`);
+  logger.warn(`Entry "${entry.type || entry.taxonomy}/${entry.id}.json" couldn't be linked to any source.`);
   return generateId({
     code: codes[lang],
     site: entry.site,
