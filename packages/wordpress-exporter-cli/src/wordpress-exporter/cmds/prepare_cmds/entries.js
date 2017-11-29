@@ -237,7 +237,7 @@ export async function handler({
     // Output URLs rewrite
     fs.writeFile(path.resolve(dir, lang, 'export/rewrite.csv'), json2csv({ data: urlsRewrite }));
   } catch (error) {
-    logger.error(error);
+    logger.error(error.stack);
     process.exit(1);
   }
 }
