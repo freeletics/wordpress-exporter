@@ -58,8 +58,8 @@ function generateId({ code, site, id }) {
   return `${String(code).padStart(2, '0')}${site === 'blog' ? 1 : 0}${String(id).padStart(5, '0')}`;
 }
 
-function getSourceId(settings, entry) {
-  return entry.mlp_translations.find(element => element.lang === settings.source.lang).category_id;
+function getSource(settings, entry) {
+  return entry.mlp_translations.find(element => element.lang === settings.source.lang);
 }
 
 function remapEntryId({ settings, lang, entry }) {
@@ -75,16 +75,16 @@ function remapEntryId({ settings, lang, entry }) {
     });
   }
 
-  // Check if the post has a translation in source language
+  // Check if the entry has a translation in source language
   // In our case the source language is always the same
-  const source = getSourceId(settings, entry);
+  const source = getSource(settings, entry);
 
   if (source) {
-    // In case the post is mapped to the source, then use the source id
+    // In case the entry is mapped to the source, then use the source id
     return generateId({
       code: codes[settings.source.lang],
       site: entry.site,
-      id: source.post_id,
+      id: entry.type && entry.type === 'post' ? source.post_id : source.category_id,
     });
   }
 
@@ -183,11 +183,12 @@ export async function handler({
         const remaper = settings.prepare.remap.categories;
 
         // Get source category id in the category's site
-        // then remap it with its related blog category
-        const sourceId = getSourceId(settings, category);
-        const remapedsourceId = remaper[sourceId];
+        const source = getSource(settings, category);
+        if (!source || !source.category_id) throw new Error(`Missing source for knowledge category id="${category.id}"`);
 
-        if (!remapedsourceId) throw new Error(`Missing mapping for knowledge category id="${sourceId}"`);
+        // then remap it with its related blog category
+        const remapedsourceId = remaper[source.category_id];
+        if (!remapedsourceId) throw new Error(`Missing mapping for knowledge category id="${source.category_id}"`);
 
         // Get associated contentful id and use it to remap the curent category
         const contentfulId = wpCategoryIdToContentfulIdMap.blog[remapedsourceId];
