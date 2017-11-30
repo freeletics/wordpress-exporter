@@ -48,7 +48,7 @@ Each migration is done toward a Contentful space, therefore a space must be crea
   ```
 * delete the space for the English language using `blog` as a reference:
   ```
-  $ wordpress-exporter space create --lang="en" --site="blog"
+  $ wordpress-exporter space delete --lang="en" --site="blog"
   ```
 
 ### Exporting Content from Wordpress
