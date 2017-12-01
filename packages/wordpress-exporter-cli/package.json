@@ -30,6 +30,7 @@
     }
   },
   "dependencies": {
+    "bluebird": "^3.5.1",
     "breakdance": "^3.0.1",
     "chalk": "^2.3.0",
     "contentful-export": "^4.7.8",
