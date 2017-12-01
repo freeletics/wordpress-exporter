@@ -9,6 +9,7 @@ import breakdance from 'breakdance';
 import { AllHtmlEntities } from 'html-entities';
 
 import logger from '../../logger';
+import { rewriteWithCDN } from '../../utils';
 import compileToContentfulPost from '../../templates/entries/post';
 import compileToContentfulCategory from '../../templates/entries/category';
 
@@ -105,7 +106,7 @@ async function processHtml({
 
   return markdown.replace(
     ASSETS_REGEX,
-    url => contentfulIdtoContentfulAssetsUrlMap[wpAssetsUrlToContentfulIdMap[url]],
+    url => contentfulIdtoContentfulAssetsUrlMap[wpAssetsUrlToContentfulIdMap[rewriteWithCDN(url)]],
   ).replace(/<\/?u>/gi, '');
 }
 
@@ -219,10 +220,9 @@ export async function handler({
         postId,
         title: sanitizeString(post.title.rendered),
         description: sanitizeString(post.yoast_meta.description),
-        featuredImageId: post.image_landscape ? wpAssetsUrlToContentfulIdMap[post.image_landscape[0].replace(/^https?:/, '')] : null,
+        featuredImageId: post.image_landscape ? wpAssetsUrlToContentfulIdMap[rewriteWithCDN(post.image_landscape[0].replace(/^https?:/, ''))] : null,
         tags: sanitizeTags(post.yoast_meta.keywords.split(',')),
         categoryId: wpCategoryIdToContentfulIdMap[post.site][post.categories[0]],
-        // TODO remap assets references in content with Contentful assets url
         body: await processHtml({
           content: post.site === 'blog' ? post.content.rendered : post.custom_fields_content,
           wpAssetsUrlToContentfulIdMap,

@@ -18,5 +18,9 @@ export function timestamp({ date = new Date() } = {}) {
   return date.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1');
 }
 
+export function rewriteWithCDN(url) {
+  return url.replace(/^\/\/www./, '//cdn.');
+}
+
 export const SPACE_CONFIG_DIR = path.resolve(process.cwd(), '.wordpress-exporter', 'spaces');
 export const SPACE_CONFIG_FILE = (site, lang) => `${site}-${lang}.json`;
