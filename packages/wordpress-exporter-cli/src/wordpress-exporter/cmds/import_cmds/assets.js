@@ -1,5 +1,7 @@
+import _ from 'lodash';
 import path from 'path';
 import fs from 'fs-extra';
+import Promise from 'bluebird';
 
 import logger from '../../logger';
 
@@ -24,14 +26,19 @@ export async function handler({ site, lang, dir }) {
       const space = await fs.readJson(configFile);
       const assets = await fs.readJson(path.resolve(dir, lang, 'export', 'assets.json'));
 
-      logger.info(`Importing assets to space ${space.id}`);
-      await importToSpace(
-        space.id,
-        { assets },
-      );
+      const chunks = _.chunk(assets, 200);
+      logger.info(`Importing ${assets.length} assets into ${chunks.length} chunks to space ${space.id}`);
+
+      await Promise.mapSeries(chunks, async (chunk, id) => {
+        logger.info(` Processing chunk ${id}/${chunks.length}`);
+        return importToSpace(
+          space.id,
+          { assets: chunk },
+        );
+      });
 
       logger.info(`Fetching Contentful assets URLs from space ${space.id}`);
-      await exportFromSpace(
+      const spaceExport = await exportFromSpace(
         space.id,
         path.resolve(dir, lang, 'export'),
         {
@@ -39,8 +46,11 @@ export async function handler({ site, lang, dir }) {
           skipContent: false,
           skipRoles: true,
           skipWebhooks: true,
+          saveFile: false,
         },
       );
+
+      await fs.writeJson(path.resolve(dir, lang, 'export', 'contentful-export-assets.json'), spaceExport.assets);
     }
   } catch (error) {
     logger.error(error);

@@ -17,20 +17,10 @@ async function fetchAllCategories(wp) {
   return wp.categories();
 }
 
-async function setupBaseDir({ dir, lang }) {
-  const basedir = path.join(path.resolve(dir), lang);
-
-  await fs.remove(basedir);
-  await fs.mkdirs(path.join(basedir, 'dump'));
-  await fs.mkdirs(path.join(basedir, 'export'));
-
-  await fs.mkdirs(path.resolve(basedir, 'dump', 'assets'));
-
-  ['post', 'category'].map(async (type) => {
-    await fs.mkdirs(path.resolve(basedir, 'dump', 'entries', type));
-  });
-
-  return basedir;
+function validBaseDir(basedir) {
+  return fs.existsSync(path.join(basedir, 'dump', 'assets')) &&
+  fs.existsSync(path.join(basedir, 'dump', 'entries', 'post')) &&
+  fs.existsSync(path.join(basedir, 'dump', 'entries', 'category'));
 }
 
 export const command = 'export';
@@ -45,22 +35,31 @@ export async function handler({
   host, lang, site, dir,
 }) {
   const wp = connect({ host, lang, site });
+  logger.info('Connection to Wordpress established.');
 
   try {
-    const basedir = await setupBaseDir({ dir, lang });
+    const basedir = path.join(path.resolve(dir), lang);
 
+    if (!validBaseDir(basedir)) {
+      throw new Error(`Directory ${dir} is not setup properly, please run init first`);
+    }
+
+    logger.info('Fetching posts...');
     const posts = await fetchAllPosts(wp);
     logger.info(`Retrieved ${posts.length} posts`);
 
+    logger.info('Fetching categories...');
     const categories = await fetchAllCategories(wp);
     logger.info(`Retrieved ${categories.length} categories`);
 
+    logger.info('Exporting posts...');
     posts.map(async (post) => {
       const file = path.join(basedir, 'dump', 'entries', 'post', `${site}-${post.id}.json`);
       logger.info(`Outputting post ${post.id} in ${path.relative(basedir, file)}`);
       await fs.writeJson(file, post);
     });
 
+    logger.info('Exporting categories...');
     categories.map(async (category) => {
       const file = path.join(basedir, 'dump', 'entries', 'category', `${site}-${category.id}.json`);
       logger.info(`Outputting category ${category.id} in ${path.relative(basedir, file)}`);
@@ -68,5 +67,6 @@ export async function handler({
     });
   } catch (error) {
     logger.error(error);
+    process.exit(1);
   }
 }

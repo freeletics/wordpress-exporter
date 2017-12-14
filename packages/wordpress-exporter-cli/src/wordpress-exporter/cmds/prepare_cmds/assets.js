@@ -3,6 +3,7 @@ import fs from 'fs-extra';
 import glob from 'globby';
 import uniqid from 'uniqid';
 
+import { rewriteWithCDN } from '../../utils';
 import compileToContentfulAsset from '../../templates/asset';
 
 const IMAGES_REGEX = /(src="(https?:\/\/(www.freeletics.com\/)([a-zA-Z0-9-_./]+)(\/wp-content\/uploads\/sites\/)([a-zA-Z0-9-_./]+)(\.(png|gif|jpg|jpeg))))/gi;
@@ -42,7 +43,7 @@ export async function handler({ lang, dir }) {
     // Note: here we generate our own Contentful sys.id
     // we prefix it with "asset-" for easier debugging.
     id: uniqid('asset-'),
-    url,
+    url: rewriteWithCDN(url),
   }));
 
   await fs.writeJson(path.resolve(dir, lang, 'export/assets.json'), assets);

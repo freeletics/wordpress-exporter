@@ -1,5 +1,7 @@
+import _ from 'lodash';
 import path from 'path';
 import fs from 'fs-extra';
+import Promise from 'bluebird';
 
 import logger from '../../logger';
 import { importToSpace } from '../../contentful';
@@ -22,6 +24,17 @@ export async function handler({ lang, site, dir }) {
     } else {
       const space = await fs.readJson(configFile);
       const entries = await fs.readJson(path.resolve(dir, lang, 'export', 'entries.json'));
+
+      const chunks = _.chunk(entries, 200);
+      logger.info(`Importing ${entries.length} entries into ${chunks.length} chunks to space ${space.id}`);
+
+      await Promise.mapSeries(chunks, async (chunk, id) => {
+        logger.info(` Processing chunk ${id}/${chunks.length}`);
+        return importToSpace(
+          space.id,
+          { entries: chunk },
+        );
+      });
 
       logger.info(`Importing entries to space ${space.id}...`);
       await importToSpace(
