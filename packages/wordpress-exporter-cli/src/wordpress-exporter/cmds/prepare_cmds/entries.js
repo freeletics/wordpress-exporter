@@ -2,10 +2,12 @@ import _ from 'lodash';
 import path from 'path';
 import fs from 'fs-extra';
 import glob from 'globby';
-import remark from 'remark';
 import uniqid from 'uniqid';
+import unified from 'unified';
 import json2csv from 'json2csv';
-import breakdance from 'breakdance';
+import parse from 'rehype-parse'
+import toMDAST from 'hast-util-to-mdast';
+import stringify from 'mdast-util-to-string';
 import { AllHtmlEntities } from 'html-entities';
 
 import logger from '../../logger';
@@ -28,15 +30,8 @@ async function listEntries(dir) {
 }
 
 function htmlToMarkdown(content) {
-  return new Promise((resolve, reject) => {
-    remark().process(breakdance(content, { unsmarty: false }), (err, file) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(String(file));
-      }
-    });
-  });
+  const hast = unified().use(parse).parse(content);
+  return unified().use(stringify).stringify(toMDAST(hast));
 }
 
 function sanitizeString(string) {
@@ -102,7 +97,7 @@ async function processHtml({
   content, wpAssetsUrlToContentfulIdMap, contentfulIdtoContentfulAssetsUrlMap,
 }) {
   const ASSETS_REGEX = /(\/\/(www.freeletics.com\/)([a-zA-Z0-9-_./]+)(\/wp-content\/uploads\/sites\/)([a-zA-Z0-9-_./]+)(\.(png|gif|jpg|jpeg)))/gi;
-  const markdown = await htmlToMarkdown(content);
+  const markdown = htmlToMarkdown(content);
 
   return markdown.replace(
     ASSETS_REGEX,

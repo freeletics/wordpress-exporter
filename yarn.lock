@@ -15,6 +15,10 @@
   dependencies:
     eslint-config-airbnb-base "^12.1.0"
 
+"@types/node@*":
+  version "9.3.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/@types/node/-/node-9.3.0.tgz#3a129cda7c4e5df2409702626892cb4b96546dd5"
+
 JSONStream@^1.0.4:
   version "1.3.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/JSONStream/-/JSONStream-1.3.1.tgz#707f761e01dae9e16f1bcf93703b78c70966579a"
@@ -213,7 +217,7 @@ aws4@^1.2.1, aws4@^1.6.0:
   version "1.6.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
 
-"axios@github:contentful/axios#fix/https-via-http-proxy":
+axios@contentful/axios#fix/https-via-http-proxy:
   version "0.17.1"
   resolved "https://codeload.github.com/contentful/axios/tar.gz/4b06f4a63db3ac16c99f7c61b584ef0e6d11f1af"
   dependencies:
@@ -1050,7 +1054,7 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
-collapse-white-space@^1.0.2:
+collapse-white-space@^1.0.0:
   version "1.0.3"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/collapse-white-space/-/collapse-white-space-1.0.3.tgz#4b906f670e5a963a87b76b0e1689643341b6023c"
 
@@ -1084,6 +1088,12 @@ combined-stream@^1.0.5, combined-stream@~1.0.5:
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/combined-stream/-/combined-stream-1.0.5.tgz#938370a57b4a51dea2c77c15d5c5fdf895164009"
   dependencies:
     delayed-stream "~1.0.0"
+
+comma-separated-tokens@^1.0.0:
+  version "1.0.4"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/comma-separated-tokens/-/comma-separated-tokens-1.0.4.tgz#72083e58d4a462f01866f6617f4d98a3cd3b8a46"
+  dependencies:
+    trim "0.0.1"
 
 command-join@^2.0.0:
   version "2.0.0"
@@ -2228,6 +2238,67 @@ has@^1.0.1:
   dependencies:
     function-bind "^1.0.2"
 
+hast-util-embedded@^1.0.0:
+  version "1.0.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/hast-util-embedded/-/hast-util-embedded-1.0.0.tgz#49d6114b40933a9d0bd708a3b012378f2cd6e86c"
+  dependencies:
+    hast-util-is-element "^1.0.0"
+
+hast-util-from-parse5@^2.0.1:
+  version "2.1.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/hast-util-from-parse5/-/hast-util-from-parse5-2.1.0.tgz#f6123d83d3689630b097e13e430d16d9d1bd8884"
+  dependencies:
+    camelcase "^3.0.0"
+    hastscript "^3.0.0"
+    property-information "^3.1.0"
+    vfile-location "^2.0.0"
+
+hast-util-has-property@^1.0.0:
+  version "1.0.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/hast-util-has-property/-/hast-util-has-property-1.0.1.tgz#ac08c40bcbf27b80a85aaae91e4f6250a53e802f"
+
+hast-util-is-body-ok-link@^1.0.0:
+  version "1.0.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/hast-util-is-body-ok-link/-/hast-util-is-body-ok-link-1.0.1.tgz#f5d8893f4f21fa1ae51c059ac29abdbc8e6e6046"
+  dependencies:
+    hast-util-has-property "^1.0.0"
+    hast-util-is-element "^1.0.0"
+
+hast-util-is-element@^1.0.0:
+  version "1.0.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/hast-util-is-element/-/hast-util-is-element-1.0.0.tgz#3f7216978b2ae14d98749878782675f33be3ce00"
+
+hast-util-parse-selector@^2.0.0:
+  version "2.1.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/hast-util-parse-selector/-/hast-util-parse-selector-2.1.0.tgz#b55c0f4bb7bb2040c889c325ef87ab29c38102b4"
+
+hast-util-to-mdast@^2.1.0:
+  version "2.1.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/hast-util-to-mdast/-/hast-util-to-mdast-2.1.0.tgz#0371a6a700350528196e255675506009bd381521"
+  dependencies:
+    hast-util-has-property "^1.0.0"
+    hast-util-is-element "^1.0.0"
+    hast-util-to-string "^1.0.0"
+    mdast-util-phrasing "^1.0.0"
+    rehype-minify-whitespace "^2.0.3"
+    trim-trailing-lines "^1.1.0"
+    unist-util-visit "^1.1.1"
+    xtend "^4.0.1"
+
+hast-util-to-string@^1.0.0:
+  version "1.0.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/hast-util-to-string/-/hast-util-to-string-1.0.1.tgz#b28055cdca012d3c8fd048757c8483d0de0d002c"
+
+hastscript@^3.0.0:
+  version "3.1.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/hastscript/-/hastscript-3.1.0.tgz#66628ba6d7f1ad07d9277dd09028aba7f4934599"
+  dependencies:
+    camelcase "^3.0.0"
+    comma-separated-tokens "^1.0.0"
+    hast-util-parse-selector "^2.0.0"
+    property-information "^3.0.0"
+    space-separated-tokens "^1.0.0"
+
 hawk@3.1.3, hawk@~3.1.3:
   version "3.1.3"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/hawk/-/hawk-3.1.3.tgz#078444bd7c1640b0fe540d2c9b73d59678e8e1c4"
@@ -2268,6 +2339,10 @@ hosted-git-info@^2.1.4, hosted-git-info@^2.5.0:
 html-entities@^1.2.1:
   version "1.2.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/html-entities/-/html-entities-1.2.1.tgz#0df29351f0721163515dfb9e5543e5f6eed5162f"
+
+html-whitespace-sensitive-tag-names@^1.0.0:
+  version "1.0.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/html-whitespace-sensitive-tag-names/-/html-whitespace-sensitive-tag-names-1.0.0.tgz#fd6ed3a3d631ce29341aefe26a8fea720d3adfa7"
 
 htmlparser2@^3.9.1:
   version "3.9.2"
@@ -2602,10 +2677,6 @@ is-whitespace-character@^1.0.0:
 is-whitespace@^0.3.0:
   version "0.3.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-whitespace/-/is-whitespace-0.3.0.tgz#1639ecb1be036aec69a54cbb401cfbed7114ab7f"
-
-is-word-character@^1.0.0:
-  version "1.0.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-word-character/-/is-word-character-1.0.1.tgz#5a03fa1ea91ace8a6eb0c7cd770eb86d65c8befb"
 
 is@^3.1.0:
   version "3.2.1"
@@ -3064,6 +3135,16 @@ mdast-util-compact@^1.0.0:
     unist-util-modify-children "^1.0.0"
     unist-util-visit "^1.1.0"
 
+mdast-util-phrasing@^1.0.0:
+  version "1.0.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/mdast-util-phrasing/-/mdast-util-phrasing-1.0.0.tgz#7d18c56e8276a7985df025813433823dd0375c36"
+  dependencies:
+    unist-util-is "^2.1.1"
+
+mdast-util-to-string@^1.0.4:
+  version "1.0.4"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/mdast-util-to-string/-/mdast-util-to-string-1.0.4.tgz#5c455c878c9355f0c1e7f3e8b719cf583691acfb"
+
 mem@^1.1.0:
   version "1.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/mem/-/mem-1.1.0.tgz#5edd52b485ca1d900fe64895505399a0dfa45f76"
@@ -3419,6 +3500,12 @@ parse-link-header@^0.4.1:
   dependencies:
     xtend "~4.0.0"
 
+parse5@^3.0.0:
+  version "3.0.3"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/parse5/-/parse5-3.0.3.tgz#042f792ffdd36851551cf4e9e066b3874ab45b5c"
+  dependencies:
+    "@types/node" "*"
+
 path-dirname@^1.0.0:
   version "1.0.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/path-dirname/-/path-dirname-1.0.2.tgz#cc33d24d525e099a5388c0336c6e32b9160609e0"
@@ -3533,6 +3620,10 @@ process-nextick-args@~1.0.6:
 progress@^2.0.0:
   version "2.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/progress/-/progress-2.0.0.tgz#8a1be366bf8fc23db2bd23f10c6fe920b4389d1f"
+
+property-information@^3.0.0, property-information@^3.1.0:
+  version "3.2.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/property-information/-/property-information-3.2.0.tgz#fd1483c8fbac61808f5fe359e7693a1f48a58331"
 
 pseudomap@^1.0.2:
   version "1.0.2"
@@ -3691,24 +3782,25 @@ regjsparser@^0.1.4:
   dependencies:
     jsesc "~0.5.0"
 
-remark-parse@^4.0.0:
-  version "4.0.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/remark-parse/-/remark-parse-4.0.0.tgz#99f1f049afac80382366e2e0d0bd55429dd45d8b"
+rehype-minify-whitespace@^2.0.3:
+  version "2.0.3"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/rehype-minify-whitespace/-/rehype-minify-whitespace-2.0.3.tgz#9aef3b73d0dfbcf890844d10d8f45fd5bdf145ec"
   dependencies:
-    collapse-white-space "^1.0.2"
-    is-alphabetical "^1.0.0"
-    is-decimal "^1.0.0"
-    is-whitespace-character "^1.0.0"
-    is-word-character "^1.0.0"
-    markdown-escapes "^1.0.0"
-    parse-entities "^1.0.2"
-    repeat-string "^1.5.4"
-    state-toggle "^1.0.0"
-    trim "0.0.1"
-    trim-trailing-lines "^1.0.0"
-    unherit "^1.0.4"
-    unist-util-remove-position "^1.0.0"
-    vfile-location "^2.0.0"
+    collapse-white-space "^1.0.0"
+    hast-util-embedded "^1.0.0"
+    hast-util-has-property "^1.0.0"
+    hast-util-is-body-ok-link "^1.0.0"
+    hast-util-is-element "^1.0.0"
+    html-whitespace-sensitive-tag-names "^1.0.0"
+    unist-util-is "^2.0.0"
+    unist-util-modify-children "^1.0.0"
+
+rehype-parse@^4.0.0:
+  version "4.0.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/rehype-parse/-/rehype-parse-4.0.0.tgz#a0a35e02d34fe5e84269881c1cd92d78a6987004"
+  dependencies:
+    hast-util-from-parse5 "^2.0.1"
+    parse5 "^3.0.0"
     xtend "^4.0.1"
 
 remark-stringify@^4.0.0:
@@ -3729,14 +3821,6 @@ remark-stringify@^4.0.0:
     stringify-entities "^1.0.1"
     unherit "^1.0.4"
     xtend "^4.0.1"
-
-remark@^8.0.0:
-  version "8.0.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/remark/-/remark-8.0.0.tgz#287b6df2fe1190e263c1d15e486d3fa835594d6d"
-  dependencies:
-    remark-parse "^4.0.0"
-    remark-stringify "^4.0.0"
-    unified "^6.0.0"
 
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
@@ -4053,6 +4137,12 @@ source-map@^0.5.6, source-map@~0.5.1:
   version "0.5.7"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
 
+space-separated-tokens@^1.0.0:
+  version "1.1.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/space-separated-tokens/-/space-separated-tokens-1.1.1.tgz#9695b9df9e65aec1811d4c3f9ce52520bc2f7e4d"
+  dependencies:
+    trim "0.0.1"
+
 spdx-correct@~1.0.0:
   version "1.0.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/spdx-correct/-/spdx-correct-1.0.2.tgz#4b3073d933ff51f3912f03ac5519498a4150db40"
@@ -4345,7 +4435,7 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
 
-trim-trailing-lines@^1.0.0, trim-trailing-lines@^1.1.0:
+trim-trailing-lines@^1.1.0:
   version "1.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/trim-trailing-lines/-/trim-trailing-lines-1.1.0.tgz#7aefbb7808df9d669f6da2e438cac8c46ada7684"
 
@@ -4419,7 +4509,7 @@ unherit@^1.0.4:
     inherits "^2.0.1"
     xtend "^4.0.1"
 
-unified@^6.0.0:
+unified@^6.1.6:
   version "6.1.6"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/unified/-/unified-6.1.6.tgz#5ea7f807a0898f1f8acdeefe5f25faa010cc42b1"
   dependencies:
@@ -4437,7 +4527,7 @@ uniqid@^4.1.1:
   dependencies:
     macaddress "^0.2.8"
 
-unist-util-is@^2.1.1:
+unist-util-is@^2.0.0, unist-util-is@^2.1.1:
   version "2.1.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/unist-util-is/-/unist-util-is-2.1.1.tgz#0c312629e3f960c66e931e812d3d80e77010947b"
 
@@ -4447,12 +4537,6 @@ unist-util-modify-children@^1.0.0:
   dependencies:
     array-iterate "^1.0.0"
 
-unist-util-remove-position@^1.0.0:
-  version "1.1.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/unist-util-remove-position/-/unist-util-remove-position-1.1.1.tgz#5a85c1555fc1ba0c101b86707d15e50fa4c871bb"
-  dependencies:
-    unist-util-visit "^1.1.0"
-
 unist-util-stringify-position@^1.0.0, unist-util-stringify-position@^1.1.1:
   version "1.1.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/unist-util-stringify-position/-/unist-util-stringify-position-1.1.1.tgz#3ccbdc53679eed6ecf3777dd7f5e3229c1b6aa3c"
@@ -4460,6 +4544,12 @@ unist-util-stringify-position@^1.0.0, unist-util-stringify-position@^1.1.1:
 unist-util-visit@^1.1.0:
   version "1.2.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/unist-util-visit/-/unist-util-visit-1.2.0.tgz#9dc78d1f95cd242e865f7f93f327d3296bb9a718"
+  dependencies:
+    unist-util-is "^2.1.1"
+
+unist-util-visit@^1.1.1:
+  version "1.3.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/unist-util-visit/-/unist-util-visit-1.3.0.tgz#41ca7c82981fd1ce6c762aac397fc24e35711444"
   dependencies:
     unist-util-is "^2.1.1"
 
