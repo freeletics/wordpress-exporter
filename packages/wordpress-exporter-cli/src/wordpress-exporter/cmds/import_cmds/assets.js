@@ -31,10 +31,15 @@ export async function handler({ site, lang, dir }) {
 
       await Promise.mapSeries(chunks, async (chunk, id) => {
         logger.info(` Processing chunk ${id}/${chunks.length}`);
-        return importToSpace(
-          space.id,
-          { assets: chunk },
-        );
+
+        try {
+          await importToSpace(
+            space.id,
+            { assets: chunk },
+          );
+        } catch (error) {
+          logger.error('Error occured', error);
+        }
       });
 
       logger.info(`Fetching Contentful assets URLs from space ${space.id}`);
