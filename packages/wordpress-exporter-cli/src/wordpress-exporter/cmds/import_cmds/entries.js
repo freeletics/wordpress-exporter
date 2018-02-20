@@ -4,7 +4,7 @@ import fs from 'fs-extra';
 import Promise from 'bluebird';
 
 import logger from '../../logger';
-import { importToSpace } from '../../contentful';
+import { importToSpace, CHUNK_SIZE } from '../../contentful';
 import { SPACE_CONFIG_DIR, SPACE_CONFIG_FILE } from '../../utils';
 
 export const command = 'entries';
@@ -25,7 +25,7 @@ export async function handler({ lang, site, dir }) {
       const space = await fs.readJson(configFile);
       const entries = await fs.readJson(path.resolve(dir, lang, 'export', 'entries.json'));
 
-      const chunks = _.chunk(entries, 200);
+      const chunks = _.chunk(entries, CHUNK_SIZE);
       logger.info(`Importing ${entries.length} entries into ${chunks.length} chunks to space ${space.id}`);
 
       await Promise.mapSeries(chunks, async (chunk, id) => {

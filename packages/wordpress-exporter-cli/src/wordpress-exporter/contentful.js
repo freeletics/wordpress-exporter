@@ -4,6 +4,8 @@ import spaceExport from 'contentful-export';
 
 const CONTENTFUL_CLIENT = Symbol('CONTENTFUL_CLIENT');
 
+export const CHUNK_SIZE = 10;
+
 export function importToSpace(spaceId, { entries = [], contentTypes = [], assets = [] } = {}) {
   return spaceImport({
     content: { entries, contentTypes, assets },

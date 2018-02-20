@@ -28,6 +28,11 @@ $ wordpress-exporter --help
 
 ## Proceed to Migration
 
+### Prerequisites
+1. Configure library settings in `settings.json`. See the [Configure settings.json](#configure-settingsjson) section for details.
+
+2. You need to generate `Personal Access Token` in Contentful. To do it go to any space in Contentful, then go to `APIs`, then `Content management tokens` and click `Generate personal token`. The generated token can be used with all spaces you got access to. Set `CONTENTFUL_MANAGEMENT_TOKEN` environment variable to value of the generated token.
+
 ### Creating a Workspace
 
 Migrations are performed one language at a time. Each migration is performed in a *workspace*. To create a workspace for the English language migration simply do:
@@ -81,8 +86,6 @@ This steps might take quite some time as it imports every assets one by one, and
 ### Preparing and Importing Entries
 
 The last step in the migration is to import all entries. A lot of operations are done in that step including: merging categories, cleaning titles/descriptions, transforming content to markdown, remapping ids, remapping urls, etc.
-
-:warning: To proceed with that step you need to make sure you have a `settings.json` properly configured. See the [Configure Settings.json](#configure-settingsjson) section.
 
 To proceed, we need first to prepare the entries:
 

@@ -18,7 +18,7 @@ export default spaceId => JSON.parse(`
       "description": "",
       "fields": [
         {
-          "id": "id",
+          "id": "postId",
           "name": "ID",
           "type": "Symbol",
           "localized": false,
@@ -129,7 +129,7 @@ export default spaceId => JSON.parse(`
       "description": "",
       "fields": [
         {
-          "id": "id",
+          "id": "categoryId",
           "name": "ID",
           "type": "Symbol",
           "localized": false,

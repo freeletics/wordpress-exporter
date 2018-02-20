@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require("../dist/wordpress-exporter");
+require('../dist/wordpress-exporter');

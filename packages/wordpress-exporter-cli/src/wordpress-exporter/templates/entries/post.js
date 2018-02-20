@@ -14,7 +14,7 @@ export default ({
     }
   },
   "fields": {
-    "id": {
+    "postId": {
       "${lang}": "${postId}"
     },
     "title": {

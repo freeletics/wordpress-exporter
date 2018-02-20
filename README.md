@@ -29,6 +29,10 @@ $ lerna bootstrap
 
 **Note**: do not run `yarn install` anywhere else than in the root of the repository.
 
+## Migrating Data From Wordpress To Contentful
+Read [here][].
+
+[here]: ./packages/wordpress-exporter-cli/README.md
 [Contentful]: https://contentful.com
 [Wordpress REST API]: https://developer.wordpress.com/docs/api/
 [contentful-import]: https://github.com/contentful/contentful-import
