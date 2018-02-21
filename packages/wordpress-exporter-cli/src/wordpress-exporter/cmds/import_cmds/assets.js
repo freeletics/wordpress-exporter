@@ -30,7 +30,7 @@ export async function handler({ site, lang, dir }) {
       logger.info(`Importing ${assets.length} assets into ${chunks.length} chunks to space ${space.id}`);
 
       await Promise.mapSeries(chunks, async (chunk, id) => {
-        logger.info(` Processing chunk ${id}/${chunks.length}`);
+        logger.info(` Processing chunk ${id + 1}/${chunks.length}`);
 
         try {
           await importToSpace(
