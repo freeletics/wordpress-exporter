@@ -228,6 +228,7 @@ export async function handler({
           wpAssetsUrlToContentfulIdMap,
           contentfulIdtoContentfulAssetsUrlMap,
         }),
+        publishedOn: post.date_gmt.split('T')[0],
       });
     }));
 

@@ -108,6 +108,16 @@ export default spaceId => JSON.parse(`
           "disabled": false,
           "omitted": false,
           "linkType": "Entry"
+        },
+        {
+          "id": "publishedOn",
+          "name": "Published On",
+          "type": "Date",
+          "localized": false,
+          "required": true,
+          "validations": [],
+          "disabled": false,
+          "omitted": false
         }
       ]
     },

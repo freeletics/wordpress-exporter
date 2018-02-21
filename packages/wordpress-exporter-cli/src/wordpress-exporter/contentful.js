@@ -6,9 +6,19 @@ const CONTENTFUL_CLIENT = Symbol('CONTENTFUL_CLIENT');
 
 export const CHUNK_SIZE = 10;
 
-export function importToSpace(spaceId, { entries = [], contentTypes = [], assets = [] } = {}) {
+export function importToSpace(spaceId, {
+  contentTypes = [],
+  editorInterfaces = [],
+  assets = [],
+  entries = [],
+} = {}) {
   return spaceImport({
-    content: { entries, contentTypes, assets },
+    content: {
+      contentTypes,
+      editorInterfaces,
+      assets,
+      entries,
+    },
     spaceId,
     managementToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN,
   });
