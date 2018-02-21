@@ -30,17 +30,16 @@ export async function handler({ lang, site, dir }) {
 
       await Promise.mapSeries(chunks, async (chunk, id) => {
         logger.info(` Processing chunk ${id + 1}/${chunks.length}`);
-        return importToSpace(
-          space.id,
-          { entries: chunk },
-        );
-      });
 
-      logger.info(`Importing entries to space ${space.id}...`);
-      await importToSpace(
-        space.id,
-        { entries },
-      );
+        try {
+          await importToSpace(
+            space.id,
+            { entries: chunk },
+          );
+        } catch (error) {
+          logger.error('Error occured', error);
+        }
+      });
     }
   } catch (error) {
     logger.error(error);
