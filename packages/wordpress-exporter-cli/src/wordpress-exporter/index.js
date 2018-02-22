@@ -1,5 +1,4 @@
 import path from 'path';
-import fs from 'fs-extra';
 import logger from './logger';
 
 const options = require('yargs') // eslint-disable-line
@@ -20,8 +19,9 @@ const options = require('yargs') // eslint-disable-line
   })
   .option('settings', {
     describe: 'provide settings file path',
-    default: `.${path.sep}settings.json`,
-    coerce: arg => JSON.parse(fs.readFileSync(path.join(path.resolve(arg)))),
+    default: `.${path.sep}settings.js`,
+    // eslint-disable-next-line global-require, import/no-dynamic-require
+    coerce: arg => require(path.join(path.resolve(arg))),
   })
   .option('silent', {
     boolean: true,

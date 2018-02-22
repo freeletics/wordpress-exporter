@@ -4,7 +4,7 @@ import fs from 'fs-extra';
 import getClient, { importToSpace } from '../contentful';
 import logger from '../logger';
 import compileToContentfulContentTypes from '../templates/space/contentTypes';
-
+import compileToContentfulEditorInterfaces from '../templates/space/editorInterfaces';
 import { SPACE_CONFIG_DIR, SPACE_CONFIG_FILE } from '../utils';
 
 export const command = 'space <cmd>';
@@ -38,7 +38,10 @@ export function builder(yargs) {
 
             await importToSpace(
               space.sys.id,
-              { contentTypes: compileToContentfulContentTypes(space.sys.id) },
+              {
+                contentTypes: compileToContentfulContentTypes(space.sys.id),
+                editorInterfaces: compileToContentfulEditorInterfaces(space.sys.id),
+              },
             );
           } else {
             logger.error(`Space already exists for site ${site} and lang ${lang}`);

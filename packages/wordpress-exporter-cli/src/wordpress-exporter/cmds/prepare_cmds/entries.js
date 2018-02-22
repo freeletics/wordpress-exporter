@@ -145,39 +145,52 @@ export async function handler({
       })),
     );
 
-    // Prepare categories
+    /**
+     * Prepare categories
+     */
     const categoryEntries = (await listEntries(path.resolve(dir, lang, 'dump', 'entries', 'category')))
       // filter out exluded categories
-      .filter(category => !(_.get(settings, `prepare.exclude.categories.${category.site}.${lang}`, []).includes(category.id)));
+      .filter((category) => {
+        const excludedCategoryIds = _.get(settings, `prepare.exclude.categories.${category.site}.${lang}`, []);
+        return !(excludedCategoryIds.includes(category.id));
+      });
+
     logger.info(`Preparing ${categoryEntries.length} Category entries...`);
 
+    /**
+     * Prepare blog categories
+     */
     const categories = await Promise.all(categoryEntries
       // Only prepare blog category for the export
       .filter(category => category.site === 'blog')
       .map(async (category) => {
         const contentfulId = uniqid();
-        const categoryId = remapEntryId({ settings, lang, entry: category });
+        const sourceCategoryId = getSource(settings, category).category_id;
+        const newCategoryId = remapEntryId({ settings, lang, entry: category });
 
         // Keep mapping to generate nginx redirect
         urlsRewrite.push({
           old: category.link,
-          new: `${host}/${lang}/blog/categories/${categoryId}`,
+          new: `${host}/${lang}/blog/categories/${newCategoryId}`,
         });
 
         // Keep mapping for post processing
-        wpCategoryIdToContentfulIdMap[category.site][category.id] = contentfulId;
+        wpCategoryIdToContentfulIdMap[category.site][sourceCategoryId] = contentfulId;
 
         // Output reformated category
         return compileToContentfulCategory({
           lang,
           // Note: here we generate our own Contentful sys.id
           id: contentfulId,
-          categoryId,
+          categoryId: newCategoryId,
           name: sanitizeString(category.name),
           description: sanitizeString(category.description),
         });
       }));
 
+    /**
+     * Prepare knowledge categories
+     */
     categoryEntries
       .filter(category => category.site !== 'blog')
       .forEach((category) => {
@@ -193,10 +206,12 @@ export async function handler({
 
         // Get associated contentful id and use it to remap the curent category
         const contentfulId = wpCategoryIdToContentfulIdMap.blog[remapedsourceId];
-        wpCategoryIdToContentfulIdMap[category.site][category.id] = contentfulId;
+        wpCategoryIdToContentfulIdMap[category.site][remapedsourceId] = contentfulId;
       });
 
-    // Prepare posts
+    /**
+     * Prepare posts
+     */
     const postEntries = (await listEntries(path.resolve(dir, lang, 'dump', 'entries', 'post')))
       // filter out posts with excluded category
       .filter(post => !(_.get(settings, `prepare.exclude.categories.${post.site}.${lang}`, []).includes(post.categories[0])));
@@ -205,6 +220,10 @@ export async function handler({
     const posts = await Promise.all(postEntries.map(async (post) => {
       // Generate a unique post id
       const postId = remapEntryId({ settings, lang, entry: post });
+      const category = categoryEntries
+        .find(c => c.site === post.site && c.id === post.categories[0]);
+      const sourceCategoryId = getSource(settings, category).category_id;
+      const mappedSourceCategoryId = post.site === 'blog' ? sourceCategoryId : settings.prepare.remap.categories[sourceCategoryId];
 
       // Keep mapping to generate nginx redirect
       urlsRewrite.push({
@@ -222,12 +241,13 @@ export async function handler({
         description: sanitizeString(post.yoast_meta.description),
         featuredImageId: post.image_landscape ? wpAssetsUrlToContentfulIdMap[rewriteWithCDN(post.image_landscape[0].replace(/^https?:/, ''))] : null,
         tags: sanitizeTags(post.yoast_meta.keywords.split(',')),
-        categoryId: wpCategoryIdToContentfulIdMap[post.site][post.categories[0]],
+        categoryId: wpCategoryIdToContentfulIdMap[post.site][mappedSourceCategoryId],
         body: await processHtml({
           content: post.site === 'blog' ? post.content.rendered : post.custom_fields_content,
           wpAssetsUrlToContentfulIdMap,
           contentfulIdtoContentfulAssetsUrlMap,
         }),
+        publishedOn: post.date_gmt.split('T')[0],
       });
     }));
 

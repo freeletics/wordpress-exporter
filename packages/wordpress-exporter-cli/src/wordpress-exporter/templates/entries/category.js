@@ -14,7 +14,7 @@ export default ({
     }
   },
   "fields": {
-    "id": {
+    "categoryId": {
       "${lang}": "${categoryId}"
     },
     "name": {

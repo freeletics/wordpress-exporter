@@ -5,7 +5,7 @@ import Promise from 'bluebird';
 
 import logger from '../../logger';
 
-import { importToSpace, exportFromSpace } from '../../contentful';
+import { importToSpace, exportFromSpace, CHUNK_SIZE } from '../../contentful';
 import { SPACE_CONFIG_DIR, SPACE_CONFIG_FILE } from '../../utils';
 
 export const command = 'assets';
@@ -26,15 +26,20 @@ export async function handler({ site, lang, dir }) {
       const space = await fs.readJson(configFile);
       const assets = await fs.readJson(path.resolve(dir, lang, 'export', 'assets.json'));
 
-      const chunks = _.chunk(assets, 200);
+      const chunks = _.chunk(assets, CHUNK_SIZE);
       logger.info(`Importing ${assets.length} assets into ${chunks.length} chunks to space ${space.id}`);
 
       await Promise.mapSeries(chunks, async (chunk, id) => {
-        logger.info(` Processing chunk ${id}/${chunks.length}`);
-        return importToSpace(
-          space.id,
-          { assets: chunk },
-        );
+        logger.info(` Processing chunk ${id + 1}/${chunks.length}`);
+
+        try {
+          await importToSpace(
+            space.id,
+            { assets: chunk },
+          );
+        } catch (error) {
+          logger.error('Error occured', error);
+        }
       });
 
       logger.info(`Fetching Contentful assets URLs from space ${space.id}`);
