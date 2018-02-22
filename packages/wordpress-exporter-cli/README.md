@@ -29,7 +29,7 @@ $ wordpress-exporter --help
 ## Proceed to Migration
 
 ### Prerequisites
-1. Configure library settings in `settings.json`. See the [Configure settings.json](#configure-settingsjson) section for details.
+1. Configure library settings in `settings.js`. See the [Configure settings.js](#configure-settingsjs) section for details.
 
 2. You need to generate `Personal Access Token` in Contentful. To do it go to any space in Contentful, then go to `APIs`, then `Content management tokens` and click `Generate personal token`. The generated token can be used with all spaces you got access to. Set `CONTENTFUL_MANAGEMENT_TOKEN` environment variable to value of the generated token.
 
@@ -102,61 +102,95 @@ $ wordpress-exporter import entries --lang="en"
 This steps might take quite some time as it imports every entries one by one, and for each entry: upload it to Contentful, run some validation and publish it.
 The script will also generate a `csv` file needed by OPS to produce the nginx redirections needed to ensure continuity of service between the old sites and the new ones. This file can be found under `/data/en/export/rewrite.csv` (where data is the workspace provided by `--dir` option).
 
-## Configure Settings.json
+## Configure Settings.js
 
-The `settings.json` is used by the `wordpress-exporter` to access some information required during the preparation of the entries such as: selecting the source language, remapping ids, merging categories, ignoring posts, etc.
+The `settings.js` is used by the `wordpress-exporter` to access some information required during the preparation of the entries such as: selecting the source language, remapping ids, merging categories, ignoring posts, etc.
 
-A working example this settings is provided below, note that the `prepare.exclude` part is only configured for English only:
+A working example is provided below.
 
-```json
-{
-  "source": {
-    "lang": "en"
+```js
+module.exports = {
+  source: {
+    lang: 'en',
   },
-  "prepare": {
-    "spaces": {
-      "codes": {
-        "en": "1",
-        "fr": "2",
-        "de": "3",
-        "es": "4",
-        "pt": "5",
-        "it": "6",
-        "tr": "7"
-      }
+  prepare: {
+    spaces: {
+      codes: {
+        en: '1',
+        fr: '2',
+        de: '3',
+        es: '4',
+        pt: '5',
+        it: '6',
+        tr: '7',
+      },
     },
-    "exclude": {
-      "categories": {
-        "blog": {
-          "en": [1],
-          "fr": [],
-          "de": [],
-          "es": [],
-          "pt": [],
-          "it": [],
-          "tr": []
+    exclude: {
+      categories: {
+        blog: {
+          en: [
+            1,
+          ],
+          fr: [
+            1,
+          ],
+          de: [
+            1,
+          ],
+          es: [
+            1,
+          ],
+          pt: [
+            1,
+          ],
+          it: [
+            1,
+          ],
+          tr: [
+            1,
+          ],
         },
-        "knowledge": {
-          "en": [1, 8],
-          "fr": [],
-          "de": [],
-          "es": [],
-          "pt": [],
-          "it": [],
-          "tr": []
-        }
-      }
+        knowledge: {
+          en: [
+            1,
+            8,
+          ],
+          fr: [
+            1,
+            68,
+          ],
+          de: [
+            1,
+          ],
+          es: [
+            1,
+            73,
+          ],
+          pt: [
+            1,
+            72,
+          ],
+          it: [
+            1,
+            5,
+          ],
+          tr: [
+            1,
+            8,
+          ],
+        },
+      },
     },
-    "remap": {
-      "categories": {
-        "6": "19",
-        "7": "330",
-        "333": "472",
-        "334": "471"
-      }
-    }
-  }
-}
+    remap: {
+      categories: {
+        6: '19', // nutrition
+        7: '330', // training
+        333: '471', // science
+        334: '472', // well-being
+      },
+    },
+  },
+};
 ```
 
 * `source.lang`: provides the source language, in the case of all our migrations it is English.
