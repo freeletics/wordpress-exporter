@@ -240,7 +240,7 @@ export async function handler({
         title: sanitizeString(post.title.rendered),
         description: sanitizeString(post.yoast_meta.description),
         featuredImageId: post.image_landscape ? wpAssetsUrlToContentfulIdMap[rewriteWithCDN(post.image_landscape[0].replace(/^https?:/, ''))] : null,
-        tags: sanitizeTags(post.yoast_meta.keywords.split(',')),
+        tags: sanitizeTags(post.tags),
         categoryId: wpCategoryIdToContentfulIdMap[post.site][mappedSourceCategoryId],
         body: await processHtml({
           content: post.site === 'blog' ? post.content.rendered : post.custom_fields_content,
