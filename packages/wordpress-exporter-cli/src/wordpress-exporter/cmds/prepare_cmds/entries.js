@@ -184,6 +184,7 @@ export async function handler({
           id: contentfulId,
           categoryId: newCategoryId,
           name: sanitizeString(category.name),
+          slug: sanitizeString(category.slug),
           description: sanitizeString(category.description),
         });
       }));
@@ -238,6 +239,7 @@ export async function handler({
         id: uniqid(),
         postId,
         title: sanitizeString(post.title.rendered),
+        slug: sanitizeString(post.slug),
         description: sanitizeString(post.yoast_meta.description),
         featuredImageId: post.image_landscape ? wpAssetsUrlToContentfulIdMap[rewriteWithCDN(post.image_landscape[0].replace(/^https?:/, ''))] : null,
         tags: sanitizeTags(post.tags),

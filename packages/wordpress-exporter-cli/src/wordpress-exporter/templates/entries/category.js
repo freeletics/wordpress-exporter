@@ -1,5 +1,5 @@
 export default ({
-  lang, id, categoryId, name, description,
+  lang, id, categoryId, name, slug, description,
 }) => JSON.parse(`{
   "sys": {
     "id": "${id}",
@@ -19,6 +19,9 @@ export default ({
     },
     "name": {
       "${lang}": "${name}"
+    },
+    "slug": {
+      "${lang}": "${slug}"
     },
     "description": {
       "${lang}": "${description}"

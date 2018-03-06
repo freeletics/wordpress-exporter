@@ -1,5 +1,5 @@
 export default ({
-  lang, id, postId, title, description, featuredImageId, tags, body, categoryId, publishedOn,
+  lang, id, postId, title, slug, description, featuredImageId, tags, body, categoryId, publishedOn,
 }) => JSON.parse(`{
   "sys": {
     "id": "${id}",
@@ -19,6 +19,9 @@ export default ({
     },
     "title": {
       "${lang}": "${title}"
+    },
+    "slug": {
+      "${lang}": "${slug}"
     },
     "description": {
       "${lang}": "${description}"

@@ -42,6 +42,20 @@ export default spaceId => JSON.parse(`
           "omitted": false
         },
         {
+          "id": "slug",
+          "name": "Slug",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
           "id": "description",
           "name": "Description",
           "type": "Symbol",
@@ -144,7 +158,11 @@ export default spaceId => JSON.parse(`
           "type": "Symbol",
           "localized": false,
           "required": true,
-          "validations": [],
+          "validations": [
+            {
+              "unique": true
+            }
+          ],
           "disabled": false,
           "omitted": false
         },
@@ -153,8 +171,26 @@ export default spaceId => JSON.parse(`
           "name": "Name",
           "type": "Symbol",
           "localized": false,
-          "required": false,
-          "validations": [],
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "slug",
+          "name": "Slug",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ],
           "disabled": false,
           "omitted": false
         },
