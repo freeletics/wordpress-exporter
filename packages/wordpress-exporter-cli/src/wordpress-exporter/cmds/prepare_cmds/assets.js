@@ -5,8 +5,10 @@ import uniqid from 'uniqid';
 
 import { rewriteWithCDN } from '../../utils';
 import compileToContentfulAsset from '../../templates/asset';
+import logger from '../../logger';
 
 const IMAGES_REGEX = /(src="(https?:\/\/(www.freeletics.com\/)([a-zA-Z0-9-_./]+)(\/wp-content\/uploads\/sites\/)([a-zA-Z0-9-_./]+)(\.(png|gif|jpg|jpeg))))/gi;
+
 
 async function extractUrls(filename) {
   const post = await fs.readJson(filename);
@@ -14,8 +16,8 @@ async function extractUrls(filename) {
     // Remove 'src="' prefix from urls
     url.replace(/^src="/, ''));
 
-  if (post.image_landscape && post.image_landscape[0]) {
-    urls.push(post.image_landscape[0]);
+  if (post.featured_media_url) {
+    urls.push(post.featured_media_url);
   }
 
   return urls.map(url => url.replace(/^https?:/, ''));
@@ -38,6 +40,9 @@ export function builder(yargs) {
 }
 export async function handler({ lang, dir }) {
   const urls = await listAssets(path.resolve(dir, lang, 'dump', 'entries', 'post'));
+
+  logger.info(`Extracted ${urls.size} unique asset urls.`);
+
   const assets = Array.from(urls).map(url => compileToContentfulAsset({
     lang,
     // Note: here we generate our own Contentful sys.id

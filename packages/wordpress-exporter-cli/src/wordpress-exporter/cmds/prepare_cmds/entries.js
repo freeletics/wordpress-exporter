@@ -241,7 +241,7 @@ export async function handler({
         title: sanitizeString(post.title.rendered),
         slug: sanitizeString(post.slug),
         description: sanitizeString(post.yoast_meta.description),
-        featuredImageId: post.image_landscape ? wpAssetsUrlToContentfulIdMap[rewriteWithCDN(post.image_landscape[0].replace(/^https?:/, ''))] : null,
+        featuredImageId: post.featured_media_url ? wpAssetsUrlToContentfulIdMap[rewriteWithCDN(post.featured_media_url.replace(/^https?:/, ''))] : null,
         tags: sanitizeTags(post.tags),
         categoryId: wpCategoryIdToContentfulIdMap[post.site][mappedSourceCategoryId],
         body: await processHtml({
