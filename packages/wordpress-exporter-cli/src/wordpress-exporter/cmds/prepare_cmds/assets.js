@@ -7,14 +7,14 @@ import { rewriteWithCDN } from '../../utils';
 import compileToContentfulAsset from '../../templates/asset';
 import logger from '../../logger';
 
-const IMAGES_REGEX = /(src="(https?:\/\/(www.freeletics.com\/)([a-zA-Z0-9-_./]+)(\/wp-content\/uploads\/sites\/)([a-zA-Z0-9-_./]+)(\.(png|gif|jpg|jpeg))))/gi;
-
+const IMAGES_REGEX = /(src="(https?:\/\/((cdn|www).freeletics.com\/)([a-zA-Z0-9-_./]+)(\/wp-content\/uploads\/sites\/)([a-zA-Z0-9-_./]+)(\.(png|gif|jpg|jpeg))))/gi;
 
 async function extractUrls(filename) {
   const post = await fs.readJson(filename);
-  const urls = (post.content.rendered.match(IMAGES_REGEX) || []).map(url =>
-    // Remove 'src="' prefix from urls
-    url.replace(/^src="/, ''));
+  const content = post.site === 'blog' ? post.content.rendered : post.custom_fields_content;
+
+  // Remove 'src="' prefix from urls
+  const urls = (content.replace('\\"', '"').match(IMAGES_REGEX) || []).map(url => url.replace(/^src="/, ''));
 
   if (post.featured_media_url) {
     urls.push(post.featured_media_url);

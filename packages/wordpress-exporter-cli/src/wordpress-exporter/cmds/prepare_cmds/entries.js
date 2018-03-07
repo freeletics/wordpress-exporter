@@ -5,14 +5,21 @@ import glob from 'globby';
 import remark from 'remark';
 import uniqid from 'uniqid';
 import json2csv from 'json2csv';
-import breakdance from 'breakdance';
+import TurndownService from 'turndown';
 import { AllHtmlEntities } from 'html-entities';
 
 import logger from '../../logger';
-import { rewriteWithCDN } from '../../utils';
 import compileToContentfulPost from '../../templates/entries/post';
 import compileToContentfulCategory from '../../templates/entries/category';
+import { rewriteWithCDN } from '../../utils';
 
+const turndownService = new TurndownService({
+  headingStyle: 'atx',
+  codeBlockStyle: 'fenced',
+  bulletListMarker: '-',
+  emDelimiter: '*',
+  strongDelimiter: '__',
+});
 const entities = new AllHtmlEntities();
 
 async function listEntries(dir) {
@@ -29,7 +36,7 @@ async function listEntries(dir) {
 
 function htmlToMarkdown(content) {
   return new Promise((resolve, reject) => {
-    remark().process(breakdance(content, { unsmarty: false }), (err, file) => {
+    remark().process(turndownService.turndown(content), (err, file) => {
       if (err) {
         reject(err);
       } else {
@@ -101,12 +108,15 @@ function remapEntryId({ settings, lang, entry }) {
 async function processHtml({
   content, wpAssetsUrlToContentfulIdMap, contentfulIdtoContentfulAssetsUrlMap,
 }) {
-  const ASSETS_REGEX = /(\/\/(www.freeletics.com\/)([a-zA-Z0-9-_./]+)(\/wp-content\/uploads\/sites\/)([a-zA-Z0-9-_./]+)(\.(png|gif|jpg|jpeg)))/gi;
+  const IMAGES_REGEX = /(\/\/((cdn|www).freeletics.com\/)([a-zA-Z0-9-_./]+)(\/wp-content\/uploads\/sites\/)([a-zA-Z0-9-_./]+)(\.(png|gif|jpg|jpeg)))/gi;
   const markdown = await htmlToMarkdown(content);
 
   return markdown.replace(
-    ASSETS_REGEX,
-    url => contentfulIdtoContentfulAssetsUrlMap[wpAssetsUrlToContentfulIdMap[rewriteWithCDN(url)]],
+    IMAGES_REGEX,
+    wpUrl =>
+      contentfulIdtoContentfulAssetsUrlMap[
+        wpAssetsUrlToContentfulIdMap[rewriteWithCDN(wpUrl)]
+      ],
   ).replace(/<\/?u>/gi, '');
 }
 
@@ -216,6 +226,7 @@ export async function handler({
     const postEntries = (await listEntries(path.resolve(dir, lang, 'dump', 'entries', 'post')))
       // filter out posts with excluded category
       .filter(post => !(_.get(settings, `prepare.exclude.categories.${post.site}.${lang}`, []).includes(post.categories[0])));
+
     logger.info(`Preparing ${postEntries.length} Post entries`);
 
     const posts = await Promise.all(postEntries.map(async (post) => {

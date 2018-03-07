@@ -22,9 +22,19 @@ JSONStream@^1.0.4:
     jsonparse "^1.2.0"
     through ">=2.2.7 <3"
 
+abab@^1.0.4:
+  version "1.0.4"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
+
 abbrev@1:
   version "1.1.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
+
+acorn-globals@^4.1.0:
+  version "4.1.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/acorn-globals/-/acorn-globals-4.1.0.tgz#ab716025dbe17c54d3ef81d32ece2b2d99fe2538"
+  dependencies:
+    acorn "^5.0.0"
 
 acorn-jsx@^3.0.0:
   version "3.0.1"
@@ -35,6 +45,10 @@ acorn-jsx@^3.0.0:
 acorn@^3.0.4:
   version "3.3.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/acorn/-/acorn-3.3.0.tgz#45e37fb39e8da3f25baee3ff5369e2bb5f22017a"
+
+acorn@^5.0.0, acorn@^5.3.0:
+  version "5.5.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/acorn/-/acorn-5.5.1.tgz#84e05a9ea0acbe131227da50301e62464dc9c1d8"
 
 acorn@^5.2.1:
   version "5.2.1"
@@ -146,6 +160,10 @@ arr-flatten@^1.0.1:
   version "1.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/arr-flatten/-/arr-flatten-1.1.0.tgz#36048bbff4e7b47e136644316c99669ea5ae91f1"
 
+array-equal@^1.0.0:
+  version "1.0.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/array-equal/-/array-equal-1.0.0.tgz#8c2a5ef2472fd9ea742b04c77a75093ba2757c93"
+
 array-find-index@^1.0.1:
   version "1.0.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/array-find-index/-/array-find-index-1.0.2.tgz#df010aa1287e164bbda6f9723b0a96a1ec4187a1"
@@ -192,6 +210,10 @@ async-each@^1.0.0:
   version "1.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/async-each/-/async-each-1.0.1.tgz#19d386a1d9edc6e7c1c85d388aedbcc56d33602d"
 
+async-limiter@~1.0.0:
+  version "1.0.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/async-limiter/-/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
+
 async@^1.4.0, async@^1.5.0:
   version "1.5.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
@@ -199,10 +221,6 @@ async@^1.4.0, async@^1.5.0:
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
-
-atob@^2.0.0:
-  version "2.0.3"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/atob/-/atob-2.0.3.tgz#19c7a760473774468f20b2d2d03372ad7d4cbf5d"
 
 aws-sign2@~0.6.0:
   version "0.6.0"
@@ -757,10 +775,6 @@ bluebird@^3.3.3, bluebird@^3.5.1:
   version "3.5.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
-boolbase@~1.0.0:
-  version "1.0.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
-
 boom@2.x.x:
   version "2.10.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
@@ -794,42 +808,9 @@ braces@^1.8.2:
     preserve "^0.2.0"
     repeat-element "^1.1.2"
 
-breakdance-util@^0.1.5:
-  version "0.1.5"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/breakdance-util/-/breakdance-util-0.1.5.tgz#c76bb92bac25f94d2adb90ead3b3e54140466b98"
-  dependencies:
-    diacritics-map "^0.1.0"
-    get-value "^2.0.6"
-    is-self-closing "^1.0.0"
-    kind-of "^3.1.0"
-    snapdragon-util "^1.0.6"
-    strip-color "^0.1.0"
-    typeof-article "^0.1.1"
-    word-regex "^0.1.1"
-
-breakdance@^3.0.1:
-  version "3.0.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/breakdance/-/breakdance-3.0.1.tgz#475a989c8389f522876890ba14f397adfb0e3184"
-  dependencies:
-    breakdance-util "^0.1.5"
-    cheerio "^0.22.0"
-    condense-newlines "^0.2.1"
-    define-property "^1.0.0"
-    detect-indent "^5.0.0"
-    export-files "^2.1.1"
-    extend-shallow "^2.0.1"
-    is-self-closing "^1.0.0"
-    isobject "^3.0.0"
-    mixin-deep "^1.2.0"
-    repeat-string "^1.6.1"
-    snapdragon "^0.11.0"
-    snapdragon-cheerio "^1.1.0"
-    snapdragon-node "^1.0.6"
-    snapdragon-util "^2.1.1"
-    strip-attributes "^0.2.0"
-    trim-leading-lines "^0.1.1"
-    trim-trailing-lines "^1.1.0"
-    unescape "^0.2.0"
+browser-process-hrtime@^0.1.2:
+  version "0.1.2"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/browser-process-hrtime/-/browser-process-hrtime-0.1.2.tgz#425d68a58d3447f02a04aa894187fce8af8b7b8e"
 
 browserslist@^2.1.2:
   version "2.9.1"
@@ -943,27 +924,6 @@ check-types@7.1.5:
 check-types@^7.3.0:
   version "7.3.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/check-types/-/check-types-7.3.0.tgz#468f571a4435c24248f5fd0cb0e8d87c3c341e7d"
-
-cheerio@^0.22.0:
-  version "0.22.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/cheerio/-/cheerio-0.22.0.tgz#a9baa860a3f9b595a6b81b1a86873121ed3a269e"
-  dependencies:
-    css-select "~1.2.0"
-    dom-serializer "~0.1.0"
-    entities "~1.1.1"
-    htmlparser2 "^3.9.1"
-    lodash.assignin "^4.0.9"
-    lodash.bind "^4.1.4"
-    lodash.defaults "^4.0.1"
-    lodash.filter "^4.4.0"
-    lodash.flatten "^4.2.0"
-    lodash.foreach "^4.3.0"
-    lodash.map "^4.4.0"
-    lodash.merge "^4.4.0"
-    lodash.pick "^4.2.1"
-    lodash.reduce "^4.4.0"
-    lodash.reject "^4.4.0"
-    lodash.some "^4.4.0"
 
 chokidar@^1.6.1:
   version "1.7.0"
@@ -1115,7 +1075,7 @@ compare-func@^1.3.1:
     array-ify "^1.0.0"
     dot-prop "^3.0.0"
 
-component-emitter@^1.2.0, component-emitter@^1.2.1:
+component-emitter@^1.2.0:
   version "1.2.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
 
@@ -1131,14 +1091,6 @@ concat-stream@^1.4.10, concat-stream@^1.6.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-condense-newlines@^0.2.1:
-  version "0.2.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/condense-newlines/-/condense-newlines-0.2.1.tgz#3de985553139475d32502c83b02f60684d24c55f"
-  dependencies:
-    extend-shallow "^2.0.1"
-    is-whitespace "^0.3.0"
-    kind-of "^3.0.2"
-
 console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
@@ -1146,6 +1098,10 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
 contains-path@^0.1.0:
   version "0.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/contains-path/-/contains-path-0.1.0.tgz#fe8cf184ff6670b6baef01a9d4861a5cbec4120a"
+
+content-type-parser@^1.0.2:
+  version "1.0.2"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/content-type-parser/-/content-type-parser-1.0.2.tgz#caabe80623e63638b2502fd4c7f12ff4ce2352e7"
 
 contentful-batch-libs@^8.0.3, contentful-batch-libs@^8.1.0:
   version "8.1.0"
@@ -1409,18 +1365,15 @@ cryptiles@3.x.x:
   dependencies:
     boom "5.x.x"
 
-css-select@~1.2.0:
-  version "1.2.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/css-select/-/css-select-1.2.0.tgz#2b3a110539c5355f1cd8d314623e870b121ec858"
-  dependencies:
-    boolbase "~1.0.0"
-    css-what "2.1"
-    domutils "1.5.1"
-    nth-check "~1.0.1"
+cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
+  version "0.3.2"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/cssom/-/cssom-0.3.2.tgz#b8036170c79f07a90ff2f16e22284027a243848b"
 
-css-what@2.1:
-  version "2.1.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/css-what/-/css-what-2.1.0.tgz#9467d032c38cfaefb9f2d79501253062f87fa1bd"
+"cssstyle@>= 0.2.37 < 0.3.0":
+  version "0.2.37"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/cssstyle/-/cssstyle-0.2.37.tgz#541097234cb2513c83ceed3acddc27ff27987d54"
+  dependencies:
+    cssom "0.3.x"
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -1451,7 +1404,7 @@ dateformat@^1.0.11, dateformat@^1.0.12:
     get-stdin "^4.0.1"
     meow "^3.3.0"
 
-debug@^2.2.0, debug@^2.6.2, debug@^2.6.8:
+debug@^2.2.0, debug@^2.6.8:
   version "2.6.9"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
@@ -1466,10 +1419,6 @@ debug@^3.0.1, debug@^3.1.0:
 decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.1.2:
   version "1.2.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
-
-decode-uri-component@^0.2.0:
-  version "0.2.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
 
 dedent@^0.7.0:
   version "0.7.0"
@@ -1499,18 +1448,6 @@ define-properties@^1.1.2:
   dependencies:
     foreach "^2.0.5"
     object-keys "^1.0.8"
-
-define-property@^0.2.5:
-  version "0.2.5"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/define-property/-/define-property-0.2.5.tgz#c35b1ef918ec3c990f9a5bc57be04aacec5c8116"
-  dependencies:
-    is-descriptor "^0.1.0"
-
-define-property@^1.0.0:
-  version "1.0.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/define-property/-/define-property-1.0.0.tgz#769ebaaf3f4a63aad3af9e8d304c9bbe79bfb0e6"
-  dependencies:
-    is-descriptor "^1.0.0"
 
 defined@~1.0.0:
   version "1.0.0"
@@ -1550,10 +1487,6 @@ detect-libc@^1.0.2:
   version "1.0.3"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
 
-diacritics-map@^0.1.0:
-  version "0.1.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/diacritics-map/-/diacritics-map-0.1.0.tgz#6dfc0ff9d01000a2edf2865371cac316e94977af"
-
 doctrine@1.5.0:
   version "1.5.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/doctrine/-/doctrine-1.5.0.tgz#379dce730f6166f76cefa4e6707a159b02c5a6fa"
@@ -1567,40 +1500,11 @@ doctrine@^2.0.2:
   dependencies:
     esutils "^2.0.2"
 
-dom-serializer@0, dom-serializer@~0.1.0:
-  version "0.1.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/dom-serializer/-/dom-serializer-0.1.0.tgz#073c697546ce0780ce23be4a28e293e40bc30c82"
+domexception@^1.0.0:
+  version "1.0.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/domexception/-/domexception-1.0.1.tgz#937442644ca6a31261ef36e3ec677fe805582c90"
   dependencies:
-    domelementtype "~1.1.1"
-    entities "~1.1.1"
-
-domelementtype@1, domelementtype@^1.3.0:
-  version "1.3.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/domelementtype/-/domelementtype-1.3.0.tgz#b17aed82e8ab59e52dd9c19b1756e0fc187204c2"
-
-domelementtype@~1.1.1:
-  version "1.1.3"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/domelementtype/-/domelementtype-1.1.3.tgz#bd28773e2642881aec51544924299c5cd822185b"
-
-domhandler@^2.3.0:
-  version "2.4.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/domhandler/-/domhandler-2.4.1.tgz#892e47000a99be55bbf3774ffea0561d8879c259"
-  dependencies:
-    domelementtype "1"
-
-domutils@1.5.1:
-  version "1.5.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/domutils/-/domutils-1.5.1.tgz#dcd8488a26f563d61079e48c9f7b7e32373682cf"
-  dependencies:
-    dom-serializer "0"
-    domelementtype "1"
-
-domutils@^1.5.1:
-  version "1.6.2"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/domutils/-/domutils-1.6.2.tgz#1958cc0b4c9426e9ed367fb1c8e854891b0fa3ff"
-  dependencies:
-    dom-serializer "0"
-    domelementtype "1"
+    webidl-conversions "^4.0.2"
 
 dot-prop@^3.0.0:
   version "3.0.0"
@@ -1629,10 +1533,6 @@ electron-to-chromium@^1.3.27:
 elegant-spinner@^1.0.1:
   version "1.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
-
-entities@^1.1.1, entities@~1.1.1:
-  version "1.1.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
 
 error-ex@^1.2.0, error-ex@^1.3.1:
   version "1.3.1"
@@ -1675,6 +1575,17 @@ es6-promisify@^5.0.0:
 escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
+
+escodegen@^1.9.0:
+  version "1.9.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/escodegen/-/escodegen-1.9.1.tgz#dbae17ef96c8e4bedb1356f4504fa4cc2f7cb7e2"
+  dependencies:
+    esprima "^3.1.3"
+    estraverse "^4.2.0"
+    esutils "^2.0.2"
+    optionator "^0.8.1"
+  optionalDependencies:
+    source-map "~0.6.1"
 
 eslint-config-airbnb-base@^12.1.0:
   version "12.1.0"
@@ -1771,6 +1682,10 @@ espree@^3.5.2:
     acorn "^5.2.1"
     acorn-jsx "^3.0.0"
 
+esprima@^3.1.3:
+  version "3.1.3"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/esprima/-/esprima-3.1.3.tgz#fdca51cee6133895e3c88d535ce49dbff62a4633"
+
 esprima@^4.0.0:
   version "4.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/esprima/-/esprima-4.0.0.tgz#4499eddcd1110e0b218bacf2fa7f7f59f55ca804"
@@ -1835,18 +1750,6 @@ expand-range@^1.8.1:
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/expand-range/-/expand-range-1.8.2.tgz#a299effd335fe2721ebae8e257ec79644fc85337"
   dependencies:
     fill-range "^2.1.0"
-
-export-files@^2.1.1:
-  version "2.1.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/export-files/-/export-files-2.1.1.tgz#bbf64574053a09e4eb98e5f43501d572b2c3ce7f"
-  dependencies:
-    lazy-cache "^1.0.3"
-
-extend-shallow@^2.0.1:
-  version "2.0.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/extend-shallow/-/extend-shallow-2.0.1.tgz#51af7d614ad9a9f610ea1bafbb989d6b1c56890f"
-  dependencies:
-    is-extendable "^0.1.0"
 
 extend@^3.0.0, extend@~3.0.0, extend@~3.0.1:
   version "3.0.1"
@@ -1960,7 +1863,7 @@ for-each@~0.3.2:
   dependencies:
     is-function "~1.0.0"
 
-for-in@^1.0.1, for-in@^1.0.2:
+for-in@^1.0.1:
   version "1.0.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
 
@@ -2092,10 +1995,6 @@ get-stdin@^4.0.1:
 get-stream@^3.0.0:
   version "3.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/get-stream/-/get-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"
-
-get-value@^2.0.6:
-  version "2.0.6"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
 
 getpass@^0.1.1:
   version "0.1.7"
@@ -2302,20 +2201,15 @@ hosted-git-info@^2.1.4, hosted-git-info@^2.5.0:
   version "2.5.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/hosted-git-info/-/hosted-git-info-2.5.0.tgz#6d60e34b3abbc8313062c3b798ef8d901a07af3c"
 
+html-encoding-sniffer@^1.0.2:
+  version "1.0.2"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/html-encoding-sniffer/-/html-encoding-sniffer-1.0.2.tgz#e70d84b94da53aa375e11fe3a351be6642ca46f8"
+  dependencies:
+    whatwg-encoding "^1.0.1"
+
 html-entities@^1.2.1:
   version "1.2.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/html-entities/-/html-entities-1.2.1.tgz#0df29351f0721163515dfb9e5543e5f6eed5162f"
-
-htmlparser2@^3.9.1:
-  version "3.9.2"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/htmlparser2/-/htmlparser2-3.9.2.tgz#1bdf87acca0f3f9e53fa4fcceb0f4b4cbb00b338"
-  dependencies:
-    domelementtype "^1.3.0"
-    domhandler "^2.3.0"
-    domutils "^1.5.1"
-    entities "^1.1.1"
-    inherits "^2.0.1"
-    readable-stream "^2.0.2"
 
 http-signature@~1.1.0:
   version "1.1.1"
@@ -2340,7 +2234,7 @@ https-proxy-agent@^2.0.0:
     agent-base "^4.1.0"
     debug "^3.1.0"
 
-iconv-lite@^0.4.17:
+iconv-lite@0.4.19, iconv-lite@^0.4.17:
   version "0.4.19"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/iconv-lite/-/iconv-lite-0.4.19.tgz#f7468f60135f5e5dad3399c0a81be9a1603a082b"
 
@@ -2406,12 +2300,6 @@ invert-kv@^1.0.0:
   version "1.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
 
-is-accessor-descriptor@^0.1.6:
-  version "0.1.6"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-accessor-descriptor/-/is-accessor-descriptor-0.1.6.tgz#a9e12cb3ae8d876727eeef3843f8a0897b5c98d6"
-  dependencies:
-    kind-of "^3.0.2"
-
 is-alphabetical@^1.0.0:
   version "1.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-alphabetical/-/is-alphabetical-1.0.1.tgz#c77079cc91d4efac775be1034bf2d243f95e6f08"
@@ -2457,12 +2345,6 @@ is-ci@^1.0.10:
   dependencies:
     ci-info "^1.0.0"
 
-is-data-descriptor@^0.1.4:
-  version "0.1.4"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-data-descriptor/-/is-data-descriptor-0.1.4.tgz#0b5ee648388e2c860282e793f1856fec3f301b56"
-  dependencies:
-    kind-of "^3.0.2"
-
 is-date-object@^1.0.1:
   version "1.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-date-object/-/is-date-object-1.0.1.tgz#9aa20eb6aeebbff77fbd33e74ca01b33581d3a16"
@@ -2470,22 +2352,6 @@ is-date-object@^1.0.1:
 is-decimal@^1.0.0:
   version "1.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-decimal/-/is-decimal-1.0.1.tgz#f5fb6a94996ad9e8e3761fbfbd091f1fca8c4e82"
-
-is-descriptor@^0.1.0:
-  version "0.1.6"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-descriptor/-/is-descriptor-0.1.6.tgz#366d8240dde487ca51823b1ab9f07a10a78251ca"
-  dependencies:
-    is-accessor-descriptor "^0.1.6"
-    is-data-descriptor "^0.1.4"
-    kind-of "^5.0.0"
-
-is-descriptor@^1.0.0:
-  version "1.0.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-descriptor/-/is-descriptor-1.0.1.tgz#2c6023599bde2de9d5d2c8b9a9d94082036b6ef2"
-  dependencies:
-    is-accessor-descriptor "^0.1.6"
-    is-data-descriptor "^0.1.4"
-    kind-of "^5.0.0"
 
 is-dotfile@^1.0.0:
   version "1.0.3"
@@ -2497,7 +2363,7 @@ is-equal-shallow@^0.1.3:
   dependencies:
     is-primitive "^2.0.0"
 
-is-extendable@^0.1.0, is-extendable@^0.1.1:
+is-extendable@^0.1.1:
   version "0.1.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-extendable/-/is-extendable-0.1.1.tgz#62b110e289a471418e3ec36a617d472e301dfc89"
 
@@ -2619,12 +2485,6 @@ is-retry-allowed@^1.0.0:
   version "1.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-retry-allowed/-/is-retry-allowed-1.1.0.tgz#11a060568b67339444033d0125a61a20d564fb34"
 
-is-self-closing@^1.0.0:
-  version "1.0.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-self-closing/-/is-self-closing-1.0.1.tgz#5f406b527c7b12610176320338af0fa3896416e4"
-  dependencies:
-    self-closing-tags "^1.0.1"
-
 is-stream@^1.0.0, is-stream@^1.1.0:
   version "1.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
@@ -2655,10 +2515,6 @@ is-whitespace-character@^1.0.0:
   version "1.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-whitespace-character/-/is-whitespace-character-1.0.1.tgz#9ae0176f3282b65457a1992cdb084f8a5f833e3b"
 
-is-whitespace@^0.3.0:
-  version "0.3.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-whitespace/-/is-whitespace-0.3.0.tgz#1639ecb1be036aec69a54cbb401cfbed7114ab7f"
-
 is-word-character@^1.0.0:
   version "1.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/is-word-character/-/is-word-character-1.0.1.tgz#5a03fa1ea91ace8a6eb0c7cd770eb86d65c8befb"
@@ -2687,10 +2543,6 @@ isobject@^2.0.0:
   dependencies:
     isarray "1.0.0"
 
-isobject@^3.0.0, isobject@^3.0.1:
-  version "3.0.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
-
 isstream@~0.1.2:
   version "0.1.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
@@ -2717,6 +2569,37 @@ js-yaml@^3.9.1:
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
+
+jsdom@^11.3.0:
+  version "11.6.2"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/jsdom/-/jsdom-11.6.2.tgz#25d1ef332d48adf77fc5221fe2619967923f16bb"
+  dependencies:
+    abab "^1.0.4"
+    acorn "^5.3.0"
+    acorn-globals "^4.1.0"
+    array-equal "^1.0.0"
+    browser-process-hrtime "^0.1.2"
+    content-type-parser "^1.0.2"
+    cssom ">= 0.3.2 < 0.4.0"
+    cssstyle ">= 0.2.37 < 0.3.0"
+    domexception "^1.0.0"
+    escodegen "^1.9.0"
+    html-encoding-sniffer "^1.0.2"
+    left-pad "^1.2.0"
+    nwmatcher "^1.4.3"
+    parse5 "4.0.0"
+    pn "^1.1.0"
+    request "^2.83.0"
+    request-promise-native "^1.0.5"
+    sax "^1.2.4"
+    symbol-tree "^3.2.2"
+    tough-cookie "^2.3.3"
+    w3c-hr-time "^1.0.1"
+    webidl-conversions "^4.0.2"
+    whatwg-encoding "^1.0.3"
+    whatwg-url "^6.4.0"
+    ws "^4.0.0"
+    xml-name-validator "^3.0.0"
 
 jsesc@^1.3.0:
   version "1.3.0"
@@ -2796,7 +2679,7 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
-kind-of@^3.0.2, kind-of@^3.1.0:
+kind-of@^3.0.2:
   version "3.2.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
   dependencies:
@@ -2808,25 +2691,19 @@ kind-of@^4.0.0:
   dependencies:
     is-buffer "^1.1.5"
 
-kind-of@^5.0.0:
-  version "5.1.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/kind-of/-/kind-of-5.1.0.tgz#729c91e2d857b7a419a1f9aa65685c4c33f5845d"
-
 lazy-cache@^1.0.3:
   version "1.0.4"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
-
-lazy-cache@^2.0.2:
-  version "2.0.2"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lazy-cache/-/lazy-cache-2.0.2.tgz#b9190a4f913354694840859f8a8f7084d8822264"
-  dependencies:
-    set-getter "^0.1.0"
 
 lcid@^1.0.0:
   version "1.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lcid/-/lcid-1.0.0.tgz#308accafa0bc483a3867b4b6f2b9506251d1b835"
   dependencies:
     invert-kv "^1.0.0"
+
+left-pad@^1.2.0:
+  version "1.2.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/left-pad/-/left-pad-1.2.0.tgz#d30a73c6b8201d8f7d8e7956ba9616087a68e0ee"
 
 lerna@^2.4.0:
   version "2.5.1"
@@ -3003,14 +2880,6 @@ lodash._reinterpolate@~3.0.0:
   version "3.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
 
-lodash.assignin@^4.0.9:
-  version "4.2.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.assignin/-/lodash.assignin-4.2.0.tgz#ba8df5fb841eb0a3e8044232b0e263a8dc6a28a2"
-
-lodash.bind@^4.1.4:
-  version "4.2.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.bind/-/lodash.bind-4.2.1.tgz#7ae3017e939622ac31b7d7d7dcb1b34db1690d35"
-
 lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
@@ -3019,53 +2888,21 @@ lodash.cond@^4.3.0:
   version "4.5.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.cond/-/lodash.cond-4.5.2.tgz#f471a1da486be60f6ab955d17115523dd1d255d5"
 
-lodash.defaults@^4.0.1:
-  version "4.2.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.defaults/-/lodash.defaults-4.2.0.tgz#d09178716ffea4dde9e5fb7b37f6f0802274580c"
-
-lodash.filter@^4.4.0:
-  version "4.6.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.filter/-/lodash.filter-4.6.0.tgz#668b1d4981603ae1cc5a6fa760143e480b4c4ace"
-
-lodash.flatten@^4.2.0, lodash.flatten@^4.4.0:
+lodash.flatten@^4.4.0:
   version "4.4.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.flatten/-/lodash.flatten-4.4.0.tgz#f31c22225a9632d2bbf8e4addbef240aa765a61f"
-
-lodash.foreach@^4.3.0:
-  version "4.5.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.foreach/-/lodash.foreach-4.5.0.tgz#1a6a35eace401280c7f06dddec35165ab27e3e53"
 
 lodash.get@^4.4.0:
   version "4.4.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
 
-lodash.map@^4.4.0:
-  version "4.6.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.map/-/lodash.map-4.6.0.tgz#771ec7839e3473d9c4cde28b19394c3562f4f6d3"
-
-lodash.merge@^4.4.0:
-  version "4.6.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.merge/-/lodash.merge-4.6.0.tgz#69884ba144ac33fe699737a6086deffadd0f89c5"
-
-lodash.pick@^4.2.1:
-  version "4.4.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.pick/-/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
-
-lodash.reduce@^4.4.0:
-  version "4.6.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.reduce/-/lodash.reduce-4.6.0.tgz#f1ab6b839299ad48f784abbf476596f03b914d3b"
-
-lodash.reject@^4.4.0:
-  version "4.6.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.reject/-/lodash.reject-4.6.0.tgz#80d6492dc1470864bbf583533b651f42a9f52415"
-
 lodash.set@^4.3.0:
   version "4.3.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
 
-lodash.some@^4.4.0:
-  version "4.6.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.some/-/lodash.some-4.6.0.tgz#1bb9f314ef6b8baded13b549169b2a945eb68e4d"
+lodash.sortby@^4.7.0:
+  version "4.7.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
 
 lodash.template@^4.0.2:
   version "4.4.0"
@@ -3091,6 +2928,10 @@ lodash@^3.10.1:
 lodash@^4.0.0, lodash@^4.0.1, lodash@^4.1.0, lodash@^4.17.4, lodash@^4.2.1, lodash@^4.3.0:
   version "4.17.4"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+
+lodash@^4.13.1:
+  version "4.17.5"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
 log-symbols@^1.0.2:
   version "1.0.2"
@@ -3146,10 +2987,6 @@ make-dir@^1.0.0:
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/make-dir/-/make-dir-1.1.0.tgz#19b4369fe48c116f53c2af95ad102c0e39e85d51"
   dependencies:
     pify "^3.0.0"
-
-map-cache@^0.2.2:
-  version "0.2.2"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/map-cache/-/map-cache-0.2.2.tgz#c32abd0bd6525d9b051645bb4f26ac5dc98a0dbf"
 
 map-obj@^1.0.0, map-obj@^1.0.1:
   version "1.0.1"
@@ -3253,13 +3090,6 @@ minimist@~0.0.1:
   version "0.0.10"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
 
-mixin-deep@^1.2.0:
-  version "1.2.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/mixin-deep/-/mixin-deep-1.2.0.tgz#d02b8c6f8b6d4b8f5982d3fd009c4919851c3fe2"
-  dependencies:
-    for-in "^1.0.2"
-    is-extendable "^0.1.1"
-
 "mkdirp@>=0.5 0", mkdirp@^0.5.1, mkdirp@~0.5.0:
   version "0.5.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
@@ -3353,15 +3183,13 @@ npmlog@^4.0.2, npmlog@^4.1.2:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
-nth-check@~1.0.1:
-  version "1.0.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/nth-check/-/nth-check-1.0.1.tgz#9929acdf628fc2c41098deab82ac580cf149aae4"
-  dependencies:
-    boolbase "~1.0.0"
-
 number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
+
+nwmatcher@^1.4.3:
+  version "1.4.3"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/nwmatcher/-/nwmatcher-1.4.3.tgz#64348e3b3d80f035b40ac11563d278f8b72db89c"
 
 oauth-sign@~0.8.1, oauth-sign@~0.8.2:
   version "0.8.2"
@@ -3379,18 +3207,12 @@ object-keys@^1.0.8:
   version "1.0.11"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/object-keys/-/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
 
-object.omit@^2.0.0, object.omit@^2.0.1:
+object.omit@^2.0.0:
   version "2.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/object.omit/-/object.omit-2.0.1.tgz#1a9c744829f39dbb858c76ca3579ae2a54ebd1fa"
   dependencies:
     for-own "^0.1.4"
     is-extendable "^0.1.1"
-
-object.pick@^1.2.0:
-  version "1.3.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/object.pick/-/object.pick-1.3.0.tgz#87a10ac4c1694bd2e1cbf53591a66141fb5dd747"
-  dependencies:
-    isobject "^3.0.1"
 
 once@^1.3.0, once@^1.3.3:
   version "1.4.0"
@@ -3415,7 +3237,7 @@ optimist@^0.6.1:
     minimist "~0.0.1"
     wordwrap "~0.0.2"
 
-optionator@^0.8.2:
+optionator@^0.8.1, optionator@^0.8.2:
   version "0.8.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/optionator/-/optionator-0.8.2.tgz#364c5e409d3f4d6301d6c0b4c05bba50180aeb64"
   dependencies:
@@ -3535,6 +3357,10 @@ parse-link-header@^0.4.1:
   dependencies:
     xtend "~4.0.0"
 
+parse5@4.0.0:
+  version "4.0.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/parse5/-/parse5-4.0.0.tgz#6d78656e3da8d78b4ec0b906f7c08ef1dfe3f608"
+
 path-dirname@^1.0.0:
   version "1.0.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/path-dirname/-/path-dirname-1.0.2.tgz#cc33d24d525e099a5388c0336c6e32b9160609e0"
@@ -3615,6 +3441,10 @@ pluralize@^7.0.0:
   version "7.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
 
+pn@^1.1.0:
+  version "1.1.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
+
 prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
@@ -3650,7 +3480,7 @@ pseudomap@^1.0.2:
   version "1.0.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
 
-punycode@2.x.x:
+punycode@2.x.x, punycode@^2.1.0:
   version "2.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/punycode/-/punycode-2.1.0.tgz#5f863edc89b96db09074bad7947bf09056ca4e7d"
 
@@ -3862,7 +3692,7 @@ repeat-element@^1.1.2:
   version "1.1.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/repeat-element/-/repeat-element-1.1.2.tgz#ef089a178d1483baae4d93eb98b4f9e4e11d990a"
 
-repeat-string@^1.5.2, repeat-string@^1.5.4, repeat-string@^1.6.1:
+repeat-string@^1.5.2, repeat-string@^1.5.4:
   version "1.6.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/repeat-string/-/repeat-string-1.6.1.tgz#8dcae470e1c88abc2d600fff4a776286da75e637"
 
@@ -3875,6 +3705,20 @@ repeating@^2.0.0:
 replace-ext@1.0.0:
   version "1.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/replace-ext/-/replace-ext-1.0.0.tgz#de63128373fcbf7c3ccfa4de5a480c45a67958eb"
+
+request-promise-core@1.1.1:
+  version "1.1.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/request-promise-core/-/request-promise-core-1.1.1.tgz#3eee00b2c5aa83239cfb04c5700da36f81cd08b6"
+  dependencies:
+    lodash "^4.13.1"
+
+request-promise-native@^1.0.5:
+  version "1.0.5"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/request-promise-native/-/request-promise-native-1.0.5.tgz#5281770f68e0c9719e5163fd3fab482215f4fda5"
+  dependencies:
+    request-promise-core "1.1.1"
+    stealthy-require "^1.1.0"
+    tough-cookie ">=2.3.3"
 
 request@2.81.0:
   version "2.81.0"
@@ -3903,7 +3747,7 @@ request@2.81.0:
     tunnel-agent "^0.6.0"
     uuid "^3.0.0"
 
-request@^2.81.0:
+request@^2.81.0, request@^2.83.0:
   version "2.83.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/request/-/request-2.83.0.tgz#ca0b65da02ed62935887808e6f510381034e3356"
   dependencies:
@@ -3948,10 +3792,6 @@ require-uncached@^1.0.3:
 resolve-from@^1.0.0:
   version "1.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/resolve-from/-/resolve-from-1.0.1.tgz#26cbfe935d1aeeeabb29bc3fe5aeb01e93d44226"
-
-resolve-url@^0.2.1:
-  version "0.2.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/resolve-url/-/resolve-url-0.2.1.tgz#2c637fe77c893afd2a663fe21aa9080068e2052a"
 
 resolve@^1.2.0, resolve@~1.5.0:
   version "1.5.0"
@@ -4027,9 +3867,9 @@ safe-buffer@^5.0.1, safe-buffer@^5.1.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/safe-buffer/-/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
 
-self-closing-tags@^1.0.1:
-  version "1.0.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/self-closing-tags/-/self-closing-tags-1.0.1.tgz#6c5fa497994bb826b484216916371accee490a5d"
+sax@^1.2.4:
+  version "1.2.4"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
 
 "semver@2 || 3 || 4 || 5", semver@^5.0.1, semver@^5.1.0, semver@^5.3.0, semver@^5.4.1:
   version "5.4.1"
@@ -4038,12 +3878,6 @@ self-closing-tags@^1.0.1:
 set-blocking@^2.0.0, set-blocking@~2.0.0:
   version "2.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
-
-set-getter@^0.1.0:
-  version "0.1.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/set-getter/-/set-getter-0.1.0.tgz#d769c182c9d5a51f409145f2fba82e5e86e80376"
-  dependencies:
-    to-object-path "^0.3.0"
 
 set-immediate-shim@^1.0.1:
   version "1.0.1"
@@ -4077,58 +3911,6 @@ slice-ansi@1.0.0:
   dependencies:
     is-fullwidth-code-point "^2.0.0"
 
-snapdragon-cheerio@^1.1.0:
-  version "1.1.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/snapdragon-cheerio/-/snapdragon-cheerio-1.1.0.tgz#16f3bd3fa1615f85c5f826504c5bb406cd340eb7"
-  dependencies:
-    cheerio "^0.22.0"
-    define-property "^0.2.5"
-    extend-shallow "^2.0.1"
-    is-self-closing "^1.0.0"
-    snapdragon-node "^1.0.6"
-    snapdragon-util "^2.0.0"
-
-snapdragon-node@^1.0.6:
-  version "1.0.6"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/snapdragon-node/-/snapdragon-node-1.0.6.tgz#2448d5ef6fea7f5e8fd5326a0a114854da271356"
-  dependencies:
-    define-property "^0.2.5"
-    isobject "^3.0.0"
-    lazy-cache "^2.0.2"
-    snapdragon-util "^1.0.3"
-
-snapdragon-util@^1.0.3, snapdragon-util@^1.0.6:
-  version "1.0.6"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/snapdragon-util/-/snapdragon-util-1.0.6.tgz#8b3d2d6dec8930c90e054ba052e562ca1b3a621e"
-  dependencies:
-    define-property "^0.2.5"
-    kind-of "^3.1.0"
-    lazy-cache "^2.0.2"
-    snapdragon-node "^1.0.6"
-
-snapdragon-util@^2.0.0, snapdragon-util@^2.1.1:
-  version "2.1.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/snapdragon-util/-/snapdragon-util-2.1.1.tgz#552779df8a1493a0e78c06cc80953a262770957a"
-  dependencies:
-    kind-of "^3.1.0"
-
-snapdragon@^0.11.0:
-  version "0.11.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/snapdragon/-/snapdragon-0.11.0.tgz#260ba99290368fcf54b186a33240b635649dca4a"
-  dependencies:
-    component-emitter "^1.2.1"
-    debug "^2.6.2"
-    define-property "^0.2.5"
-    extend-shallow "^2.0.1"
-    get-value "^2.0.6"
-    isobject "^3.0.0"
-    map-cache "^0.2.2"
-    snapdragon-node "^1.0.6"
-    snapdragon-util "^2.1.1"
-    source-map "^0.5.6"
-    source-map-resolve "^0.5.0"
-    use "^2.0.2"
-
 sntp@1.x.x:
   version "1.0.9"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/sntp/-/sntp-1.0.9.tgz#6541184cc90aeea6c6e7b35e2659082443c66198"
@@ -4147,25 +3929,11 @@ sort-keys@^2.0.0:
   dependencies:
     is-plain-obj "^1.0.0"
 
-source-map-resolve@^0.5.0:
-  version "0.5.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/source-map-resolve/-/source-map-resolve-0.5.1.tgz#7ad0f593f2281598e854df80f19aae4b92d7a11a"
-  dependencies:
-    atob "^2.0.0"
-    decode-uri-component "^0.2.0"
-    resolve-url "^0.2.1"
-    source-map-url "^0.4.0"
-    urix "^0.1.0"
-
 source-map-support@^0.4.15:
   version "0.4.18"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/source-map-support/-/source-map-support-0.4.18.tgz#0286a6de8be42641338594e97ccea75f0a2c585f"
   dependencies:
     source-map "^0.5.6"
-
-source-map-url@^0.4.0:
-  version "0.4.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/source-map-url/-/source-map-url-0.4.0.tgz#3e935d7ddd73631b97659956d55128e87b5084a3"
 
 source-map@^0.4.4:
   version "0.4.4"
@@ -4176,6 +3944,10 @@ source-map@^0.4.4:
 source-map@^0.5.6, source-map@~0.5.1:
   version "0.5.7"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
+
+source-map@~0.6.1:
+  version "0.6.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
 
 spdx-correct@~1.0.0:
   version "1.0.2"
@@ -4224,6 +3996,10 @@ sshpk@^1.7.0:
 state-toggle@^1.0.0:
   version "1.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/state-toggle/-/state-toggle-1.0.0.tgz#d20f9a616bb4f0c3b98b91922d25b640aa2bc425"
+
+stealthy-require@^1.1.0:
+  version "1.1.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
 
 stream-to-observable@^0.1.0:
   version "0.1.0"
@@ -4289,16 +4065,6 @@ strip-ansi@^4.0.0:
   dependencies:
     ansi-regex "^3.0.0"
 
-strip-attributes@^0.2.0:
-  version "0.2.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/strip-attributes/-/strip-attributes-0.2.0.tgz#30ba227c6abf6356a51b2b68626c795f19280945"
-  dependencies:
-    cheerio "^0.22.0"
-    extend-shallow "^2.0.1"
-    isobject "^3.0.0"
-    object.omit "^2.0.1"
-    object.pick "^1.2.0"
-
 strip-bom@^2.0.0:
   version "2.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/strip-bom/-/strip-bom-2.0.0.tgz#6219a85616520491f35788bdbf1447a99c7e6b0e"
@@ -4308,10 +4074,6 @@ strip-bom@^2.0.0:
 strip-bom@^3.0.0:
   version "3.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/strip-bom/-/strip-bom-3.0.0.tgz#2334c18e9c759f7bdd56fdef7e9ae3d588e68ed3"
-
-strip-color@^0.1.0:
-  version "0.1.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/strip-color/-/strip-color-0.1.0.tgz#106f65d3d3e6a2d9401cac0eb0ce8b8a702b4f7b"
 
 strip-eof@^1.0.0:
   version "1.0.0"
@@ -4373,6 +4135,10 @@ symbol-observable@^0.2.2:
 symbol-observable@^1.0.1:
   version "1.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/symbol-observable/-/symbol-observable-1.1.0.tgz#5c68fd8d54115d9dfb72a84720549222e8db9b32"
+
+symbol-tree@^3.2.2:
+  version "3.2.2"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
 
 table@^4.0.1:
   version "4.0.2"
@@ -4479,17 +4245,17 @@ to-fast-properties@^1.0.3:
   version "1.0.3"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/to-fast-properties/-/to-fast-properties-1.0.3.tgz#b83571fa4d8c25b82e231b06e3a3055de4ca1a47"
 
-to-object-path@^0.3.0:
-  version "0.3.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/to-object-path/-/to-object-path-0.3.0.tgz#297588b7b0e7e0ac08e04e672f85c1f4999e17af"
-  dependencies:
-    kind-of "^3.0.2"
-
 topo@2.x.x:
   version "2.0.2"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/topo/-/topo-2.0.2.tgz#cd5615752539057c0dc0491a621c3bc6fbe1d182"
   dependencies:
     hoek "4.x.x"
+
+tough-cookie@>=2.3.3, tough-cookie@^2.3.3:
+  version "2.3.4"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/tough-cookie/-/tough-cookie-2.3.4.tgz#ec60cee38ac675063ffc97a5c18970578ee83655"
+  dependencies:
+    punycode "^1.4.1"
 
 tough-cookie@~2.3.0, tough-cookie@~2.3.3:
   version "2.3.3"
@@ -4497,11 +4263,11 @@ tough-cookie@~2.3.0, tough-cookie@~2.3.3:
   dependencies:
     punycode "^1.4.1"
 
-trim-leading-lines@^0.1.1:
-  version "0.1.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/trim-leading-lines/-/trim-leading-lines-0.1.1.tgz#0e7cac3e83042dcf95a74ed36966f17744d5c169"
+tr46@^1.0.0:
+  version "1.0.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/tr46/-/tr46-1.0.1.tgz#a8b13fd6bfd2489519674ccde55ba3693b706d09"
   dependencies:
-    is-whitespace "^0.3.0"
+    punycode "^2.1.0"
 
 trim-newlines@^1.0.0:
   version "1.0.0"
@@ -4515,7 +4281,7 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
 
-trim-trailing-lines@^1.0.0, trim-trailing-lines@^1.1.0:
+trim-trailing-lines@^1.0.0:
   version "1.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/trim-trailing-lines/-/trim-trailing-lines-1.1.0.tgz#7aefbb7808df9d669f6da2e438cac8c46ada7684"
 
@@ -4541,6 +4307,12 @@ tunnel-agent@^0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
+turndown@4.0.1:
+  version "4.0.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/turndown/-/turndown-4.0.1.tgz#1383dd01ac8d96fa106a7f13e0b0a7977588131a"
+  dependencies:
+    jsdom "^11.3.0"
+
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
@@ -4554,12 +4326,6 @@ type-check@~0.3.2:
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
-
-typeof-article@^0.1.1:
-  version "0.1.1"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/typeof-article/-/typeof-article-0.1.1.tgz#9f07e733c3fbb646ffa9e61c08debacd460e06af"
-  dependencies:
-    kind-of "^3.1.0"
 
 uglify-js@^2.6:
   version "2.8.29"
@@ -4577,10 +4343,6 @@ uglify-to-browserify@~1.0.0:
 uid-number@^0.0.6:
   version "0.0.6"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/uid-number/-/uid-number-0.0.6.tgz#0ea10e8035e8eb5b8e4449f06da1c730663baa81"
-
-unescape@^0.2.0:
-  version "0.2.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/unescape/-/unescape-0.2.0.tgz#b78b9b60c86f1629df181bf53eee3bc8d6367ddf"
 
 unherit@^1.0.4:
   version "1.1.0"
@@ -4641,23 +4403,11 @@ unzip-response@^2.0.1:
   version "2.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/unzip-response/-/unzip-response-2.0.1.tgz#d2f0f737d16b0615e72a6935ed04214572d56f97"
 
-urix@^0.1.0:
-  version "0.1.0"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
-
 url-parse-lax@^1.0.0:
   version "1.0.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/url-parse-lax/-/url-parse-lax-1.0.0.tgz#7af8f303645e9bd79a272e7a14ac68bc0609da73"
   dependencies:
     prepend-http "^1.0.1"
-
-use@^2.0.2:
-  version "2.0.2"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/use/-/use-2.0.2.tgz#ae28a0d72f93bf22422a18a2e379993112dec8e8"
-  dependencies:
-    define-property "^0.2.5"
-    isobject "^3.0.0"
-    lazy-cache "^2.0.2"
 
 user-home@^1.1.1:
   version "1.1.1"
@@ -4715,11 +4465,35 @@ vfile@^2.0.0:
     unist-util-stringify-position "^1.0.0"
     vfile-message "^1.0.0"
 
+w3c-hr-time@^1.0.1:
+  version "1.0.1"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/w3c-hr-time/-/w3c-hr-time-1.0.1.tgz#82ac2bff63d950ea9e3189a58a65625fedf19045"
+  dependencies:
+    browser-process-hrtime "^0.1.2"
+
 wcwidth@^1.0.0:
   version "1.0.1"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/wcwidth/-/wcwidth-1.0.1.tgz#f0b0dcf915bc5ff1528afadb2c0e17b532da2fe8"
   dependencies:
     defaults "^1.0.3"
+
+webidl-conversions@^4.0.1, webidl-conversions@^4.0.2:
+  version "4.0.2"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
+
+whatwg-encoding@^1.0.1, whatwg-encoding@^1.0.3:
+  version "1.0.3"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/whatwg-encoding/-/whatwg-encoding-1.0.3.tgz#57c235bc8657e914d24e1a397d3c82daee0a6ba3"
+  dependencies:
+    iconv-lite "0.4.19"
+
+whatwg-url@^6.4.0:
+  version "6.4.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/whatwg-url/-/whatwg-url-6.4.0.tgz#08fdf2b9e872783a7a1f6216260a1d66cc722e08"
+  dependencies:
+    lodash.sortby "^4.7.0"
+    tr46 "^1.0.0"
+    webidl-conversions "^4.0.1"
 
 which-module@^2.0.0:
   version "2.0.0"
@@ -4740,10 +4514,6 @@ wide-align@^1.1.0:
 window-size@0.1.0:
   version "0.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/window-size/-/window-size-0.1.0.tgz#5438cd2ea93b202efa3a19fe8887aee7c94f9c9d"
-
-word-regex@^0.1.1:
-  version "0.1.2"
-  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/word-regex/-/word-regex-0.1.2.tgz#a3bc7f2d222ce4a93c246c3ef69458f61f511639"
 
 wordwrap@0.0.2:
   version "0.0.2"
@@ -4813,6 +4583,13 @@ write@^0.2.1:
   dependencies:
     mkdirp "^0.5.1"
 
+ws@^4.0.0:
+  version "4.1.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/ws/-/ws-4.1.0.tgz#a979b5d7d4da68bf54efe0408967c324869a7289"
+  dependencies:
+    async-limiter "~1.0.0"
+    safe-buffer "~5.1.0"
+
 x-is-function@^1.0.4:
   version "1.0.4"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/x-is-function/-/x-is-function-1.0.4.tgz#5d294dc3d268cbdd062580e0c5df77a391d1fa1e"
@@ -4820,6 +4597,10 @@ x-is-function@^1.0.4:
 x-is-string@^0.1.0:
   version "0.1.0"
   resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/x-is-string/-/x-is-string-0.1.0.tgz#474b50865af3a49a9c4657f05acd145458f77d82"
+
+xml-name-validator@^3.0.0:
+  version "3.0.0"
+  resolved "http://repo.freeletics.com/artifactory/api/npm/npm-registry/xml-name-validator/-/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
 
 xtend@^4.0.1, xtend@~4.0.0, xtend@~4.0.1:
   version "4.0.1"

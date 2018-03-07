@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "bluebird": "^3.5.1",
-    "breakdance": "^3.0.1",
     "chalk": "^2.3.0",
     "contentful-export": "^6.0.4",
     "contentful-import": "^6.2.0",
@@ -43,6 +42,7 @@
     "lodash": "^4.17.4",
     "remark": "^8.0.0",
     "remark-stringify": "^4.0.0",
+    "turndown": "4.0.1",
     "uniqid": "^4.1.1",
     "wpapi": "^1.1.2",
     "yargs": "^10.0.3"
