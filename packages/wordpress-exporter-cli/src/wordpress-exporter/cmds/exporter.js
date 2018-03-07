@@ -95,7 +95,7 @@ export async function handler({
     posts.map(async (post) => {
       const file = path.join(basedir, 'dump', 'entries', 'post', `${site}-${post.id}.json`);
       logger.info(`Outputting post ${post.id} in ${path.relative(basedir, file)}`);
-      await fs.writeJson(file, post);
+      await fs.writeJson(file, Object.assign({}, post, { site }));
     });
   } catch (error) {
     logger.error(error);
