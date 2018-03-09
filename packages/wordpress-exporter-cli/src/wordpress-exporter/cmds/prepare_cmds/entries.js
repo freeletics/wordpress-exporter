@@ -19,7 +19,38 @@ const turndownService = new TurndownService({
   bulletListMarker: '-',
   emDelimiter: '*',
   strongDelimiter: '__',
-});
+  // Convert YouTube and Vimeo iframes to Embedly cards
+  blankReplacement(content, node) {
+    const types = ['IFRAME'];
+    const convertToAnchor = (iframe) => {
+      const src = iframe.getAttribute('src').split('?')[0];
+
+      // Use the same syntax as "Embed external content" button in Contentful
+      return `<a href="${src}" class="embedly-card" data-card-width="100%" data-card-controls="0">Embedded content: ${src}</a>`;
+    };
+
+    // Handle <iframe></iframe>
+    if (types.includes(node.nodeName)) {
+      return `\n\n${convertToAnchor(node)}\n\n`;
+    }
+
+    // Handle <div><iframe></iframe></div>
+    const output = [];
+    node.childNodes.forEach((child) => {
+      if (types.includes(child.nodeName)) {
+        output.push(convertToAnchor(child));
+      }
+    });
+
+    if (output.length) {
+      return `\n\n${output.join('\n\n')}\n\n`;
+    }
+
+    // Default blankReplacement implementation
+    return node.isBlock ? '\n\n' : '';
+  },
+}).keep('iframe');
+
 const entities = new AllHtmlEntities();
 
 async function listEntries(dir) {
