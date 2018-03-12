@@ -11,6 +11,7 @@ import { AllHtmlEntities } from 'html-entities';
 import logger from '../../logger';
 import compileToContentfulAuthor from '../../templates/entries/author';
 import compileToContentfulCategory from '../../templates/entries/category';
+import compileToContentfulTag from '../../templates/entries/tag';
 import compileToContentfulPost from '../../templates/entries/post';
 import { rewriteWithCDN } from '../../utils';
 
@@ -82,10 +83,6 @@ function sanitizeString(string) {
   return entities.decode(string)
     .replace(/"| +(?= )/g, '')
     .trim();
-}
-
-function sanitizeTags(tags) {
-  return tags.map(tag => sanitizeString(tag).toLowerCase());
 }
 
 function generateId({ code, site, id }) {
@@ -199,7 +196,7 @@ export async function handler({
     const authors = await Promise.all(authorEntries.map(async (author) => {
       const { codes } = settings.prepare.spaces;
       const code = codes.en;
-      const authorId = generateId({ code, blog: 'blog', id: 1 });
+      const authorId = generateId({ code, site: 'blog', id: 1 });
 
       return compileToContentfulAuthor({
         lang,
@@ -275,6 +272,34 @@ export async function handler({
       });
 
     /**
+     * Prepare tags
+     */
+    const tagEntries = (await listEntries(path.resolve(dir, lang, 'dump', 'entries', 'tag')));
+    const wpTagIdToContentfulIdMap = {
+      blog: {},
+      knowledge: {},
+    };
+
+    logger.info(`Preparing ${tagEntries.length} Tag entries`);
+
+    const tags = await Promise.all(tagEntries.map(async (tag) => {
+      const { codes } = settings.prepare.spaces;
+      const code = codes[lang];
+      const tagId = generateId({ code, site: tag.site, id: tag.id });
+      const contentfulId = uniqid();
+
+      wpTagIdToContentfulIdMap[tag.site][tag.id] = contentfulId;
+
+      return compileToContentfulTag({
+        lang,
+        id: contentfulId,
+        tagId,
+        name: tag.name,
+        slug: tag.slug,
+      });
+    }));
+
+    /**
      * Prepare posts
      */
     const postEntries = (await listEntries(path.resolve(dir, lang, 'dump', 'entries', 'post')))
@@ -284,13 +309,17 @@ export async function handler({
     logger.info(`Preparing ${postEntries.length} Post entries`);
 
     const posts = await Promise.all(postEntries.map(async (post) => {
-      // Generate a unique post id
-      const postId = remapEntryId({ settings, lang, entry: post });
+      const contentfulId = uniqid();
+      const postId = remapEntryId({ settings, lang, entry: post }); // Generate a unique post id
       const authorId = authors[0].sys.id;
-      const category = categoryEntries.find(c => c.site === post.site && c.id === post.categories[0]);
+      const category = categoryEntries
+        .find(c => c.site === post.site && c.id === post.categories[0]);
       const sourceCategoryId = getSource(settings, category).category_id;
-      const mappedSourceCategoryId = post.site === 'blog' ? sourceCategoryId : settings.prepare.remap.categories[sourceCategoryId];
+      const mappedSourceCategoryId = post.site === 'blog' ?
+        sourceCategoryId :
+        settings.prepare.remap.categories[sourceCategoryId];
       const categoryId = wpCategoryIdToContentfulIdMap[post.site][mappedSourceCategoryId];
+      const tagIds = post.tags.map(tag => wpTagIdToContentfulIdMap[post.site][String(tag)]);
 
       // Keep mapping to generate nginx redirect
       urlsRewrite.push({
@@ -298,19 +327,17 @@ export async function handler({
         new: `${host}/${lang}/blog/posts/${postId}`,
       });
 
-      // Output reformated post
       return compileToContentfulPost({
         lang,
-        // Note: here we generate our own Contentful sys.id
-        id: uniqid(),
+        id: contentfulId,
         postId,
         authorId,
         categoryId,
+        tagIds,
         title: sanitizeString(post.title.rendered),
         slug: sanitizeString(post.slug),
         description: sanitizeString(post.yoast_meta.description),
         featuredImageId: post.featured_media_url ? wpAssetsUrlToContentfulIdMap[rewriteWithCDN(post.featured_media_url.replace(/^https?:/, ''))] : null,
-        tags: sanitizeTags(post.tags),
         body: await processHtml({
           content: post.site === 'blog' ? post.content.rendered : post.custom_fields_content,
           wpAssetsUrlToContentfulIdMap,
@@ -322,7 +349,7 @@ export async function handler({
 
     // Output all entries and rewrites
     logger.info('Exporting all entries and entries rewrite...');
-    fs.writeJson(path.resolve(dir, lang, 'export/entries.json'), [...authors, ...categories, ...posts]);
+    fs.writeJson(path.resolve(dir, lang, 'export/entries.json'), [...authors, ...categories, ...tags, ...posts]);
 
     // Output URLs rewrite
     fs.writeFile(path.resolve(dir, lang, 'export/rewrite.csv'), json2csv({ data: urlsRewrite }));

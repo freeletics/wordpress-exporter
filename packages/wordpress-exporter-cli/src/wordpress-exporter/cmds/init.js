@@ -11,7 +11,7 @@ async function setupBaseDir({ dir, lang }) {
 
   await fs.mkdirs(path.resolve(basedir, 'dump', 'assets'));
 
-  ['post', 'category'].map(async (type) => {
+  ['post', 'category', 'tag'].map(async (type) => {
     await fs.mkdirs(path.resolve(basedir, 'dump', 'entries', type));
   });
 

@@ -6,7 +6,7 @@ export default ({
   slug,
   description,
   featuredImageId,
-  tags,
+  tagIds,
   body,
   authorId,
   categoryId,
@@ -46,9 +46,6 @@ export default ({
         }
       }
     },
-    "tags": {
-      "${lang}": ${tags.length ? `["${tags.join('","')}"]` : '[]'}
-    },
     "body": {
       "${lang}": ${JSON.stringify(body)}
     },
@@ -69,6 +66,17 @@ export default ({
           "id": "${categoryId}"
         }
       }
+    },
+    "tags": {
+      "${lang}": ${tagIds.length ?
+  JSON.stringify(tagIds.map(tagId => ({
+    sys: {
+      type: 'Link',
+      linkType: 'Entry',
+      id: tagId,
+    },
+  })), null, 2)
+  : '[]'}
     },
     "publishedOn": {
       "${lang}": "${publishedOn}"

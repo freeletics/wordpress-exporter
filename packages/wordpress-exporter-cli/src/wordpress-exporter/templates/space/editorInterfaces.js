@@ -34,6 +34,7 @@ export default spaceId => JSON.parse(`
         }
       ]
     },
+
     {
       "sys": {
         "id": "default",
@@ -48,6 +49,33 @@ export default spaceId => JSON.parse(`
         "contentType": {
           "sys": {
             "id": "category",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "slug",
+           "widgetId": "slugEditor"
+        }
+      ]
+    },
+
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "${spaceId}",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "tag",
             "type": "Link",
             "linkType": "ContentType"
           }

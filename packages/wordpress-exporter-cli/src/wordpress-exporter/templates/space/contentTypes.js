@@ -83,20 +83,6 @@ export default spaceId => JSON.parse(`
           "linkType": "Asset"
         },
         {
-          "id": "tags",
-          "name": "Tags",
-          "type": "Array",
-          "localized": false,
-          "required": false,
-          "validations": [],
-          "disabled": false,
-          "omitted": false,
-          "items": {
-            "type": "Symbol",
-            "validations": []
-          }
-        },
-        {
           "id": "body",
           "name": "Body",
           "type": "Text",
@@ -139,6 +125,27 @@ export default spaceId => JSON.parse(`
           "disabled": false,
           "omitted": false,
           "linkType": "Entry"
+        },
+        {
+          "id": "tags",
+          "name": "Tags",
+          "type": "Array",
+          "localized": false,
+          "required": false,
+          "validations": [],
+          "disabled": false,
+          "omitted": false,
+          "items": {
+            "type": "Link",
+            "validations": [
+              {
+                "linkContentType": [
+                  "tag"
+                ]
+              }
+            ],
+            "linkType": "Entry"
+          }
         },
         {
           "id": "publishedOn",
@@ -286,6 +293,68 @@ export default spaceId => JSON.parse(`
           "disabled": false,
           "omitted": false,
           "linkType": "Asset"
+        }
+      ]
+    },
+
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "${spaceId}"
+          }
+        },
+        "id": "tag",
+        "type": "ContentType",
+        "publishedVersion": 1
+      },
+      "displayField": "name",
+      "name": "Tag",
+      "description": "",
+      "fields": [
+        {
+          "id": "tagId",
+          "name": "ID",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "name",
+          "name": "Name",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "slug",
+          "name": "Slug",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ],
+          "disabled": false,
+          "omitted": false
         }
       ]
     }

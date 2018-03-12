@@ -46,10 +46,21 @@ async function fetchAllCategories(wp) {
   return wp.categories();
 }
 
+async function fetchAllTags(wp, { offset = 0, perPage = 100 } = {}) {
+  const tags = await wp.tags().perPage(perPage).offset(offset);
+
+  if (tags.length === perPage) {
+    return tags.concat(await fetchAllTags(wp, { offset: offset + perPage }));
+  }
+
+  return tags;
+}
+
 function validBaseDir(basedir) {
   return fs.existsSync(path.join(basedir, 'dump', 'assets')) &&
   fs.existsSync(path.join(basedir, 'dump', 'entries', 'post')) &&
-  fs.existsSync(path.join(basedir, 'dump', 'entries', 'category'));
+  fs.existsSync(path.join(basedir, 'dump', 'entries', 'category')) &&
+  fs.existsSync(path.join(basedir, 'dump', 'entries', 'tag'));
 }
 
 export const command = 'export';
@@ -79,6 +90,10 @@ export async function handler({
     const categories = allCategories.filter(category => !excludedCategoryIds.includes(category.id));
     logger.info(`Retrieved ${categories.length} categories`);
 
+    logger.info('Fetching tags...');
+    const tags = await fetchAllTags(wp);
+    logger.info(`Retrieved ${tags.length} tags`);
+
     logger.info('Fetching posts...');
     const categoryIds = categories.map(category => category.id);
     const posts = await fetchAllPosts(wp, categoryIds);
@@ -88,7 +103,14 @@ export async function handler({
     categories.map(async (category) => {
       const file = path.join(basedir, 'dump', 'entries', 'category', `${site}-${category.id}.json`);
       logger.info(`Outputting category ${category.id} in ${path.relative(basedir, file)}`);
-      await fs.writeJson(file, category);
+      await fs.writeJson(file, Object.assign({}, category, { site }));
+    });
+
+    logger.info('Exporting tags...');
+    tags.map(async (tag) => {
+      const file = path.join(basedir, 'dump', 'entries', 'tag', `${site}-${tag.id}.json`);
+      logger.info(`Outputting tag ${tag.id} in ${path.relative(basedir, file)}`);
+      await fs.writeJson(file, Object.assign({}, tag, { site }));
     });
 
     logger.info('Exporting posts...');
