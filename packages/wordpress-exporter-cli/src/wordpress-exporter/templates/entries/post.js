@@ -1,5 +1,16 @@
 export default ({
-  lang, id, postId, title, slug, description, featuredImageId, tags, body, categoryId, publishedOn,
+  lang,
+  id,
+  postId,
+  title,
+  slug,
+  description,
+  featuredImageId,
+  tags,
+  body,
+  authorId,
+  categoryId,
+  publishedOn,
 }) => JSON.parse(`{
   "sys": {
     "id": "${id}",
@@ -40,6 +51,15 @@ export default ({
     },
     "body": {
       "${lang}": ${JSON.stringify(body)}
+    },
+    "author": {
+      "${lang}": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Entry",
+          "id": "${authorId}"
+        }
+      }
     },
     "category": {
       "${lang}": {

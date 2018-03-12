@@ -107,6 +107,23 @@ export default spaceId => JSON.parse(`
           "omitted": false
         },
         {
+          "id": "author",
+          "name": "Author",
+          "type": "Link",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "linkContentType": [
+                "author"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Entry"
+        },
+        {
           "id": "category",
           "name": "Category",
           "type": "Link",
@@ -135,6 +152,55 @@ export default spaceId => JSON.parse(`
         }
       ]
     },
+
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "${spaceId}"
+          }
+        },
+        "id": "author",
+        "type": "ContentType",
+        "publishedVersion": 1
+      },
+      "displayField": "name",
+      "name": "Author",
+      "description": "",
+      "fields": [
+        {
+          "id": "authorId",
+          "name": "ID",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "name",
+          "name": "Name",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    },
+
     {
       "sys": {
         "space": {

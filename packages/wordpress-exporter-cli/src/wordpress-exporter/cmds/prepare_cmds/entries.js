@@ -9,8 +9,9 @@ import TurndownService from 'turndown';
 import { AllHtmlEntities } from 'html-entities';
 
 import logger from '../../logger';
-import compileToContentfulPost from '../../templates/entries/post';
+import compileToContentfulAuthor from '../../templates/entries/author';
 import compileToContentfulCategory from '../../templates/entries/category';
+import compileToContentfulPost from '../../templates/entries/post';
 import { rewriteWithCDN } from '../../utils';
 
 const turndownService = new TurndownService({
@@ -187,6 +188,28 @@ export async function handler({
     );
 
     /**
+     * Prepare authors
+     */
+    const authorEntries = [{
+      name: 'Seana Forbes',
+    }];
+
+    logger.info(`Preparing ${authorEntries.length} Author entries`);
+
+    const authors = await Promise.all(authorEntries.map(async (author) => {
+      const { codes } = settings.prepare.spaces;
+      const code = codes.en;
+      const authorId = generateId({ code, blog: 'blog', id: 1 });
+
+      return compileToContentfulAuthor({
+        lang,
+        id: uniqid(),
+        authorId,
+        name: author.name,
+      });
+    }));
+
+    /**
      * Prepare categories
      */
     const categoryEntries = (await listEntries(path.resolve(dir, lang, 'dump', 'entries', 'category')))
@@ -263,10 +286,11 @@ export async function handler({
     const posts = await Promise.all(postEntries.map(async (post) => {
       // Generate a unique post id
       const postId = remapEntryId({ settings, lang, entry: post });
-      const category = categoryEntries
-        .find(c => c.site === post.site && c.id === post.categories[0]);
+      const authorId = authors[0].sys.id;
+      const category = categoryEntries.find(c => c.site === post.site && c.id === post.categories[0]);
       const sourceCategoryId = getSource(settings, category).category_id;
       const mappedSourceCategoryId = post.site === 'blog' ? sourceCategoryId : settings.prepare.remap.categories[sourceCategoryId];
+      const categoryId = wpCategoryIdToContentfulIdMap[post.site][mappedSourceCategoryId];
 
       // Keep mapping to generate nginx redirect
       urlsRewrite.push({
@@ -280,12 +304,13 @@ export async function handler({
         // Note: here we generate our own Contentful sys.id
         id: uniqid(),
         postId,
+        authorId,
+        categoryId,
         title: sanitizeString(post.title.rendered),
         slug: sanitizeString(post.slug),
         description: sanitizeString(post.yoast_meta.description),
         featuredImageId: post.featured_media_url ? wpAssetsUrlToContentfulIdMap[rewriteWithCDN(post.featured_media_url.replace(/^https?:/, ''))] : null,
         tags: sanitizeTags(post.tags),
-        categoryId: wpCategoryIdToContentfulIdMap[post.site][mappedSourceCategoryId],
         body: await processHtml({
           content: post.site === 'blog' ? post.content.rendered : post.custom_fields_content,
           wpAssetsUrlToContentfulIdMap,
@@ -297,7 +322,7 @@ export async function handler({
 
     // Output all entries and rewrites
     logger.info('Exporting all entries and entries rewrite...');
-    fs.writeJson(path.resolve(dir, lang, 'export/entries.json'), [...categories, ...posts]);
+    fs.writeJson(path.resolve(dir, lang, 'export/entries.json'), [...authors, ...categories, ...posts]);
 
     // Output URLs rewrite
     fs.writeFile(path.resolve(dir, lang, 'export/rewrite.csv'), json2csv({ data: urlsRewrite }));
