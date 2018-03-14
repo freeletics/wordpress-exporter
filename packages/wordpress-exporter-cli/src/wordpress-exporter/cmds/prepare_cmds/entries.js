@@ -138,15 +138,25 @@ async function processHtml({
   content, wpAssetsUrlToContentfulIdMap, contentfulIdtoContentfulAssetsUrlMap,
 }) {
   const IMAGES_REGEX = /(\/\/((cdn|www).freeletics.com\/)([a-zA-Z0-9-_./]+)(\/wp-content\/uploads\/sites\/)([a-zA-Z0-9-_./]+)(\.(png|gif|jpg|jpeg)))/gi;
+  const POSTS_REGEX = /https:\/\/www.freeletics.com\/([a-z]{2})\/(blog|knowledge)\/([a-zA-Z0-9-_.]+)\/\)/gi;
   const markdown = await htmlToMarkdown(content);
 
-  return markdown.replace(
-    IMAGES_REGEX,
-    wpUrl =>
-      contentfulIdtoContentfulAssetsUrlMap[
-        wpAssetsUrlToContentfulIdMap[rewriteWithCDN(wpUrl)]
-      ],
-  ).replace(/<\/?u>/gi, '');
+  return markdown
+    .replace(
+      IMAGES_REGEX,
+      wpUrl =>
+        contentfulIdtoContentfulAssetsUrlMap[
+          wpAssetsUrlToContentfulIdMap[rewriteWithCDN(wpUrl)]
+        ],
+    )
+    // Replace urls to posts with the new url structure:
+    // https://www.freeletics.com/:locale/blog/:slug      => /:locale/blog/posts/:slug
+    // https://www.freeletics.com/:locale/knowledge/:slug => /:locale/blog/posts/:slug
+    .replace(
+      POSTS_REGEX,
+      (url, locale, site, slug) => `/${locale}/blog/posts/${slug}/)`,
+    )
+    .replace(/<\/?u>/gi, '');
 }
 
 export const command = 'entries';
@@ -228,11 +238,12 @@ export async function handler({
         const contentfulId = uniqid();
         const sourceCategoryId = getSource(settings, category).category_id;
         const newCategoryId = remapEntryId({ settings, lang, entry: category });
+        const slug = sanitizeString(category.slug);
 
         // Keep mapping to generate nginx redirect
         urlsRewrite.push({
           old: category.link,
-          new: `${host}/${lang}/blog/categories/${newCategoryId}`,
+          new: `${host}/${lang}/blog/categories/${slug}/`,
         });
 
         // Keep mapping for post processing
@@ -245,7 +256,7 @@ export async function handler({
           id: contentfulId,
           categoryId: newCategoryId,
           name: sanitizeString(category.name),
-          slug: sanitizeString(category.slug),
+          slug,
           description: sanitizeString(category.description),
         });
       }));
@@ -320,11 +331,12 @@ export async function handler({
         settings.prepare.remap.categories[sourceCategoryId];
       const categoryId = wpCategoryIdToContentfulIdMap[post.site][mappedSourceCategoryId];
       const tagIds = post.tags.map(tag => wpTagIdToContentfulIdMap[post.site][String(tag)]);
+      const slug = sanitizeString(post.slug);
 
       // Keep mapping to generate nginx redirect
       urlsRewrite.push({
         old: post.link,
-        new: `${host}/${lang}/blog/posts/${postId}`,
+        new: `${host}/${lang}/blog/posts/${slug}/`,
       });
 
       return compileToContentfulPost({
@@ -335,7 +347,7 @@ export async function handler({
         categoryId,
         tagIds,
         title: sanitizeString(post.title.rendered),
-        slug: sanitizeString(post.slug),
+        slug,
         description: sanitizeString(post.yoast_meta.description),
         featuredImageId: post.featured_media_url ? wpAssetsUrlToContentfulIdMap[rewriteWithCDN(post.featured_media_url.replace(/^https?:/, ''))] : null,
         body: await processHtml({
