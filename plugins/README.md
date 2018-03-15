@@ -18,7 +18,7 @@ This plugin extends Wordpress REST API to expose additional information for each
 
 * [Advanced Custom Fields][] field `content` and its nested fields. Those fields were used to create flexible content in Freeletics knowledge centers.
 
-*Note*: the knowledge sites were also using the `extebd-blog-api-plugin` plugins, so properties exposed for the blogs were also exposed for the knowledge centers.
+*Note*: the knowledge sites were also using the `extend-blog-api-plugin` plugins, so properties exposed for the blogs were also exposed for the knowledge centers.
 
 [node-wpapi]: https://github.com/WP-API/node-wpapi
 [extend Wordpress REST API]: https://developer.wordpress.org/rest-api/extending-the-rest-api/
