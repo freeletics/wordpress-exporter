@@ -4,7 +4,7 @@
   Description: Extends Wordpress Blog Rest API.
   See https://developer.wordpress.org/rest-api/extending-the-rest-api/ for more.
   Author: Romulus & Remus
-  Version: 0.6
+  Version: 0.7
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -20,32 +20,7 @@ function extend_blog_api_plugin_menu() {
 // endpoint is called this function gets executed.
 add_action('rest_api_init', 'extend_blog_post_api');
 add_action('rest_api_init', 'extend_blog_category_api');
-
-function extend_blog_category_api($category){
-  // Adds languages relationships
-  register_rest_field('category',
-    'mlp_translations',
-    array(
-      'get_callback' => function ($category) {
-        $mlp_linked_categories = mlp_get_linked_elements($category['id'], 'term');
-        $mlp_translations = array();
-
-        foreach ( $mlp_linked_categories as $lang_id => $translation_category_id ) {
-          array_push($mlp_translations, array(
-            // Convert blog_id (integer) to string (e.g. 'en', 'de')
-            'lang' => mlp_get_blog_language($lang_id),
-            // WP Category ID
-            'category_id' => $translation_category_id
-          ));
-        }
-
-        return $mlp_translations;
-      },
-      'update_callback' => function () { },
-      'schema' => null // as we don't need it in our case
-    )
-  );
-}
+add_action('rest_api_init', 'extend_blog_tag_api');
 
 function extend_blog_post_api($post) {
   // Adds image_landscape property
@@ -94,6 +69,58 @@ function extend_blog_post_api($post) {
             'lang' => mlp_get_blog_language($lang_id),
             // WP Post ID
             'post_id' => $translation_post_id
+          ));
+        }
+
+        return $mlp_translations;
+      },
+      'update_callback' => function () { },
+      'schema' => null // as we don't need it in our case
+    )
+  );
+}
+
+function extend_blog_category_api($category){
+  // Adds languages relationships
+  register_rest_field('category',
+    'mlp_translations',
+    array(
+      'get_callback' => function ($category) {
+        $mlp_linked_categories = mlp_get_linked_elements($category['id'], 'term');
+        $mlp_translations = array();
+
+        foreach ( $mlp_linked_categories as $lang_id => $translation_category_id ) {
+          array_push($mlp_translations, array(
+            // Convert blog_id (integer) to string (e.g. 'en', 'de')
+            'lang' => mlp_get_blog_language($lang_id),
+            // WP Category ID
+            'category_id' => $translation_category_id
+          ));
+        }
+
+        return $mlp_translations;
+      },
+      'update_callback' => function () { },
+      'schema' => null // as we don't need it in our case
+    )
+  );
+}
+
+function extend_blog_tag_api($tag){
+  // Adds languages relationships
+  register_rest_field('tag',
+    'mlp_translations',
+    array(
+      'get_callback' => function ($tag) {
+        $mlp_linked_tags = mlp_get_linked_elements($tag['id'], 'term');
+        $mlp_translations = array();
+
+        foreach ( $mlp_linked_tags as $lang_id => $translation_tag_id ) {
+          array_push($mlp_translations, array(
+            // Convert blog_id (integer) to string (e.g. 'en', 'de')
+            'lang' => mlp_get_blog_language($lang_id),
+            // WP Category ID
+            'tag_id' => $translation_tag_id
           ));
         }
 
