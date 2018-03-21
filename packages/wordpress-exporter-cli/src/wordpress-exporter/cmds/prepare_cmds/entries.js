@@ -121,12 +121,13 @@ function remapEntryId({ settings, lang, entry }) {
     return generateId({
       code: codes[settings.source.lang],
       site: entry.site,
-      id: entry.type && entry.type === 'post' ? source.post_id : source.category_id,
+      id: source[`${entry.type}_id`], // post_id, category_id or tag_id
     });
   }
 
   // This post become its own source in Contentful
   logger.warn(`Entry "${entry.type || entry.taxonomy}/${entry.id}.json" couldn't be linked to any source.`);
+
   return generateId({
     code: codes[lang],
     site: entry.site,
@@ -171,10 +172,7 @@ export async function handler({
   settings, host, lang, dir,
 }) {
   const urlsRewrite = [];
-  const wpCategoryIdToContentfulIdMap = {
-    blog: {},
-    knowledge: {},
-  };
+
   try {
     // Load assets to be exported to contentful and generate a map mapping
     // Wordpress asset URLs to Contentful asset id
@@ -219,6 +217,10 @@ export async function handler({
     /**
      * Prepare categories
      */
+    const wpCategoryIdToContentfulIdMap = {
+      blog: {},
+      knowledge: {},
+    };
     const categoryEntries = (await listEntries(path.resolve(dir, lang, 'dump', 'entries', 'category')))
       // filter out exluded categories
       .filter((category) => {
@@ -232,7 +234,6 @@ export async function handler({
      * Prepare blog categories
      */
     const categories = await Promise.all(categoryEntries
-      // Only prepare blog category for the export
       .filter(category => category.site === 'blog')
       .map(async (category) => {
         const contentfulId = uniqid();
@@ -285,30 +286,57 @@ export async function handler({
     /**
      * Prepare tags
      */
-    const tagEntries = (await listEntries(path.resolve(dir, lang, 'dump', 'entries', 'tag')));
     const wpTagIdToContentfulIdMap = {
       blog: {},
       knowledge: {},
     };
+    const tagEntries = (await listEntries(path.resolve(dir, lang, 'dump', 'entries', 'tag')));
 
     logger.info(`Preparing ${tagEntries.length} Tag entries`);
 
-    const tags = await Promise.all(tagEntries.map(async (tag) => {
-      const { codes } = settings.prepare.spaces;
-      const code = codes[lang];
-      const tagId = generateId({ code, site: tag.site, id: tag.id });
-      const contentfulId = uniqid();
+    /**
+     * Prepare blog tags
+     */
+    const tags = await Promise.all(tagEntries
+      .filter(tag => tag.site === 'blog')
+      .map(async (tag) => {
+        const contentfulId = uniqid();
+        const sourceTagId = getSource(settings, tag).tag_id;
+        const newTagId = remapEntryId({ settings, lang, entry: tag });
+        const slug = sanitizeString(tag.slug);
 
-      wpTagIdToContentfulIdMap[tag.site][tag.id] = contentfulId;
+        // Keep mapping for post processing
+        wpTagIdToContentfulIdMap[tag.site][sourceTagId] = contentfulId;
 
-      return compileToContentfulTag({
-        lang,
-        id: contentfulId,
-        tagId,
-        name: tag.name,
-        slug: tag.slug,
+        return compileToContentfulTag({
+          lang,
+          id: contentfulId,
+          tagId: newTagId,
+          name: sanitizeString(tag.name),
+          slug,
+        });
+      }));
+
+    /**
+     * Prepare knowledge tags
+     */
+    tagEntries
+      .filter(tag => tag.site !== 'blog')
+      .forEach((tag) => {
+        const remaper = settings.prepare.remap.tags;
+
+        // Get source tag id in the tag's site
+        const source = getSource(settings, tag);
+        if (!source || !source.tag_id) throw new Error(`Missing source for ${tag.site} tag id="${tag.id}"`);
+
+        // Then remap it with its related blog tag
+        const remapedsourceId = remaper[source.tag_id];
+        if (!remapedsourceId) throw new Error(`Missing mapping for ${tag.site} tag id="${source.tag_id}"`);
+
+        // Get associated contentful id and use it to remap the current tag
+        const contentfulId = wpTagIdToContentfulIdMap.blog[remapedsourceId];
+        wpTagIdToContentfulIdMap[tag.site][remapedsourceId] = contentfulId;
       });
-    }));
 
     /**
      * Prepare posts
@@ -323,14 +351,41 @@ export async function handler({
       const contentfulId = uniqid();
       const postId = remapEntryId({ settings, lang, entry: post }); // Generate a unique post id
       const authorId = authors[0].sys.id;
-      const category = categoryEntries
-        .find(c => c.site === post.site && c.id === post.categories[0]);
-      const sourceCategoryId = getSource(settings, category).category_id;
-      const mappedSourceCategoryId = post.site === 'blog' ?
-        sourceCategoryId :
-        settings.prepare.remap.categories[sourceCategoryId];
-      const categoryId = wpCategoryIdToContentfulIdMap[post.site][mappedSourceCategoryId];
-      const tagIds = post.tags.map(tag => wpTagIdToContentfulIdMap[post.site][String(tag)]);
+
+      const categoryIds = post.categories.map((categoryId) => {
+        // Find category used in post
+        const category = categoryEntries
+          .find(c => c.site === post.site && c.id === categoryId);
+
+        // Find source category id
+        const sourceCategoryId = getSource(settings, category).category_id;
+
+        // Remap source category id to blog version if necessary
+        const mappedSourceCategoryId = post.site === 'blog' ?
+          sourceCategoryId :
+          settings.prepare.remap.categories[sourceCategoryId];
+
+        // Find contentful id for given category id
+        return wpCategoryIdToContentfulIdMap[post.site][mappedSourceCategoryId];
+      });
+
+      const tagIds = post.tags.map((tagId) => {
+        // Find tag used in post
+        const tag = tagEntries
+          .find(t => t.site === post.site && t.id === tagId);
+
+        // Find source tag id
+        const sourceTagId = getSource(settings, tag).tag_id;
+
+        // Remap source tag id to blog version if necessary
+        const mappedSourceTagId = post.site === 'blog' ?
+          sourceTagId :
+          settings.prepare.remap.tags[sourceTagId];
+
+        // Find contentful id for given tag id
+        return wpTagIdToContentfulIdMap[post.site][mappedSourceTagId];
+      });
+
       const slug = sanitizeString(post.slug);
 
       // Keep mapping to generate nginx redirect
@@ -344,7 +399,7 @@ export async function handler({
         id: contentfulId,
         postId,
         authorId,
-        categoryId,
+        categoryId: categoryIds[0],
         tagIds,
         title: sanitizeString(post.title.rendered),
         slug,

@@ -42,8 +42,14 @@ async function fetchAllPosts(wp, categoryIds, { offset = 0, perPage = 100 } = {}
   return posts;
 }
 
-async function fetchAllCategories(wp) {
-  return wp.categories();
+async function fetchAllCategories(wp, { offset = 0, perPage = 100 } = {}) {
+  const categories = wp.categories().perPage(perPage).offset(offset);
+
+  if (categories.length === perPage) {
+    return categories.concat(await fetchAllCategories(wp, { offset: offset + perPage }));
+  }
+
+  return categories;
 }
 
 async function fetchAllTags(wp, { offset = 0, perPage = 100 } = {}) {
@@ -103,21 +109,21 @@ export async function handler({
     categories.map(async (category) => {
       const file = path.join(basedir, 'dump', 'entries', 'category', `${site}-${category.id}.json`);
       logger.info(`Outputting category ${category.id} in ${path.relative(basedir, file)}`);
-      await fs.writeJson(file, Object.assign({}, category, { site }));
+      await fs.writeJson(file, Object.assign({}, category, { site, type: 'category' }));
     });
 
     logger.info('Exporting tags...');
     tags.map(async (tag) => {
       const file = path.join(basedir, 'dump', 'entries', 'tag', `${site}-${tag.id}.json`);
       logger.info(`Outputting tag ${tag.id} in ${path.relative(basedir, file)}`);
-      await fs.writeJson(file, Object.assign({}, tag, { site }));
+      await fs.writeJson(file, Object.assign({}, tag, { site, type: 'tag' }));
     });
 
     logger.info('Exporting posts...');
     posts.map(async (post) => {
       const file = path.join(basedir, 'dump', 'entries', 'post', `${site}-${post.id}.json`);
       logger.info(`Outputting post ${post.id} in ${path.relative(basedir, file)}`);
-      await fs.writeJson(file, Object.assign({}, post, { site }));
+      await fs.writeJson(file, Object.assign({}, post, { site, type: 'post' }));
     });
   } catch (error) {
     logger.error(error);
