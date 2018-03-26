@@ -58,7 +58,7 @@ export default spaceId => JSON.parse(`
         {
           "id": "description",
           "name": "Description",
-          "type": "Symbol",
+          "type": "Text",
           "localized": false,
           "required": true,
           "validations": [],
