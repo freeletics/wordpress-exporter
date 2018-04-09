@@ -51,7 +51,17 @@ const turndownService = new TurndownService({
     // Default blankReplacement implementation
     return node.isBlock ? '\n\n' : '';
   },
-}).keep('iframe');
+})
+  .keep('iframe')
+  // Convert <cite> elements inside <blockquote> to <em>, so that they can be
+  // easily targeted with CSS.
+  .addRule('cite', {
+    filter: 'cite',
+    replacement(content, node, options) {
+      const text = content.replace('– ', '');
+      return `${options.emDelimiter}${text}${options.emDelimiter}`;
+    },
+  });
 
 const entities = new AllHtmlEntities();
 
