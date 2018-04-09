@@ -40,9 +40,9 @@
     "html-entities": "^1.2.1",
     "json2csv": "^3.11.5",
     "lodash": "^4.17.4",
-    "remark": "^8.0.0",
-    "remark-stringify": "^4.0.0",
-    "turndown": "4.0.1",
+    "remark": "^9.0.0",
+    "remark-stringify": "^5.0.0",
+    "turndown": "^4.0.1",
     "uniqid": "^4.1.1",
     "wpapi": "^1.1.2",
     "yargs": "^10.0.3"
