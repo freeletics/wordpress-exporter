@@ -25,6 +25,10 @@ export default spaceId => JSON.parse(`
            "widgetId": "slugEditor"
         },
         {
+          "fieldId": "description",
+          "widgetId": "singleLine"
+        },
+        {
           "fieldId": "publishedOn",
           "settings": {
             "ampm": "24",
