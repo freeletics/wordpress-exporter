@@ -1155,9 +1155,9 @@ contentful-export@^6.0.4:
     request "^2.81.0"
     yargs "^8.0.2"
 
-contentful-import@^6.2.2:
-  version "6.2.2"
-  resolved "https://registry.yarnpkg.com/contentful-import/-/contentful-import-6.2.2.tgz#d593e14c7f83b35533e0b3640f2978ea4d645d38"
+contentful-import@^6.2.3:
+  version "6.2.3"
+  resolved "https://registry.yarnpkg.com/contentful-import/-/contentful-import-6.2.3.tgz#9a61984815e01a9e67d8393fda76ec80a53e168a"
   dependencies:
     cli-table2 "^0.2.0"
     contentful-batch-libs "^8.1.1"

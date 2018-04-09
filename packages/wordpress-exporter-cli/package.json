@@ -33,7 +33,7 @@
     "bluebird": "^3.5.1",
     "chalk": "^2.3.0",
     "contentful-export": "^6.0.4",
-    "contentful-import": "^6.2.2",
+    "contentful-import": "^6.2.3",
     "contentful-management": "^4.2.2",
     "fs-extra": "^4.0.2",
     "globby": "^6.1.0",
