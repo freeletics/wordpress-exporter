@@ -181,12 +181,43 @@ module.exports = {
         },
       },
     },
+    // Maps of Wordpress entry IDs in English "knowledge" site to English "blog" site.
     remap: {
       categories: {
         6: '19', // nutrition
         7: '330', // training
         333: '471', // science
         334: '472', // well-being
+      },
+
+      tags: {
+        383: 571, // anatomy
+        352: 555, // app
+        360: 28, // carbohydrates
+        388: 574, // exercises
+        344: 500, // fat
+        345: 533, // habits
+        351: 531, // healthy-eating
+        359: 465, // hiit
+        361: 121, // hunger
+        369: 268, // hydration
+        375: 333, // losing-weight
+        370: 496, // marathon
+        346: 299, // mental-strength
+        348: 135, // muscle-growth
+        386: 570, // nutrients
+        368: 541, // outdoor-training
+        356: 234, // protein
+        349: 444, // recovery
+        358: 16, // running
+        350: 122, // sleep
+        357: 536, // strength-training
+        342: 473, // stretching
+        382: 61, // summer
+        341: 338, // technique
+        374: 54, // wear
+        366: 106, // winter
+        380: 556, // workout
       },
     },
   },
