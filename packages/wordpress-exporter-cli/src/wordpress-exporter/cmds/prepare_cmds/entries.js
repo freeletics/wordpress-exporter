@@ -153,12 +153,13 @@ async function processHtml({
   const markdown = await htmlToMarkdown(content);
 
   return markdown
+    // Replace image urls that use Freeletics CDN to Contentful and resize them to be 1232px wide
     .replace(
       IMAGES_REGEX,
       wpUrl =>
-        contentfulIdtoContentfulAssetsUrlMap[
+        `${contentfulIdtoContentfulAssetsUrlMap[
           wpAssetsUrlToContentfulIdMap[rewriteWithCDN(wpUrl)]
-        ],
+        ]}?w=1232&fm=jpg&q=76&fl=progressive`,
     )
     // Replace urls to posts with the new url structure:
     // https://www.freeletics.com/:locale/blog/:slug      => /:locale/blog/posts/:slug
