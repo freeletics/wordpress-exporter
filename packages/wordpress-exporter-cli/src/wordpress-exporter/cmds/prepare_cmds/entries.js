@@ -180,7 +180,7 @@ export function builder(yargs) {
   });
 }
 export async function handler({
-  settings, host, lang, dir,
+  settings, lang, dir,
 }) {
   const urlsRewrite = [];
 
@@ -254,8 +254,8 @@ export async function handler({
 
         // Keep mapping to generate nginx redirect
         urlsRewrite.push({
-          old: category.link,
-          new: `${host}/${lang}/blog/categories/${slug}/`,
+          old: category.link.replace('https://www.freeletics.com', ''),
+          new: `/${lang}/blog/categories/${slug}/`,
         });
 
         // Keep mapping for post processing
@@ -401,8 +401,8 @@ export async function handler({
 
       // Keep mapping to generate nginx redirect
       urlsRewrite.push({
-        old: post.link,
-        new: `${host}/${lang}/blog/posts/${slug}/`,
+        old: post.link.replace('https://www.freeletics.com', ''),
+        new: `/${lang}/blog/posts/${slug}/`,
       });
 
       return compileToContentfulPost({
@@ -430,7 +430,7 @@ export async function handler({
     fs.writeJson(path.resolve(dir, lang, 'export/entries.json'), [...authors, ...categories, ...tags, ...posts]);
 
     // Output URLs rewrite
-    fs.writeFile(path.resolve(dir, lang, 'export/rewrite.csv'), json2csv({ data: urlsRewrite }));
+    fs.writeFile(path.resolve(dir, lang, 'export/rewrite.csv'), json2csv({ data: urlsRewrite, header: false }));
   } catch (error) {
     logger.error(error.stack);
     process.exit(1);
